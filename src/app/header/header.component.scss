@@ -1,0 +1,31 @@
+@import '../../assets/scss/settings/colors.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+
+  .navbar {
+    position: relative;
+    margin: 0 15px;
+
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+
+    // }
+
+    &__link {
+      padding:  15px;
+      background: linear-gradient(to left,#fff 51%, $main-color 0%);
+      background-size: 200%;
+      background-position: 100%;
+
+      &:hover {
+        color: $main-light-color;
+        background-position: 0;
+      }
+    }
+  }
+}
