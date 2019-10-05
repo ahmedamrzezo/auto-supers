@@ -5,10 +5,20 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
+  position: absolute;
+  width: 100%;
+  z-index: 555;
+
+  &__logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    color: #fff;
+  }
 
   .navbar {
     position: relative;
     margin: 0 15px;
+    transform: skewX(-15deg);
 
     // &::after {
     //   content: '';
@@ -18,14 +28,18 @@
 
     &__link {
       padding:  15px;
-      background: linear-gradient(to left,#fff 51%, $main-color 0%);
-      background-size: 200%;
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.3) 50%, $main-color 0%);
+      background-size: 202%;
       background-position: 100%;
 
       &:hover {
         color: $main-light-color;
         background-position: 0;
       }
+    }
+    &__text {
+      transform: skewX(15deg);
+      display: inline-block;
     }
   }
 }

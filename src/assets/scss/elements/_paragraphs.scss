@@ -1,4 +1,7 @@
-p {
+.e-paragraph {
   font-size: 1.4rem;
   color: $text-color;
+}
+.e-paragraph--light {
+  color: $main-light-color;
 }
