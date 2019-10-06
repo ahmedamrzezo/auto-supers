@@ -37,6 +37,9 @@
         color: $main-light-color;
         background-position: 0;
       }
+      &.e-link--active {
+        background: $primary-dark-color;
+      }
     }
     &__text {
       transform: skewX(15deg);
