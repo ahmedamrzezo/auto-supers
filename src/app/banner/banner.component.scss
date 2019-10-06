@@ -1,12 +1,12 @@
 .banner {
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   position: relative;
   &__img {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
 
     .img-fluid {
       display: inline-block;
