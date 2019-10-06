@@ -5,22 +5,35 @@
   </div>
 
   <nav class="navbar">
-    <a href="" class="navbar__link">
+    <a 
+    class="navbar__link" 
+    routerLink="/home" 
+    routerLinkActive="e-link--active">
       <span class="navbar__text">
         Home
       </span>
     </a>
-    <a href="" class="navbar__link">
+    <a 
+    class="navbar__link" 
+    routerLink="/supers" 
+    routerLinkActive="e-link--active" 
+    [routerLinkActiveOptions]="{exact: true}">
       <span class="navbar__text">
-        Browse
+        Supers
       </span>
     </a>
-    <a href="" class="navbar__link">
+    <a 
+    class="navbar__link" 
+    routerLink="/supers/create"  
+    routerLinkActive="e-link--active">
       <span class="navbar__text">
         Create 
       </span>
     </a>
-    <a href="" class="navbar__link">
+    <a 
+    class="navbar__link" 
+    routerLink="/about"  
+    routerLinkActive="e-link--active">
       <span class="navbar__text">
         About
       </span>
