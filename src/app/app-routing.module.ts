@@ -10,17 +10,17 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {path: 'home', redirectTo: '', pathMatch: 'full'},
-  {path: '', component: HomeComponent},
-  {path: 'supers', component: CollectionComponent, 
+  {path: '', component: HomeComponent, data: { animation: 'HomePage' }},
+  {path: 'supers', component: CollectionComponent, data: { animation: 'OtherPage' }, 
   children: [
     {path: 'create', component: SupercarEditComponent},
     {path: ':id', component: SupercarDetailsComponent},
     {path: ':id/edit', component: SupercarEditComponent}
   ]
 },
-{path: 'about', component: AboutComponent},
+{path: 'about', component: AboutComponent, data: { animation: 'OtherPage' }},
 {path: '**', redirectTo: '/404', pathMatch: 'full'},
-{path: '404', component: NotFoundComponent},
+{path: '404', component: NotFoundComponent, data: { animation: 'OtherPage' }},
 ];
 
 @NgModule({
