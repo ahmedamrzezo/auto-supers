@@ -1,10 +1,11 @@
 
 <app-header></app-header>
 
+<app-banner></app-banner>
 
-<main>
+<main [@routeAnimation]="prepareRoute(outlet)">
   
-  <app-home></app-home>
+  <router-outlet #outlet="outlet"></router-outlet>
 
 </main>
 
