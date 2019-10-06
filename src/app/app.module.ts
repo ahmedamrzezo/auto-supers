@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +13,8 @@ import { SupercarDetailsComponent } from './collection/supercar-details/supercar
 import { AboutComponent } from './about/about.component';
 import { SupercarEditComponent } from './collection/supercar-edit/supercar-edit.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { BannerComponent } from './banner/banner.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +27,14 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     SupercarDetailsComponent,
     AboutComponent,
     SupercarEditComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    BannerComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
