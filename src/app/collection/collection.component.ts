@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PagesService } from '../shared/pages.service';
 
 @Component({
   selector: 'app-collection',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pagesService: PagesService) { }
 
   ngOnInit() {
+
+    this.pagesService.bannerContent.next({title: 'Browse Supers'});
+    
   }
 
 }
