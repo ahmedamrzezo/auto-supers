@@ -15,6 +15,7 @@ import { SupercarEditComponent } from './collection/supercar-edit/supercar-edit.
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { BannerComponent } from './banner/banner.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SupercarEditComponent,
     BreadcrumbComponent,
     BannerComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
