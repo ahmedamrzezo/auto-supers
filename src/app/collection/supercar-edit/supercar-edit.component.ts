@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PagesService } from 'src/app/shared/pages.service';
 
 @Component({
   selector: 'app-supercar-edit',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupercarEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pagesService: PagesService) { }
 
   ngOnInit() {
+
+    this.pagesService.bannerContent.next({title: 'Create/Edit a Super'});
+    
   }
 
 }

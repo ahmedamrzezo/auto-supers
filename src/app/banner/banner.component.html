@@ -5,4 +5,16 @@
     src="../../assets/images/nissan-gtr-r25.jpg" 
     alt="nissan-gtr-r25">
   </div>
+
+  <div class="banner__content o-vertical-centralize">
+    <div class="container">
+      <h1>
+        {{bannerContent?.title}}
+      </h1>
+    
+      <p class="e-paragraph--light" *ngIf="bannerContent?.desc">
+        {{bannerContent?.desc}}
+      </p>
+    </div>
+  </div>
 </section>
