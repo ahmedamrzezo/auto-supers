@@ -12,7 +12,7 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
 
-    this.pagesService.bannerContent.next({title: 'About Supers Auto'});
+    this.pagesService.bannerContent.next({title: 'About Auto-Supers'});
     
   }
 
