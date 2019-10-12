@@ -8,10 +8,22 @@ export const bannerAnimation =
     state('OtherPage', style({
       height: '40vh'
     })),
-    transition('HomePage => OtherPage', [
+    transition('HomePage <=> OtherPage', [
       animate('500ms cubic-bezier(0.55, 0.06, 0.68, 0.19)')
-    ]),
-    transition('OtherPage => HomePage', [
-      animate('500ms cubic-bezier(0.55, 0.06, 0.68, 0.19)')
-    ]),
+    ])
   ]);
+
+export const fadeInAnimation = 
+  trigger('fadeIn', [
+    state('void', style({
+      opacity: 0
+    })),
+
+    state('*', style({
+      opacity: 1
+    })),
+
+    transition('void <=> *', [
+      animate('1s cubic-bezier(0.55, 0.06, 0.68, 0.19)')
+    ])
+  ])
