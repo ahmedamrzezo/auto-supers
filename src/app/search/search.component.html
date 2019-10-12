@@ -1,0 +1,22 @@
+<form class="search" (ngSubmit)="submitSearch(searchForm)" #searchForm="ngForm">
+  <fieldset class="search__field e-form-group">
+    <input 
+      class="search__bar e-form-control" 
+      placeholder="Search a super..." 
+      type="text" 
+      name="search"
+      [(ngModel)]="search"
+      (input)="quickSearch()"
+      required>
+  </fieldset>
+
+  <button 
+    class="search__button c-main-btn" 
+    type="submit"
+    [disabled]="searchForm.invalid">Search</button>
+</form>
+
+<div class="results" *ngIf="searchForm.dirty">
+  {{search}}
+</div>
+

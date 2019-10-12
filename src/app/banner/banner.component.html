@@ -6,7 +6,7 @@
     alt="nissan-gtr-r25">
   </div>
 
-  <div class="banner__content o-vertical-centralize">
+  <div class="banner__content o-vertical-centralize" *ngIf="bannerContent?.title" @fadeIn>
     <div class="container">
       <h1>
         {{bannerContent?.title}}

@@ -1,0 +1,18 @@
+.c-main-btn {
+  width: 120px;
+  height: 50px;
+  background-color: $main-color;
+  color: #fff;
+  border-radius: $border-radius;
+  border: none;
+  cursor: pointer;
+  @include transition(background-color, 0.3);
+
+  &:hover {
+    background-color: $second-color;
+  }
+  &:disabled {
+    background-color: rgb(158, 99, 113);
+    cursor: not-allowed;
+  }
+}
