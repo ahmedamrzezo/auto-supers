@@ -19,8 +19,8 @@ const routes: Routes = [
   ]
 },
 {path: 'about', component: AboutComponent, data: { animation: 'OtherPage' }},
-{path: '**', redirectTo: '/404', pathMatch: 'full'},
-{path: '404', component: NotFoundComponent, data: { animation: 'OtherPage' }},
+{path: '**', redirectTo: '/not-found', pathMatch: 'full'},
+{path: 'not-found', component: NotFoundComponent, data: { animation: 'OtherPage' }},
 ];
 
 @NgModule({

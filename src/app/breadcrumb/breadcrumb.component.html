@@ -1,3 +1,13 @@
-<div class="container-fluid">
-  <p>breadcrumb works!</p>
-</div>
+<ng-container *ngIf="breadcrumbs.length > 0">
+  <div class="wrapper">
+    <div class="container">
+      <ul class="breadcrumbs">
+        
+        <li class="breadcrumbs__item" *ngFor="let breadcrumb of breadcrumbs">
+          <a class="breadcrumbs__link" [routerLink]="breadcrumb.url.path" [queryParams]="breadcrumb.url.params">{{breadcrumb.name}}</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</ng-container>
