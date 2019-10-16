@@ -26,4 +26,20 @@ export const fadeInAnimation =
     transition('void <=> *', [
       animate('1s cubic-bezier(0.55, 0.06, 0.68, 0.19)')
     ])
-  ])
+  ]);
+
+export const navMobileToggle = 
+  trigger('toggleNav', [
+    state('begin', style({
+      width: '0',
+      height: '0'
+    })),
+    state('end', style({
+      width: '240px',
+      height: 'auto',
+    })),
+
+    transition('begin <=> end', [
+      animate('300ms cubic-bezier(0.55, 0.06, 0.68, 0.19)')
+    ])
+  ]);

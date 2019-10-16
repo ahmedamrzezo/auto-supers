@@ -75,6 +75,18 @@
     margin: 0 15px;
     transform: skewX(-15deg);
 
+    &--mobile {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 42px;
+      right: 19px;
+      overflow: hidden;
+
+      .navbar__link {
+        width: 100%;
+      }
+    }
     // &::after {
     //   content: '';
     //   position: absolute;
