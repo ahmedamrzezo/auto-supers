@@ -1,4 +1,5 @@
-@import '../../assets/scss/settings/variables.scss';
+@import '../../assets/scss/settings/variables';
+@import '../../assets/scss/tools/mixins';
 
 .header {
   display: flex;
@@ -16,6 +17,59 @@
     margin: 0 15px;
   }
 
+  &__toggler {
+    display: none;
+  }
+  
+  @media screen and (max-width: 767.98px) {
+    .navbar {
+      display: none;
+    }
+    &__toggler {
+      display: inline-block;
+      margin: 0 15px;
+      transform: skewX(-15deg);
+      padding: 10px 12px;
+      .hamburger-menu {
+        position: relative;
+        right: -1px;
+        width: 25px;
+        height: 2px;
+        background-color: $main-color;
+        display: inline-block;
+        transform: skewX(15deg);
+        @include transition(all, 0.2);
+        
+        &:after {
+          content: '';
+          position: absolute;
+          top: -9px;
+          left: 0;
+          width: 25px;
+          height: 2px;
+          background-color: $main-color;
+          @include transition(all, 0.2);
+        }
+      }
+
+      &:hover .hamburger-menu, &:hover .hamburger-menu:after { 
+        background-color: #fff;
+      }
+
+      &--opened {
+        .hamburger-menu {
+          transform: rotateZ(41deg);
+          top: -5px;
+
+          &:after {
+            transform: rotateZ(-88deg);
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+
   .navbar {
     position: relative;
     margin: 0 15px;
@@ -29,14 +83,6 @@
 
     &__link {
       padding:  15px;
-      background: linear-gradient(to left, rgba(0, 0, 0, 0.3) 51%, $main-color 0%);
-      background-size: 200%;
-      background-position: 100%;
-
-      &:hover {
-        color: $main-light-color;
-        background-position: 0;
-      }
       &.e-link--active {
         background: $primary-dark-color;
       }
