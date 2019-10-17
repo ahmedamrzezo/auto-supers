@@ -1,12 +1,27 @@
 
 <header class="header">
+  <!-- header logo -- start -->
   <div class="header__logo">
     auto-supers
   </div>
+  <!-- header logo -- end -->
 
-  <nav class="navbar">
+  <!-- navbar toggler -- start -->
+  <button 
+    class="header__toggler o-multi-bg c-reset-btn"
+    [ngClass]="{'header__toggler--opened': navIsOpened}"
+    (click)="navIsOpened = !navIsOpened">
+    <span class="hamburger-menu"></span>
+  </button>
+  <!-- navbar toggler -- end -->
+  
+  <!-- navbar -- start -->
+  <nav 
+    class="navbar"
+    [ngClass]="{'navbar--mobile': navIsOpened}"
+    [@toggleNav]="navIsOpened? 'end': 'begin'">
     <a 
-    class="navbar__link" 
+    class="navbar__link o-multi-bg" 
     routerLink="/home" 
     routerLinkActive="e-link--active"
     [routerLinkActiveOptions]="{exact: true}">
@@ -15,7 +30,7 @@
       </span>
     </a>
     <a 
-    class="navbar__link" 
+    class="navbar__link o-multi-bg" 
     routerLink="/supers" 
     routerLinkActive="e-link--active" 
     [routerLinkActiveOptions]="{exact: true}">
@@ -24,7 +39,7 @@
       </span>
     </a>
     <a 
-    class="navbar__link" 
+    class="navbar__link o-multi-bg" 
     routerLink="/supers/create"  
     routerLinkActive="e-link--active">
       <span class="navbar__text">
@@ -32,7 +47,7 @@
       </span>
     </a>
     <a 
-    class="navbar__link" 
+    class="navbar__link o-multi-bg" 
     routerLink="/about"  
     routerLinkActive="e-link--active">
       <span class="navbar__text">
@@ -40,4 +55,5 @@
       </span>
     </a>
   </nav>
+  <!-- navbar -- end -->
 </header>
