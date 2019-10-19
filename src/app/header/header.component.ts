@@ -9,7 +9,7 @@ import { navMobileToggle } from '../animations';
 })
 export class HeaderComponent implements OnInit {
 
-  navIsOpened = true;
+  navIsOpened = false;
 
   constructor() { }
 

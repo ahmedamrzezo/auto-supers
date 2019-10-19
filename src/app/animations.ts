@@ -30,10 +30,7 @@ export const fadeInAnimation =
 
 export const navMobileToggle = 
   trigger('toggleNav', [
-    state('begin', style({
-      width: '0',
-      height: '0'
-    })),
+    state('begin', style({})),
     state('end', style({
       width: '240px',
       height: 'auto',
