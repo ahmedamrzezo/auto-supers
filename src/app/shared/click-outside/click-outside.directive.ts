@@ -19,7 +19,5 @@ export class ClickOutsideDirective {
     }
   }
 
-  constructor(private renderer: Renderer2, private elemRef: ElementRef, private headerComp: HeaderComponent) {
-    console.dir(this.host);
-  }
+  constructor(private renderer: Renderer2, private elemRef: ElementRef, private headerComp: HeaderComponent) {}
 }
