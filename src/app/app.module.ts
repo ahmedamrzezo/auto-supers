@@ -17,6 +17,7 @@ import { BannerComponent } from './banner/banner.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
+import { ClickOutsideDirective } from './shared/click-outside/click-outside.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     BreadcrumbComponent,
     BannerComponent,
     NotFoundComponent,
-    SearchComponent
+    SearchComponent,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,
