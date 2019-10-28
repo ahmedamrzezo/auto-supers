@@ -8,11 +8,11 @@ import { PagesService } from '../shared/pages.service';
 })
 export class NotFoundComponent implements OnInit {
 
-  constructor(private pagesService: PagesService) { }
+  constructor(private _pagesService: PagesService) { }
 
   ngOnInit() {
 
-    this.pagesService.bannerContent.next({title: '404, Page Not Found!'});
+    this._pagesService.bannerContent.next({title: '404, Page Not Found!'});
     
   }
 
