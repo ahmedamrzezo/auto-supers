@@ -11,10 +11,10 @@ import { fadeInAnimation } from '../animations';
 export class BannerComponent implements OnInit {
   bannerContent: {title: string, desc?: string};
 
-  constructor(private pagesService: PagesService) { }
+  constructor(private _pagesService: PagesService) { }
 
   ngOnInit() {
-    this.pagesService.bannerContent.subscribe(
+    this._pagesService.bannerContent.subscribe(
       content => {
         this.bannerContent = content;
       }

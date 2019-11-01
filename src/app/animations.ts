@@ -15,15 +15,14 @@ export const bannerAnimation =
 
 export const fadeInAnimation = 
   trigger('fadeIn', [
-    state('void', style({
-      opacity: 0
-    })),
-
-    state('*', style({
+    state('shown', style({
       opacity: 1
     })),
 
-    transition('void <=> *', [
+    transition('void => *', [
+      style({
+        opacity: 0
+      }),
       animate('1s cubic-bezier(0.55, 0.06, 0.68, 0.19)')
     ])
   ]);
@@ -36,7 +35,7 @@ export const navMobileToggle =
       height: 'auto',
     })),
 
-    transition('begin <=> end', [
+    transition('begin => end', [
       animate('300ms cubic-bezier(0.55, 0.06, 0.68, 0.19)')
     ])
   ]);

@@ -10,11 +10,11 @@ import { fadeInAnimation } from '../animations';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private pagesService: PagesService) { }
+  constructor(private _pagesService: PagesService) { }
 
   ngOnInit() {
 
-    this.pagesService.bannerContent.next(null);
+    this._pagesService.bannerContent.next(null);
 
   }
 

@@ -8,11 +8,11 @@ import { PagesService } from '../shared/pages.service';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private pagesService: PagesService) { }
+  constructor(private _pagesService: PagesService) { }
 
   ngOnInit() {
 
-    this.pagesService.bannerContent.next({title: 'About Auto-Supers'});
+    this._pagesService.bannerContent.next({title: 'About Auto-Supers'});
     
   }
 

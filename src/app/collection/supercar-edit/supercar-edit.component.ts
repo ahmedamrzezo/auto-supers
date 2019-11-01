@@ -8,11 +8,11 @@ import { PagesService } from 'src/app/shared/pages.service';
 })
 export class SupercarEditComponent implements OnInit {
 
-  constructor(private pagesService: PagesService) { }
+  constructor(private _pagesService: PagesService) { }
 
   ngOnInit() {
 
-    this.pagesService.bannerContent.next({title: 'Create/Edit a Super'});
+    this._pagesService.bannerContent.next({title: 'Create/Edit a Super'});
     
   }
 

@@ -19,7 +19,10 @@
   <nav 
     class="navbar"
     [ngClass]="{'navbar--mobile': navIsOpened}"
-    [@toggleNav]="navIsOpened? 'end': 'begin'">
+    [@toggleNav]="navIsOpened? 'end': 'begin'"
+    appClickOutside
+    (togglerSubject)="clickOutside($event)"
+    [excludeElement]="'header__toggler'">
     <a 
     class="navbar__link o-multi-bg" 
     routerLink="/home" 

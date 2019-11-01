@@ -9,11 +9,15 @@ import { navMobileToggle } from '../animations';
 })
 export class HeaderComponent implements OnInit {
 
-  navIsOpened = false;
+  public navIsOpened = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  clickOutside(isClicked: boolean) {
+    this.navIsOpened = isClicked;
   }
 
 }

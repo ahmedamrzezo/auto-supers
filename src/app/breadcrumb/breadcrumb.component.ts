@@ -44,7 +44,6 @@ export class BreadcrumbComponent implements OnInit {
 
   protected readUrls() {
     const urlsArray = location.pathname.split('/');
-    console.log(urlsArray);
     this.urlsBreadcrumb = [];
 
     for ( let urlName of urlsArray ) {
