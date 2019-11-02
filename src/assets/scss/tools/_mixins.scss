@@ -2,3 +2,8 @@
   transition: $for #{$dur}s ease-in-out;
   transition: $for #{$dur}s cubic-bezier(0.55, 0.06, 0.68, 0.19);
 }
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
