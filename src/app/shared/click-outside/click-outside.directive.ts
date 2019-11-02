@@ -1,4 +1,11 @@
-import { Directive, Renderer2, ElementRef, HostListener, Input, Output } from '@angular/core';
+import { 
+  Directive, 
+  Renderer2, 
+  ElementRef, 
+  HostListener, 
+  Input, 
+  Output 
+} from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Directive({
@@ -15,9 +22,7 @@ export class ClickOutsideDirective {
     if (target.classList.contains(this.excludeElement)) {
       return;
     } else {
-      this.togglerSubject ?
-      this.togglerSubject.next(false):
-      null
+      this.togglerSubject.next(false);
     }
   }
 

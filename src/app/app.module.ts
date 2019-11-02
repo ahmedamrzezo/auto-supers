@@ -18,6 +18,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { ClickOutsideDirective } from './shared/click-outside/click-outside.directive';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ClickOutsideDirective } from './shared/click-outside/click-outside.dire
     BannerComponent,
     NotFoundComponent,
     SearchComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
