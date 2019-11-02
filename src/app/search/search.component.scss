@@ -17,6 +17,9 @@
   background-color: #fff;
   padding: 10px;
   margin-top: 1rem;
+  min-height: 84px;
+  max-height: 300px;
+  overflow: auto;
   app-loading::ng-deep {
     .lds-facebook { 
       display: block;
@@ -25,5 +28,11 @@
     .lds-facebook div  { 
       background: $main-color;
     }
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    letter-spacing: unset;
+    margin-bottom: 1rem;
   }
 }
