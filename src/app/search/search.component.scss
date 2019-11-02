@@ -11,10 +11,19 @@
 }
 
 .results {
-  position: absolute;
-  bottom: -60px;
-  width: calc(100% - 30px);
-  height: 50px;
+  position: fixed;
+  width: calc(100% - 115px);
   border-radius: $border-radius;
   background-color: #fff;
+  padding: 10px;
+  margin-top: 1rem;
+  app-loading::ng-deep {
+    .lds-facebook { 
+      display: block;
+      margin: 0 auto;
+    }
+    .lds-facebook div  { 
+      background: $main-color;
+    }
+  }
 }

@@ -8,7 +8,8 @@ import { NgForm } from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
 
-  search: string;
+  searchKeyword: string;
+  isSearching: boolean;
 
   constructor() { }
 
@@ -17,9 +18,11 @@ export class SearchComponent implements OnInit {
   
   submitSearch(form: NgForm) {
     console.log(form);
+    this.isSearching = true;
+    setTimeout( () => this.isSearching = false, 2000 );
   }
   quickSearch() {
-    console.log(this.search);
+    console.log(this.searchKeyword);
   }
 
 }
