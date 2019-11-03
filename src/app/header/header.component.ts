@@ -16,8 +16,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  clickOutside(isClicked: boolean) {
-    this.navIsOpened = isClicked;
-  }
-
 }
