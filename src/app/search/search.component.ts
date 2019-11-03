@@ -10,6 +10,7 @@ export class SearchComponent implements OnInit {
 
   searchKeyword: string;
   isSearching: boolean;
+  showResults = false;
 
   constructor() { }
 
@@ -19,6 +20,7 @@ export class SearchComponent implements OnInit {
   submitSearch(form: NgForm) {
     console.log(form);
     this.isSearching = true;
+    this.showResults = true;
     setTimeout( () => this.isSearching = false, 2000 );
   }
   quickSearch() {

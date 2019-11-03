@@ -22,7 +22,12 @@
   </button>
 </form>
 
-<div class="results" *ngIf="searchForm.submitted">
+<div 
+class="results" 
+*ngIf="showResults"
+appClickOutside
+(togglerSubject)="showResults = false"
+>
   <app-loading *ngIf="isSearching; else results"></app-loading>
   
   <ng-template #results>
