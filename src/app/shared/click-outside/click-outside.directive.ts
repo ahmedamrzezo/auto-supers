@@ -1,30 +1,33 @@
 import { 
   Directive, 
-  Renderer2, 
-  ElementRef, 
   HostListener, 
   Input, 
-  Output 
+  Output, 
+  OnInit
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Directive({
   selector: '[appClickOutside]'
 })
-export class ClickOutsideDirective {
+export class ClickOutsideDirective implements OnInit{
   @Input() excludeElement: string;
-  @Output() togglerSubject = new Subject<boolean>();
+  @Output() togglerSubject = new Subject();
 
-  host = this.renderer.selectRootElement(this.elemRef.nativeElement);
+  constructor() {}
 
-  @HostListener('window:click', ['$event.target'])
+  @HostListener('document:click', ['$event.target'])
   clickedOutside(target: HTMLElement) {
     if (target.classList.contains(this.excludeElement)) {
       return;
     } else {
-      this.togglerSubject.next(false);
+      this.togglerSubject.next();
     }
   }
 
-  constructor(private renderer: Renderer2, private elemRef: ElementRef) {}
+  ngOnInit(): void {
+    // fromEvent(document, 'click', { capture: true })
+    // .pipe(take(1))
+    // .subscribe(() => (this.togglerSubject.next(false)));
+  }
 }
