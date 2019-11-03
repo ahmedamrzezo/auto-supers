@@ -3,7 +3,8 @@ import {
   HostListener, 
   Input, 
   Output, 
-  OnInit
+  OnInit,
+  ElementRef
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -14,13 +15,17 @@ export class ClickOutsideDirective implements OnInit{
   @Input() excludeElement: string;
   @Output() togglerSubject = new Subject();
 
-  constructor() {}
+  constructor(private elemRef: ElementRef) {}
 
   @HostListener('document:click', ['$event.target'])
   clickedOutside(target: HTMLElement) {
     if (target.classList.contains(this.excludeElement)) {
       return;
-    } else {
+    } 
+    else if (this.elemRef.nativeElement.contains(target)) {
+      return;
+    } 
+    else {
       this.togglerSubject.next();
     }
   }
