@@ -13,7 +13,6 @@
   background-color: $main-color;
   color: #fff;
   border-radius: $border-radius;
-  border: none;
   cursor: pointer;
   @include transition(background-color, 0.3);
 
@@ -23,5 +22,20 @@
   &:disabled {
     background-color: rgb(158, 99, 113);
     cursor: not-allowed;
+  }
+}
+.c-second-btn {
+  color: $main-color;
+  border: 2px solid $main-color;
+  background-color: #fff;
+  width: 150px;
+  height: 40px;
+  border-radius: 0;
+  font-weight: 600;
+  @include transition(all, 0.3);
+
+  &:hover, &:focus {
+    background-color: $main-color;
+    color: #fff;
   }
 }

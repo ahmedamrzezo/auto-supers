@@ -1,0 +1,13 @@
+@import '../../assets/scss/settings/variables';
+:host {
+  .loading {
+    height: 40vh;
+    align-items: center;
+    justify-content: center;
+    app-loading::ng-deep {
+      .lds-facebook div  { 
+        background: $main-color;
+      }
+    }
+  }
+}

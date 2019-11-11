@@ -19,6 +19,7 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { ClickOutsideDirective } from './shared/click-outside/click-outside.directive';
 import { LoadingComponent } from './loading/loading.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LoadingComponent } from './loading/loading.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,34 @@
-<p>supercar works!</p>
+<div class="o-card supercar">
+  <div class="supercar__head">
+    <img 
+      class="img-fluid"
+      [src]="superCar.carImage" 
+      [alt]="superCar.carName">
+  </div>
+
+  <div class="supercar__content">
+    <a class="o-link" [routerLink]="['/supers/' + superCode]">
+      <h2 class="e-card-title">
+        {{superCar.carName}}
+      </h2>
+    </a>
+  
+    <div class="supercar__details">
+      <span class="o-label o-label--highlight supercar__brand">
+        Brand: <strong>{{superCar.brandName}}</strong>
+      </span>
+      <span class="o-label o-label--highlight supercar__year">
+        Manufactured: <strong>{{superCar.manufactureYear}}</strong>
+      </span>
+      <p class="supercar__desc e-paragraph e-paragraph-title">
+        {{superCar.description}}
+      </p>
+    </div>
+    <div class="supercar__footer">
+      <span class="supercar__price">{{superCar.price | currency: 'USD': 'symbol': '3.0'}}</span>
+
+      <button class="c-second-btn c-reset-btn supercar__more-btn" 
+      [routerLink]="['/supers/' + superCode]">More details</button>
+    </div>
+  </div>
+</div>

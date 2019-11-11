@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PagesService } from '../shared/pages.service';
+import { SuperCar } from './super-car';
+import { SuperCarService } from './super-car.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-collection',
@@ -8,11 +12,23 @@ import { PagesService } from '../shared/pages.service';
 })
 export class CollectionComponent implements OnInit {
 
-  constructor(private _pagesService: PagesService) { }
+  superCars: SuperCar[];
+  loading: boolean;
+
+  constructor(
+    private _pagesService: PagesService, 
+    private _superCarService: SuperCarService
+  ) { }
 
   ngOnInit() {
 
     this._pagesService.bannerContent.next({title: 'Browse Supers'});
+    
+    this.loading = true;
+    this._superCarService.getSuperCars().pipe(take(1)).subscribe(data => {
+      this.superCars = data;
+      this.loading = false;
+    });
     
   }
 

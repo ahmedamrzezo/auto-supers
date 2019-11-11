@@ -1,7 +1,12 @@
 .e-paragraph {
   font-size: 1.4rem;
+  line-height: 24px;
   color: $text-color;
 }
 .e-paragraph--light {
   color: $main-light-color;
+}
+
+.e-paragraph-title {
+  margin-bottom: 1rem;
 }
