@@ -27,7 +27,8 @@
     <div class="supercar__footer">
       <span class="supercar__price">{{superCar.price | currency: 'USD': 'symbol': '3.0'}}</span>
 
-      <button class="c-main-btn c-reset-btn supercar__add-cart">Add to cart</button>
+      <button class="c-second-btn c-reset-btn supercar__more-btn" 
+      [routerLink]="['/supers/' + superCode]">More details</button>
     </div>
   </div>
 </div>
