@@ -17,3 +17,14 @@
 .o-logo {
   width: 100%;
 }
+
+.o-card {
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.o-section-content {
+  margin: 5rem 0;
+}
