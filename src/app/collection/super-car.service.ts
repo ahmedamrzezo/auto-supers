@@ -45,7 +45,7 @@ export class SuperCarService {
       carCode: 'lamborghini-huracan',
       brandName: 'Lamborghini',
       manufactureYear: 2017,
-      description: 'Ford Mustang GT has a V12 7 Litre engine produces 780 horse power ',
+      description: 'Lamborghini Huracan has a V12 7 Litre engine produces 780 horse power ',
       engineDetails: 
         {
           engineType: 'V12',
