@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<section class="o-section-content supers">
+  <div class="container">
+    <div class="row">
+      <div 
+      class="col-lg-4" 
+      *ngFor="
+      let super of superCars; 
+      let id = index">
+        <app-supercar [superCar]="super" [superCode]="super.carCode"></app-supercar>
+      </div>
+    </div>
+  </div>
+</section>

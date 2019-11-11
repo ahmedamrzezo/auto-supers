@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PagesService } from '../shared/pages.service';
+import { SuperCar } from './super-car';
+import { SuperCarService } from './super-car.service';
 
 @Component({
   selector: 'app-collection',
@@ -8,11 +11,18 @@ import { PagesService } from '../shared/pages.service';
 })
 export class CollectionComponent implements OnInit {
 
-  constructor(private _pagesService: PagesService) { }
+  superCars: SuperCar[];
+
+  constructor(
+    private _pagesService: PagesService, 
+    private _superCarService: SuperCarService
+  ) { }
 
   ngOnInit() {
 
     this._pagesService.bannerContent.next({title: 'Browse Supers'});
+
+    this.superCars = this._superCarService.getSuperCars();
     
   }
 
