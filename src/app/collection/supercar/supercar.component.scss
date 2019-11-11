@@ -1,0 +1,41 @@
+@import '../../../assets/scss/settings/variables';
+
+.supercar {
+
+  &__head {
+    overflow: hidden;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__content {
+    padding: 1.5rem;
+  }
+
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .o-label {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__desc {
+    flex-basis: 100%;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__price {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+}
