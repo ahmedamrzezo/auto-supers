@@ -9,18 +9,49 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 
 const routes: Routes = [
-  {path: 'home', redirectTo: '', pathMatch: 'full'},
-  {path: '', component: HomeComponent, data: { animation: 'HomePage' }},
-  {path: 'supers', component: CollectionComponent, data: { animation: 'OtherPage' }, 
-  children: [
-    {path: 'create', component: SupercarEditComponent},
-    {path: ':id', component: SupercarDetailsComponent},
-    {path: ':id/edit', component: SupercarEditComponent}
-  ]
-},
-{path: 'about', component: AboutComponent, data: { animation: 'OtherPage' }},
-{path: '**', redirectTo: '/not-found', pathMatch: 'full'},
-{path: 'not-found', component: NotFoundComponent, data: { animation: 'OtherPage' }},
+  {
+    path: 'home', 
+    redirectTo: '', 
+    pathMatch: 'full'},
+  {
+    path: '', 
+    component: HomeComponent, 
+    data: { animation: 'HomePage' }
+  },
+  {
+    path: 'supers', 
+    component: CollectionComponent, 
+    data: { animation: 'OtherPage' }
+  },
+  {
+    path: 'supers/create', 
+    component: SupercarEditComponent, 
+    data: { animation: 'OtherPage' }
+  },
+  {
+    path: 'supers/:code', 
+    component: SupercarDetailsComponent, 
+    data: { animation: 'OtherPage' }
+  },
+  {
+    path: 'supers/:code/edit', 
+    component: SupercarEditComponent, 
+    data: { animation: 'OtherPage' }
+  },
+  {
+    path: 'about', 
+    component: AboutComponent, 
+    data: { animation: 'OtherPage' }
+  },
+  {
+    path: '**', 
+    redirectTo: '/not-found', 
+    pathMatch: 'full'},
+  {
+    path: 'not-found', 
+    component: NotFoundComponent, 
+    data: { animation: 'OtherPage' }
+  },
 ];
 
 @NgModule({
