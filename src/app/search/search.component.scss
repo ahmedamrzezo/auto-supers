@@ -11,8 +11,8 @@
 }
 
 .results {
-  position: fixed;
-  width: calc(100% - 115px);
+  position: absolute;
+  width: calc(100% - 30px);
   border-radius: $border-radius;
   background-color: #fff;
   padding: 10px;

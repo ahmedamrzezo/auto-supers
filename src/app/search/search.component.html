@@ -6,7 +6,6 @@
       type="text" 
       name="search"
       [(ngModel)]="searchKeyword"
-      (input)="quickSearch()"
       required>
   </fieldset>
 
@@ -18,7 +17,7 @@
       'cursor': isSearching? 'not-allowed': null,
       'background-color': isSearching? '#DB7F67': null
     }">
-    {{ isSearching ? 'Searching': 'Search'}}
+    {{ isSearching ? 'Supering...': 'Search'}}
   </button>
 </form>
 
@@ -31,8 +30,8 @@ appClickOutside
   <app-loading *ngIf="isSearching; else results"></app-loading>
   
   <ng-template #results>
-    <h2 class="results__title">Results:</h2>
-    {{searchKeyword}}
+    <!-- <h2 class="results__title">Results:</h2> -->
+    {{searchedSupers | json}}
   </ng-template>
   
 </div>
