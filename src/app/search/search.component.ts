@@ -25,6 +25,8 @@ export class SearchComponent implements OnInit {
     console.log(form);
     this.isSearching = true;
     this.showResults = true;
+    
+    // emptying the searched arrays before every search
     this.searchedSupers.splice(0 ,this.searchedSupers.length);
 
     const keyword = form.value.search;
@@ -34,8 +36,8 @@ export class SearchComponent implements OnInit {
       supers.find(sup => {
         if ( 
           keyword === sup.carCode || 
-          keyword === sup.carName.toLocaleLowerCase() ||
-          keyword === sup.brandName.toLocaleLowerCase() ||
+          keyword === sup.carName ||
+          keyword === sup.brandName ||
           keyword === sup.engineDetails.engineType
         ) {
           this.searchedSupers.push(sup);
