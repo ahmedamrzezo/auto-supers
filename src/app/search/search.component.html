@@ -30,8 +30,19 @@ appClickOutside
   <app-loading *ngIf="isSearching; else results"></app-loading>
   
   <ng-template #results>
-    <!-- <h2 class="results__title">Results:</h2> -->
-    {{searchedSupers | json}}
+    <ul class="results__supers">
+      <li 
+      class="results__super-item" 
+      *ngFor="let super of searchedSupers">
+        <a class="results__super-link"  [routerLink]="'/supers/' + super.carCode">
+          {{super.carName}}
+        </a>
+      </li>
+
+      <li class="results__super-item--no-results" *ngIf="!searchedSupers.length">
+        No Results Found
+      </li>
+    </ul>
   </ng-template>
   
 </div>
