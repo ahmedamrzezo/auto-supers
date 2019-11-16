@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
     
     this._superCarService.getSuperCars()
     .subscribe(supers => {
-      supers.find(sup => {
+      supers.filter((sup) => {
         if ( 
           keyword === sup.carCode || 
           keyword === sup.carName ||
