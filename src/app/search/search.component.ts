@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
 
   isSearching: boolean;
   showResults = false;
+  searchKeyword: string;
 
   searchedSupers: SuperCar[] = []; 
 
@@ -28,17 +29,15 @@ export class SearchComponent implements OnInit {
     
     // emptying the searched arrays before every search
     this.searchedSupers.splice(0 ,this.searchedSupers.length);
-
-    const keyword = form.value.search;
     
     this._superCarService.getSuperCars()
     .subscribe(supers => {
       supers.filter((sup) => {
         if ( 
-          keyword === sup.carCode || 
-          keyword === sup.carName ||
-          keyword === sup.brandName ||
-          keyword === sup.engineDetails.engineType
+          this.searchKeyword === sup.carCode || 
+          this.searchKeyword === sup.carName ||
+          this.searchKeyword === sup.brandName ||
+          this.searchKeyword === sup.engineDetails.engineType
         ) {
           this.searchedSupers.push(sup);
           return sup;
