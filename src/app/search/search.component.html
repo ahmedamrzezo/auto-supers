@@ -39,8 +39,11 @@ appClickOutside
         </a>
       </li>
 
-      <li class="results__super-item--no-results" *ngIf="!searchedSupers.length">
+      <li class="results__super-item--no-results" *ngIf="!searchedSupers.length && !searchError.length">
         No Results Found
+      </li>
+      <li class="results__super-item--no-results" *ngIf="!searchedSupers.length && searchError.length">
+        {{searchError}}
       </li>
     </ul>
   </ng-template>
