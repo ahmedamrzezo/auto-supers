@@ -11,14 +11,12 @@
 }
 
 .results {
-  position: fixed;
-  width: calc(100% - 115px);
+  position: absolute;
+  width: calc(100% - 30px);
   border-radius: $border-radius;
   background-color: #fff;
-  padding: 10px;
   margin-top: 1rem;
-  min-height: 84px;
-  max-height: 300px;
+  max-height: 135px;
   overflow: auto;
   app-loading::ng-deep {
     .lds-facebook { 
@@ -34,5 +32,23 @@
     font-size: 1.8rem;
     letter-spacing: unset;
     margin-bottom: 1rem;
+  }
+
+  &__super-item {
+  
+    &--no-results {
+      background-color: $main-light-color;
+      padding: 15px 10px;
+    }
+  }
+
+  &__super-link {
+    display: block;
+    padding: 15px 10px;
+    width: 100%;
+
+    &:nth-child(odd) {
+      background-color: $main-light-color;
+    }
   }
 }
