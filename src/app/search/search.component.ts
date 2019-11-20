@@ -36,25 +36,24 @@ export class SearchComponent implements OnInit {
       take(1)
     )
     .subscribe(supers => {
-       this.searchedSupers = supers.filter((sup) => {
-        //  string to string matching
+
+      // search with Regex 
+      if (this.searchKeyword.includes('-')) {
+        const keyword = this.searchKeyword.split('-');
+        this.searchKeyword = keyword.join(' ');
+      }
+      const regex = new RegExp(
+        `${this.searchKeyword}+`,
+        'i'
+        );
+      
+      this.searchedSupers = supers.filter((sup) => {
         if ( 
-          this.searchKeyword === sup.carName ||
-          this.searchKeyword === sup.brandName ||
-          this.searchKeyword === sup.engineDetails.engineType
+          sup.carName.match(regex) !== null ||
+          sup.engineDetails.engineType.match(regex) !== null
         ) {
           return sup;
-        }
-
-        // Regex Approach
-
-        // if ( 
-        //   sup.carName.match(this.searchKeyword) !== null ||
-        //   sup.brandName.match(this.searchKeyword) !== null ||
-        //   sup.engineDetails.engineType.match(this.searchKeyword) !== null
-        // ) {
-        //   return sup;
-        // };
+        };
       })
 
       // stop loading when done
