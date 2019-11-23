@@ -13,10 +13,11 @@
 .results {
   position: absolute;
   width: calc(100% - 30px);
+  border: 2px solid $border-color;
   border-radius: $border-radius;
   background-color: #fff;
   margin-top: 1rem;
-  max-height: 135px;
+  max-height: 140px;
   overflow: auto;
   app-loading::ng-deep {
     .lds-facebook { 

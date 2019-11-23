@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
         this.searchKeyword = keyword.join(' ');
       }
       const regex = new RegExp(
-        `${this.searchKeyword}+`,
+        `${this.searchKeyword}`,
         'i'
         );
       
@@ -66,6 +66,12 @@ export class SearchComponent implements OnInit {
       throw new Error(`An Error Occurred, ${err.name}`);
     }
     );
+  }
+
+  onInputType(keyword: string) {
+    if ( keyword.length > 1 ) {
+      this.submitSearch();
+    }
   }
 
 }
