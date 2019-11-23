@@ -6,6 +6,7 @@
       type="text" 
       name="search"
       [(ngModel)]="searchKeyword"
+      (input)="onInputType(searchKeyword)"
       required>
   </fieldset>
 
