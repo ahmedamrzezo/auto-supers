@@ -33,11 +33,3 @@ export class CollectionComponent implements OnInit {
   }
 
 }
-
-/**
- * TODO:
- * - create super card ui [image/title/tags/short-description]
- * - create super interface
- * - define a supers dummy array
- * - display array in collection page
- */
