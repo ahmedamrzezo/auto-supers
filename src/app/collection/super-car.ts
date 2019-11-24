@@ -1,5 +1,5 @@
 export interface SuperCar {
-  carImage: string;
+  carImages: string[];
   carName: string,
   carCode: string,
   brandName: string,
@@ -12,5 +12,7 @@ export interface SuperCar {
       horsePower: number,
       torque: number
     },
+  maxSpeed: number,
+  zeroToSixty: number,
   price: number
 }

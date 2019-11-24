@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { ClickOutsideDirective } from './shared/click-outside/click-outside.directive';
 import { LoadingComponent } from './loading/loading.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FirebaseModule } from './firebase/firebase.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
+    FirebaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
