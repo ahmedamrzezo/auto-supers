@@ -1,0 +1,8 @@
+@import '../../../assets/scss/settings/variables';
+
+.super {
+  &__img {
+    height: 300px;
+    overflow: hidden;
+  }
+}

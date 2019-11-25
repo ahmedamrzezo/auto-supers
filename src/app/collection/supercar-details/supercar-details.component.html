@@ -1,1 +1,23 @@
-<p>supercar-details works!</p>
+<div class="super">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <ngx-slick-carousel 
+        class="carousel" 
+        #slickModal="slick-carousel" 
+        [config]="slidesConfig">
+
+          <div ngxSlickItem class="super__img" *ngFor="let img of activeSuper.carImages">
+            <img 
+            class="img-fluid"
+            [src]="img" 
+            [alt]="activeSuper.carName">
+          </div>
+
+        </ngx-slick-carousel>
+      </div>
+      <div class="col-sm-5"></div>
+      <div class="col-12"></div>
+    </div>
+  </div>
+</div>
