@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { SuperCar } from './super-car';
 import { HttpClient } from "@angular/common/http";
 import { tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,9 @@ import { tap } from 'rxjs/operators';
 export class SuperCarService {
 
   superCars: SuperCar[];
+  supersChanged = new Subject<SuperCar[]>();
 
-  firebaseURL = 'https://auto-supers.firebaseio.com/supers.json';
+  firebaseURL = `${environment.firebaseapp.databaseURL}/supers.json`;
 
   constructor(private http: HttpClient) { }
 
@@ -19,17 +22,14 @@ export class SuperCarService {
     .pipe(
       tap(
         supers => {
-          this.superCars =  supers;
+          this.supersChanged.next(supers);
+          this.superCars = supers;
         }
       )
     );
   }
 
   getSuperByCode(code: string) {
-    return this.superCars.find((car) => {
-      if (car.carCode === code) {
-        return car;
-      }
-    });
+    // console.log(this.supersChanged.subscribe());
   }
 }
