@@ -13,7 +13,6 @@ import { take } from 'rxjs/operators';
 export class SupercarComponent implements OnInit {
 
   @Input() superCar: SuperCar;
-  @Input() superCode: string;
 
   constructor() { }
 
