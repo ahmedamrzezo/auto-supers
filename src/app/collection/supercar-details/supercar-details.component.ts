@@ -15,6 +15,13 @@ export class SupercarDetailsComponent implements OnInit {
 
   activeSuper: SuperCar;
 
+  slidesConfig = {
+    dot: true,
+    infinite: true,
+    slidesToShow: 1, 
+    slidesToScroll: 1
+  }
+
   constructor(
     private _pagesService: PagesService, 
     private _superCarService: SuperCarService,
