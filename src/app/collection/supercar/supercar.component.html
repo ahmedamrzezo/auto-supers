@@ -1,5 +1,5 @@
 <div class="o-card supercar">
-  <a class="supercar__head" [routerLink]="['/supers/' + superCode]">
+  <a class="supercar__head" [routerLink]="['/supers/' + superCar.carCode]">
     <img 
       class="img-fluid"
       [src]="superCar.carImages[0]" 
@@ -7,7 +7,7 @@
   </a>
 
   <div class="supercar__content">
-    <a class="o-link" [routerLink]="['/supers/' + superCode]">
+    <a class="o-link" [routerLink]="['/supers/' + superCar.carCode]">
       <h2 class="e-card-title">
         {{superCar.carName}}
       </h2>
@@ -28,7 +28,7 @@
       <span class="supercar__price">{{superCar.price | currency: 'USD': 'symbol': '3.0'}}</span>
 
       <button class="c-second-btn c-reset-btn supercar__more-btn" 
-      [routerLink]="['/supers/' + superCode]">More details</button>
+      [routerLink]="['/supers/' + superCar.carCode]">More details</button>
     </div>
   </div>
 </div>
