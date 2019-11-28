@@ -6,6 +6,7 @@ import { AboutComponent } from './about/about.component';
 import { SupercarDetailsComponent } from './collection/supercar-details/supercar-details.component';
 import { SupercarEditComponent } from './collection/supercar-edit/supercar-edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SupersResolverService } from './collection/supers-resolver.service';
 
 
 const routes: Routes = [
@@ -20,23 +21,28 @@ const routes: Routes = [
   },
   {
     path: 'supers', 
-    component: CollectionComponent, 
+    component: CollectionComponent,
+    resolve: [SupersResolverService],
     data: { animation: 'OtherPage' }
   },
   {
     path: 'supers/create', 
-    component: SupercarEditComponent, 
+    component: SupercarEditComponent,
+    resolve: [SupersResolverService],
     data: { animation: 'OtherPage' }
   },
   {
     path: 'supers/:code', 
     component: SupercarDetailsComponent, 
-    data: { animation: 'OtherPage' }
+    data: { animation: 'OtherPage' },
+    resolve: [SupersResolverService]
   },
   {
     path: 'supers/:code/edit', 
     component: SupercarEditComponent, 
-    data: { animation: 'OtherPage' }
+    resolve: [SupersResolverService],
+    data: { animation: 'OtherPage' },
+   
   },
   {
     path: 'about', 

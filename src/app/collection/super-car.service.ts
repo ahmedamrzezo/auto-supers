@@ -31,5 +31,10 @@ export class SuperCarService {
 
   getSuperByCode(code: string) {
     // console.log(this.supersChanged.subscribe());
+    let activeSuper: SuperCar;
+    this.superCars.find( car => {
+      car.carCode === code ? activeSuper = car: null;
+    })
+    return activeSuper;
   }
 }
