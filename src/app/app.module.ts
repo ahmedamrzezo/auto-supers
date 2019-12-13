@@ -21,6 +21,7 @@ import { ClickOutsideDirective } from './shared/click-outside/click-outside.dire
 import { LoadingComponent } from './loading/loading.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FirebaseModule } from './firebase/firebase.module';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FirebaseModule } from './firebase/firebase.module';
     FormsModule,
     HttpClientModule,
 
-    FirebaseModule
+    FirebaseModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

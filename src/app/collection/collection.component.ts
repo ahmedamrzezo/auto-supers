@@ -29,6 +29,10 @@ export class CollectionComponent implements OnInit {
       this.superCars = data;
       this.loading = false;
     });
+
+    // this._superCarService.supersChanged.subscribe(data => {
+    //   console.log(data);
+    // })
     
   }
 

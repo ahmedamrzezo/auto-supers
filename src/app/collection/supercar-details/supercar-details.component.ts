@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params, ActivatedRouteSnapshot } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { PagesService } from 'src/app/shared/pages.service';
@@ -15,6 +15,13 @@ export class SupercarDetailsComponent implements OnInit {
 
   activeSuper: SuperCar;
 
+  slidesConfig = {
+    dot: true,
+    infinite: true,
+    slidesToShow: 1, 
+    slidesToScroll: 1
+  }
+
   constructor(
     private _pagesService: PagesService, 
     private _superCarService: SuperCarService,
@@ -25,7 +32,7 @@ export class SupercarDetailsComponent implements OnInit {
     this.router.params.pipe(take(1)).subscribe((param) => {
       this.activeSuper = this._superCarService.getSuperByCode(param.code);
       this._pagesService.bannerContent.next({title: this.activeSuper.carName});
-    })
+    });
   }
 
 }
