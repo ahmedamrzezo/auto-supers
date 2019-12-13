@@ -8,18 +8,8 @@
       [(ngModel)]="searchKeyword"
       (input)="onInputType(searchKeyword)"
       required>
+      <i class="fas fa-search"></i>
   </fieldset>
-
-  <button 
-    class="c-reset-btn c-main-btn" 
-    type="submit"
-    [disabled]="searchForm.invalid"
-    [ngStyle]="{
-      'cursor': isSearching? 'not-allowed': null,
-      'background-color': isSearching? '#DB7F67': null
-    }">
-    {{ isSearching ? 'Supering...': 'Search'}}
-  </button>
 </form>
 
 <div 
