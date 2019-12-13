@@ -5,8 +5,16 @@
   display: flex;
   
   &__field {
+    position: relative;
+
     flex: 1;
-    margin-right: 1rem;
+    .fas {
+      position: absolute;
+      top: 14px;
+      right: 10px;
+      
+      color: $main-color;
+    }
   }
 }
 
