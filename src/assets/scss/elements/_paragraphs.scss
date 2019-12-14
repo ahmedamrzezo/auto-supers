@@ -2,9 +2,13 @@
   font-size: 1.4rem;
   line-height: 24px;
   color: $text-color;
+  margin-bottom: 1rem;
 }
 .e-paragraph--light {
   color: $main-light-color;
+}
+.e-paragraph--dark {
+  color: $primary-dark-color;
 }
 
 .e-paragraph-title {

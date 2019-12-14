@@ -3,8 +3,19 @@
 .super {
   padding: 50px 0;
   &__img {
-    height: 300px;
+    height: 400px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__name {
+    color: $second-color;
+  }
+
+  &__spec {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
   }
 }
 :host {

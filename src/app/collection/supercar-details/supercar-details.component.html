@@ -16,7 +16,26 @@
 
         </ngx-slick-carousel>
       </div>
-      <div class="col-sm-5"></div>
+      <div class="col-sm-5">
+        <h3 class="e-main-title super__name">
+          {{activeSuper.carName}}
+        </h3>
+        <p class="e-paragraph e-paragraph--dark">
+          {{activeSuper.description}}
+        </p>
+
+        <div class="super__spec">
+          <strong>Max Speed: </strong> 
+          {{activeSuper.maxSpeed}}
+          KP/H
+        </div>
+        <div class="super__spec">
+          <strong>0-100 KM/H: </strong> 
+          {{activeSuper.zeroToSixty}}
+          Seconds
+        </div>
+      
+      </div>
       <div class="col-12"></div>
     </div>
   </div>
