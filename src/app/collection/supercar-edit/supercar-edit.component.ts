@@ -16,4 +16,11 @@ export class SupercarEditComponent implements OnInit {
     
   }
 
+  /** TODO:
+   * edit super detail
+   * save data
+   * cancel edit
+   * can deactivate route to ask permission to leave page
+   */
+
 }
