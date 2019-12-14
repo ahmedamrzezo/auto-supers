@@ -7,22 +7,24 @@ import { SupercarDetailsComponent } from './collection/supercar-details/supercar
 import { SupercarEditComponent } from './collection/supercar-edit/supercar-edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SupersResolverService } from './collection/supers-resolver.service';
+import { SuperNotExistGuard } from './collection/super-not-exist/super-not-exist.guard';
 
 
 const routes: Routes = [
   {
-    path: 'home', 
-    redirectTo: '', 
-    pathMatch: 'full'},
-  {
-    path: '', 
+    path: 'home',  
     component: HomeComponent, 
     data: { animation: 'HomePage' }
   },
   {
+    path: '', 
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path: 'supers', 
     component: CollectionComponent,
-    resolve: [SupersResolverService],
+    // resolve: [SupersResolverService],
     data: { animation: 'OtherPage' }
   },
   {
@@ -34,8 +36,9 @@ const routes: Routes = [
   {
     path: 'supers/:code', 
     component: SupercarDetailsComponent, 
-    data: { animation: 'OtherPage' },
-    resolve: [SupersResolverService]
+    canActivate: [SuperNotExistGuard],
+    resolve: [SupersResolverService],
+    data: { animation: 'OtherPage' }
   },
   {
     path: 'supers/:code/edit', 
@@ -51,8 +54,8 @@ const routes: Routes = [
   },
   {
     path: '**', 
-    redirectTo: '/not-found', 
-    pathMatch: 'full'},
+    redirectTo: '/not-found'
+  },
   {
     path: 'not-found', 
     component: NotFoundComponent, 
