@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { PagesService } from 'src/app/shared/pages.service';
@@ -33,6 +33,8 @@ export class SupercarDetailsComponent implements OnInit {
       this.activeSuper = this._superCarService.getSuperByCode(param.code);
       this._pagesService.bannerContent.next({title: this.activeSuper.carName});
     });
+
+    this._superCarService.checkSuperExistence();
   }
 
 }
