@@ -38,10 +38,3 @@ export class SupercarDetailsComponent implements OnInit {
   }
 
 }
-
-/**
- * TODO:
- * - create details ui [image/title/tags/specs/related]
- * - create interface/model
- * - create guard to prevent not existed car route
- */
