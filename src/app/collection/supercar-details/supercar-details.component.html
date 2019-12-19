@@ -7,7 +7,7 @@
         #slickModal="slick-carousel" 
         [config]="slidesConfig">
 
-          <div ngxSlickItem class="super__img" *ngFor="let img of activeSuper.carImages">
+          <div ngxSlickItem class="super__img" *ngFor="let img of activeSuper?.carImages">
             <img 
             class="img-fluid"
             [src]="img" 
@@ -18,20 +18,20 @@
       </div>
       <div class="col-sm-5">
         <h3 class="e-main-title super__name">
-          {{activeSuper.carName}}
+          {{activeSuper?.carName}}
         </h3>
         <p class="e-paragraph e-paragraph--dark">
-          {{activeSuper.description}}
+          {{activeSuper?.description}}
         </p>
 
         <div class="super__spec">
           <strong>Max Speed: </strong> 
-          {{activeSuper.maxSpeed}}
+          {{activeSuper?.maxSpeed}}
           KP/H
         </div>
         <div class="super__spec">
           <strong>0-100 KM/H: </strong> 
-          {{activeSuper.zeroToSixty}}
+          {{activeSuper?.zeroToSixty}}
           Seconds
         </div>
       

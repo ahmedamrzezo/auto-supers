@@ -31,7 +31,9 @@ export class SupercarDetailsComponent implements OnInit {
   ngOnInit() {
     this.router.params.pipe(take(1)).subscribe((param) => {
       this.activeSuper = this._superCarService.getSuperByCode(param.code);
-      this._pagesService.bannerContent.next({title: this.activeSuper.carName});
+      if (this.activeSuper) {
+        this._pagesService.bannerContent.next({title: this.activeSuper.carName});
+      }
     });
 
     this._superCarService.checkSuperExistence();
