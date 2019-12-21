@@ -1,4 +1,5 @@
 @import '../../../assets/scss/settings/variables';
+@import '../../../assets/scss/tools/mixins';
 
 .super {
   padding: 50px 0;
@@ -15,7 +16,47 @@
 
   &__spec {
     font-size: 1.6rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  &__actions {
+    margin-top: 50px;
+  }
+
+  &__bookmark {
+    width: 100%;
+    .fa-bookmark {
+      margin-right: 10px;
+    }
+  }
+
+  &__modify {
+    display: flex;
+    margin-top: 50px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  &__modify-item {
+    flex-basis: 33.33%;
+    text-align: center;
+    background-color: $second-color;
+    padding: 15px 0;
+    cursor: pointer;
+    @include transition(background-color, 0.3);
+
+    &:not(:last-child) {
+      border-right: 1px solid $border-color;
+    }
+
+    &:hover {
+      background-color: $main-color;
+    }
+
+    .fas {
+      color: #fff;
+      font-size: 1.6rem;
+    }
   }
 }
 :host {
