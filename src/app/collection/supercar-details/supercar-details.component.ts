@@ -15,6 +15,10 @@ export class SupercarDetailsComponent implements OnInit {
 
   activeSuper: SuperCar;
 
+  bookmarked = false;
+  canEdit = true;
+  canDelete = true;
+
   slidesConfig = {
     dot: true,
     infinite: true,
@@ -39,4 +43,9 @@ export class SupercarDetailsComponent implements OnInit {
     this._superCarService.checkSuperExistence();
   }
 
+  addBookmark(car: SuperCar) {
+    console.log(car);
+    this.bookmarked = !this.bookmarked;
+  }
+  
 }
