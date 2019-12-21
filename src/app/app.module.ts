@@ -22,6 +22,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FirebaseModule } from './firebase/firebase.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     NotFoundComponent,
     SearchComponent,
     ClickOutsideDirective,
-    LoadingComponent
+    LoadingComponent,
+    BookmarksComponent
   ],
   imports: [
     BrowserModule,

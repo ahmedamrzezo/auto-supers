@@ -7,6 +7,7 @@ import { SupercarDetailsComponent } from './collection/supercar-details/supercar
 import { SupercarEditComponent } from './collection/supercar-edit/supercar-edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SupersResolverService } from './collection/supers-resolver.service';
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,12 @@ const routes: Routes = [
     path: 'supers/:code/edit', 
     component: SupercarEditComponent, 
     resolve: [SupersResolverService],
+    data: { animation: 'OtherPage' },
+   
+  },
+  {
+    path: 'bookmarks', 
+    component: BookmarksComponent, 
     data: { animation: 'OtherPage' },
    
   },
