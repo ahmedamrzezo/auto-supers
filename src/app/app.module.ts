@@ -24,6 +24,7 @@ import { FirebaseModule } from './firebase/firebase.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { CompareComponent } from './compare/compare.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CompareComponent } from './compare/compare.component';
     ClickOutsideDirective,
     LoadingComponent,
     BookmarksComponent,
-    CompareComponent
+    CompareComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
