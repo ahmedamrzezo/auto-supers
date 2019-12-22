@@ -25,6 +25,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { CompareComponent } from './compare/compare.component';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { LoginComponent } from './auth/login/login.component';
     LoadingComponent,
     BookmarksComponent,
     CompareComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
