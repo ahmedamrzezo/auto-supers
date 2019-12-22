@@ -16,8 +16,9 @@ export class SupercarDetailsComponent implements OnInit {
   activeSuper: SuperCar;
 
   bookmarked = false;
-  canEdit = true;
-  canDelete = true;
+  isAdmin = true;
+
+  bookmarkedSupers = [];
 
   slidesConfig = {
     dot: true,
@@ -40,12 +41,33 @@ export class SupercarDetailsComponent implements OnInit {
       }
     });
 
+    if (localStorage.getItem('super_bookmarks') !== null) {
+      this.bookmarked = true;
+      this.bookmarkedSupers = JSON.parse(localStorage.getItem('super_bookmarks'));
+      console.log(this.bookmarkedSupers);
+    } else {
+      this.bookmarked = false;
+    }
+    // console.log(localStorage.getItem('super_bookmarks').length);
+
     this._superCarService.checkSuperExistence();
   }
 
   addBookmark(car: SuperCar) {
-    console.log(car);
+    // console.log(car);
     this.bookmarked = !this.bookmarked;
+    if (this.bookmarked) {
+      this.bookmarkedSupers.push(car.carCode);
+    } else {
+      // supersBookmarked.re
+      // console.log(localStorage.clear)
+      localStorage.removeItem('super_bookmarks');
+    }
+    localStorage
+    .setItem(
+      'super_bookmarks', 
+      JSON.stringify(this.bookmarkedSupers)
+    );
   }
   
 }
