@@ -38,7 +38,9 @@
   }
 
   &__modify-item {
-    flex-basis: 33.33%;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
     text-align: center;
     background-color: $second-color;
     padding: 15px 0;
@@ -56,6 +58,10 @@
     .fas {
       color: #fff;
       font-size: 1.6rem;
+    }
+
+    &--danger {
+      background-color: #e83737;
     }
   }
 }

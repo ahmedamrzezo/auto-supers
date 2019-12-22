@@ -57,27 +57,43 @@
             {{bookmarked? 'Super Bookmarked' : 'Bookmark Super'}}
           </button>
           
-          <ul class="super__modify">
+          <ul class="super__modify" *ngIf="isAdmin; else isUser">
             <li 
             class="super__modify-item" 
-            title="Edit"
-            *ngIf="canEdit">
+            title="Edit">
               <a routerLink="edit">
                 <i class="fas fa-edit"></i>
               </a>
             </li>
             <li 
-            class="super__modify-item" 
-            title="Share">
-              <i class="fas fa-share-alt"></i>
-            </li>
-            <li 
-            class="super__modify-item" 
-            title="Delete"
-            *ngIf="canDelete">
+            class="
+            super__modify-item 
+            super__modify-item--danger" 
+            title="Delete">
               <i class="fas fa-trash-alt"></i>
             </li>
           </ul>
+          <ng-template #isUser>
+            <ul class="super__modify">
+              <li 
+              class="super__modify-item" 
+              title="Love">
+                <i class="fas fa-heart"></i>
+              </li>
+              <li 
+              class="super__modify-item" 
+              title="Compare">
+                <a routerLink="/compare">
+                  <i class="fas fa-balance-scale-right"></i>
+                </a>
+              </li>
+              <li 
+              class="super__modify-item" 
+              title="Share">
+                <i class="fas fa-share-alt"></i>
+              </li>
+            </ul>
+          </ng-template>
         </div>
       </div>
       <div class="col-12">
