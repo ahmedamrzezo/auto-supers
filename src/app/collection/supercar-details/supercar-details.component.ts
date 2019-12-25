@@ -15,10 +15,13 @@ export class SupercarDetailsComponent implements OnInit {
 
   activeSuper: SuperCar;
 
-  bookmarked = false;
+  isBookmarked = false;
   isAdmin = true;
 
-  bookmarkedSupers = [];
+  bookmarkedStorage = 
+  localStorage.getItem('super_bookmarks')? 
+  JSON.parse(localStorage.getItem('super_bookmarks')):
+  [];
 
   slidesConfig = {
     dot: true,
@@ -41,33 +44,39 @@ export class SupercarDetailsComponent implements OnInit {
       }
     });
 
-    if (localStorage.getItem('super_bookmarks') !== null) {
-      this.bookmarked = true;
-      this.bookmarkedSupers = JSON.parse(localStorage.getItem('super_bookmarks'));
-      console.log(this.bookmarkedSupers);
-    } else {
-      this.bookmarked = false;
+    /**
+     * check if the active car is bookmarked in localstorage
+     * to make the button active
+     * @param localStorage
+     */
+    if (this.bookmarkedStorage.indexOf(this.activeSuper.carCode) !== -1) {
+      this.isBookmarked = true;
     }
-    // console.log(localStorage.getItem('super_bookmarks').length);
 
     this._superCarService.checkSuperExistence();
   }
 
+  /**
+   * add to bookmark array if it's not already added
+   * @param car 
+   */
   addBookmark(car: SuperCar) {
-    // console.log(car);
-    this.bookmarked = !this.bookmarked;
-    if (this.bookmarked) {
-      this.bookmarkedSupers.push(car.carCode);
+    if (this.isBookmarked) {
+      for (let i = 0; i < this.bookmarkedStorage.length; i++) {
+        const bookmarkItem = this.bookmarkedStorage[i];
+        if (bookmarkItem === car.carCode) {
+          this.bookmarkedStorage.splice(i, 1);
+        }
+      }
     } else {
-      // supersBookmarked.re
-      // console.log(localStorage.clear)
-      localStorage.removeItem('super_bookmarks');
+      this.bookmarkedStorage.push(car.carCode);
     }
     localStorage
     .setItem(
       'super_bookmarks', 
-      JSON.stringify(this.bookmarkedSupers)
+      JSON.stringify(this.bookmarkedStorage)
     );
+    this.isBookmarked = !this.isBookmarked;
   }
   
 }

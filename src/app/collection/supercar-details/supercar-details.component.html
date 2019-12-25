@@ -48,13 +48,13 @@
         <div class="super__actions">
           <button 
           class="super__bookmark c-second-btn" 
-          [ngClass]="bookmarked? 'c-second-btn--active': ''"
+          [ngClass]="isBookmarked? 'c-second-btn--active': ''"
           (click)="addBookmark(activeSuper)">
             <i 
             class="fa-bookmark"
-            [ngClass]="bookmarked? 'fas': 'far'"
+            [ngClass]="isBookmarked? 'fas': 'far'"
             ></i>
-            {{bookmarked? 'Super Bookmarked' : 'Bookmark Super'}}
+            {{isBookmarked? 'Super Bookmarked' : 'Bookmark Super'}}
           </button>
           
           <ul class="super__modify" *ngIf="isAdmin; else isUser">
