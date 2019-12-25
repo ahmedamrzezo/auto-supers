@@ -18,10 +18,7 @@ export class SupercarDetailsComponent implements OnInit {
   isBookmarked = false;
   isAdmin = true;
 
-  bookmarkedStorage = 
-  localStorage.getItem('super_bookmarks')? 
-  JSON.parse(localStorage.getItem('super_bookmarks')):
-  [];
+  bookmarkedStorage = this._superCarService.bookmarkedStorage;
 
   slidesConfig = {
     dot: true,

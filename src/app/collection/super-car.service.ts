@@ -17,6 +17,11 @@ export class SuperCarService {
 
   firebaseURL = `${environment.firebaseapp.databaseURL}/supers.json`;
 
+  public bookmarkedStorage = 
+  localStorage.getItem('super_bookmarks')? 
+  JSON.parse(localStorage.getItem('super_bookmarks')):
+  [];
+
   constructor(private http: HttpClient, private router: Router) { }
 
   getSuperCars() {
