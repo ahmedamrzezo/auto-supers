@@ -20,6 +20,9 @@ export class BookmarksService {
   ) {}
 
   getBookmarkedSuper() {
+    if (this.bookmarkedSupers.length > 0) {
+      this.bookmarkedSupers.length = 0;
+    }
     for (const superCode of this.bookmarkedStorage) {
       let superCar = this._superCarService.getSuperByCode(superCode);
       this.bookmarkedSupers.push(superCar);
