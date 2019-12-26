@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PagesService } from '../shared/pages.service';
+import { BookmarksService } from './bookmarks.service';
+import { SuperCar } from '../collection/super-car';
 
 @Component({
   selector: 'app-bookmarks',
@@ -7,11 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookmarksComponent implements OnInit {
 
+  bookmarkedSupers: SuperCar[] = [];
+
   constructor(
-    private _pagesService: PagesService) { }
+    private _pagesService: PagesService, 
+    private _bookmarksService: BookmarksService) { }
 
   ngOnInit() {
     this._pagesService.bannerContent.next({title: 'Super Bookmarks'});
+
+    this.bookmarkedSupers = this._bookmarksService.getBookmarkedSuper();
   }
 
 }
