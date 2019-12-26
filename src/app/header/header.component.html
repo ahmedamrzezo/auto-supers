@@ -43,20 +43,29 @@
     </a>
     <a 
     class="navbar__link o-multi-bg" 
-    routerLink="/supers/create"  
-    routerLinkActive="e-link--active">
+    routerLink="/bookmarks" 
+    routerLinkActive="e-link--active" 
+    [routerLinkActiveOptions]="{exact: true}">
       <span class="navbar__text">
-        Create 
+        Bookmarks
       </span>
     </a>
     <a 
+    class="navbar__link o-multi-bg" 
+    routerLink="/supers/create"  
+    routerLinkActive="e-link--active">
+      <span class="navbar__text">
+        Admin 
+      </span>
+    </a>
+    <!-- <a 
     class="navbar__link o-multi-bg" 
     routerLink="/about"  
     routerLinkActive="e-link--active">
       <span class="navbar__text">
         About
       </span>
-    </a>
+    </a> -->
   </nav>
   <!-- navbar -- end -->
 </header>

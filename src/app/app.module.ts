@@ -22,6 +22,10 @@ import { LoadingComponent } from './loading/loading.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FirebaseModule } from './firebase/firebase.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { CompareComponent } from './compare/compare.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     NotFoundComponent,
     SearchComponent,
     ClickOutsideDirective,
-    LoadingComponent
+    LoadingComponent,
+    BookmarksComponent,
+    CompareComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

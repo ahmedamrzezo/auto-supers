@@ -25,10 +25,17 @@ export class CollectionComponent implements OnInit {
     this._pagesService.bannerContent.next({title: 'Browse Supers'});
     
     this.loading = true;
-    this._superCarService.getSuperCars().pipe(take(1)).subscribe(data => {
-      this.superCars = data;
-      this.loading = false;
-    });
+    this._superCarService.getSuperCars().pipe(take(1))
+    .subscribe(
+      data => {
+        this.superCars = data;
+        this.loading = false;
+      },
+      err => {
+        this.loading = false;
+        throw new Error(err.message);
+      }
+    );
 
     // this._superCarService.supersChanged.subscribe(data => {
     //   console.log(data);

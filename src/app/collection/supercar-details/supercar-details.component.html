@@ -7,7 +7,7 @@
         #slickModal="slick-carousel" 
         [config]="slidesConfig">
 
-          <div ngxSlickItem class="super__img" *ngFor="let img of activeSuper.carImages">
+          <div ngxSlickItem class="super__img" *ngFor="let img of activeSuper?.carImages">
             <img 
             class="img-fluid"
             [src]="img" 
@@ -16,8 +16,88 @@
 
         </ngx-slick-carousel>
       </div>
-      <div class="col-sm-5"></div>
-      <div class="col-12"></div>
+      <div class="col-sm-5">
+        <h3 class="e-main-title super__name">
+          {{activeSuper?.carName}}
+        </h3>
+        <p class="e-paragraph e-paragraph--dark">
+          {{activeSuper?.description}}
+        </p>
+
+        <div class="super__spec">
+          <strong>Max Speed: </strong> 
+          <mark>
+            {{activeSuper?.maxSpeed}}
+            KP/H
+          </mark>
+        </div>
+        <div class="super__spec">
+          <strong>0-100 KM/H: </strong> 
+          <mark>
+            {{activeSuper?.zeroToSixty}}
+            Seconds
+          </mark>
+        </div>
+        <div class="super__spec">
+          <strong>Price: </strong> 
+          <mark>
+            {{activeSuper?.price | currency: 'USD': 'symbol': '3.0'}}
+          </mark>
+        </div>
+
+        <div class="super__actions">
+          <button 
+          class="super__bookmark c-second-btn" 
+          [ngClass]="isBookmarked? 'c-second-btn--active': ''"
+          (click)="addBookmark(activeSuper)">
+            <i 
+            class="fa-bookmark"
+            [ngClass]="isBookmarked? 'fas': 'far'"
+            ></i>
+            {{isBookmarked? 'Super Bookmarked' : 'Bookmark Super'}}
+          </button>
+          
+          <ul class="super__modify" *ngIf="isAdmin; else isUser">
+            <li 
+            class="super__modify-item" 
+            title="Edit">
+              <a routerLink="edit">
+                <i class="fas fa-edit"></i>
+              </a>
+            </li>
+            <li 
+            class="
+            super__modify-item 
+            super__modify-item--danger" 
+            title="Delete">
+              <i class="fas fa-trash-alt"></i>
+            </li>
+          </ul>
+          <ng-template #isUser>
+            <ul class="super__modify">
+              <li 
+              class="super__modify-item" 
+              title="Love">
+                <i class="fas fa-heart"></i>
+              </li>
+              <li 
+              class="super__modify-item" 
+              title="Compare">
+                <a routerLink="/compare">
+                  <i class="fas fa-balance-scale-right"></i>
+                </a>
+              </li>
+              <li 
+              class="super__modify-item" 
+              title="Share">
+                <i class="fas fa-share-alt"></i>
+              </li>
+            </ul>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-12">
+      </div>
     </div>
   </div>
 </div>
