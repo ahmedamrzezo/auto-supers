@@ -49,6 +49,7 @@ const routes: Routes = [
   {
     path: 'bookmarks', 
     component: BookmarksComponent, 
+    resolve: [SupersResolverService],
     data: { animation: 'OtherPage' },
    
   },
