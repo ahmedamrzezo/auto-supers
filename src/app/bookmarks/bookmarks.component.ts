@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookmarksComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _pagesService: PagesService) { }
 
   ngOnInit() {
+    this._pagesService.bannerContent.next({title: 'Super Bookmarks'});
   }
 
 }
