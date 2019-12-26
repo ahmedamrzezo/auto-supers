@@ -1,0 +1,30 @@
+.o-vertical-centralize {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: max-content;
+}
+.o-horizintal-centralize {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+}
+.o-logo {
+  width: 100%;
+}
+
+.o-card {
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.o-section-content {
+  margin: 5rem 0;
+}

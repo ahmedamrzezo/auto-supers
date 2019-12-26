@@ -1,0 +1,101 @@
+{
+  "supers" : [ {
+    "brandName" : "Ford",
+    "carCode" : "ford-mustang-gt",
+    "carImages" :[
+      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/mustang-gt%2Fphoto-1555160329-6a0ccf5c91f2.jpg?alt=media&token=50940ccb-6661-48a3-8d97-dc1d1d0e0bb2"
+    ],
+    "carName" : "Ford Mustang GT",
+    "description" : "Ford Mustang GT has a V8 5.6 Litre engine produces 568 horse power",
+    "engineDetails" : {
+      "engineCC" : 5.6,
+      "engineType" : "V8",
+      "horsePower" : 568,
+      "torque" : 550
+    },
+    "maxSpeed": 200,
+    "zeroToSixty": 3,
+    "manufactureYear" : 2018,
+    "price" : 80000
+  }, {
+    "brandName" : "Nissan",
+    "carCode" : "nissan_gtr",
+    "carImages" : [
+      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/nissang_GTR%2Fphoto-1542228261-89eed3d81d98.jpg?alt=media&token=7fd1fb94-9eb3-48fa-9e43-c62af4ec391c"
+    ],
+    "carName" : "Nissan GTR",
+    "description" : "Nissan GTR has a V8 5.6 Litre engine produces 568 horse power ",
+    "engineDetails" : {
+      "engineCC" : 6.2,
+      "engineType" : "V6",
+      "horsePower" : 705,
+      "torque" : 665
+    },
+    "maxSpeed": 200,
+    "zeroToSixty": 3,
+    "manufactureYear" : 2016,
+    "price" : 50000
+  }, {
+    "brandName" : "Lamborghini",
+    "carCode" : "lamborghini_huracan",
+    "carImages" : [
+      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/lambo_huracan%2Fpexels-photo-2127733.jpeg?alt=media&token=ca963f9a-b920-4747-8604-f6b64add95a5"
+    ],
+    "carName" : "Lamborghini Huracan",
+    "description" : "Lamborghini Huracan has a V12 7 Litre engine produces 780 horse power ",
+    "engineDetails" : {
+      "engineCC" : 7,
+      "engineType" : "V12",
+      "horsePower" : 750,
+      "torque" : 765
+    },
+    "maxSpeed": 200,
+    "zeroToSixty": 3,
+    "manufactureYear" : 2017,
+    "price" : 600000
+  }, {
+    "brandName" : "porche",
+    "carCode" : "porche_911_gt3_rs",
+    "carImages" : [
+      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-normal.webp?alt=media&token=47041e14-2fd3-4bed-b601-2e3338e84c8d",
+
+      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-back.webp?alt=media&token=036f4abf-32bc-4519-9f1f-029816fe31f4",
+
+      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-interior.webp?alt=media&token=54119005-71a6-45c6-9490-1b3caee805c9",
+
+      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-wallpaper.webp?alt=media&token=bf463456-5e6f-4e94-ae9a-aca68ed12f91",
+
+      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-zoom2.webp?alt=media&token=5e74a1e9-3639-4cfa-abb9-d1c41f091736"
+    ],
+    "carName" : "Porche Carerra 911 GT3 RS",
+    "description" : "Porche Carerra 911 GT3 RS has a Flat 6 4 Litre engine produces 520 horse power at 9000 rpm",
+    "engineDetails" : {
+      "engineCC" : 4,
+      "engineType" : "F6",
+      "horsePower" : 520,
+      "torque" : 520
+    },
+    "maxSpeed": 310,
+    "zeroToSixty": 3,
+    "manufactureYear" : 2019,
+    "price" : 188550
+  }, {
+    "brandName" : "porche",
+    "carCode" : "Porsche_918_Spyder ",
+    "carImages" : [
+      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_918%2Fporsche-918-spyder-with-weissach-package.jpg?alt=media&token=8b77aa9d-8085-4b8a-b0e1-738459357e8b"
+    ],
+    "carName" : "Porsche 918 Spyder",
+    "description" : "The Porsche 918 Spyder is a mid-engine plug-in hybrid sports car manufactured by German automobile manufacturer Porsche. The 918 Spyder is powered by a naturally aspirated 4.6 L V8 engine, developing 599 hp at 8,700 rpm, with two electric motors delivering an additional 282 hp for a combined output of 875 hp and 1,280 N⋅m of torque.",
+    "engineDetails" : {
+      "engineCC" : 4.6,
+      "engineType" : "V8",
+      "horsePower" : 875,
+      "torque" : 1280
+    },
+    "maxSpeed": 200,
+    "zeroToSixty": 3,
+    "manufactureYear" : 2013,
+    "price" : 80000
+  } ]
+}

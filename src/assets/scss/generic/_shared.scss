@@ -1,4 +1,24 @@
-
-html, body {
+html {
   font-family: 'Farro', sans-serif;
+  font-weight: 400;
+  font-size: 62.5%;
+  color: $primary-dark-color;
+}
+body {
+  font-size: 14px; /* px fallback */
+  font-size: 1.4rem; /* default font-size for document */
+  line-height: 1; /* a nice line-height */
+  overflow-x: hidden;
+}
+
+strong {
+  font-weight: bold;
+}
+
+mark {
+  color: #fff;
+  background-image: linear-gradient(to right, $main-color, $second-color);
+  padding: 2px 3px;
+  font-size: 18px;
+  font-weight: 500;
 }

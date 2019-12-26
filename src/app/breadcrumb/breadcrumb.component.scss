@@ -1,0 +1,34 @@
+@import '../../assets/scss/settings/variables';
+
+.wrapper {
+  background-color: $main-light-color;
+}
+.breadcrumbs {
+  display: flex;
+  padding: 10px;
+
+  &__item {
+    margin-right: 20px;
+    position: relative;
+
+    &:after {
+      content: '/';
+      position: absolute;
+      right: -13px;
+    }
+
+    &:last-child {
+      &:after {
+        content: none;
+      }
+      .breadcrumbs__link {
+        color: $main-color;
+      }
+    }
+  }
+
+  &__link {
+    color: $text-color;
+    text-transform: capitalize;
+  }
+}

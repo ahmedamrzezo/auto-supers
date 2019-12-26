@@ -1,13 +1,1 @@
-@font-face {
-  font-family: Farro;
-  font-weight: 400;
-  font-style: normal;
-  src: local('Farro Regular'), local('Farro-Regular'), url('assets/fonts/Farro/Farro-Regular.ttf');
-}
-
-@font-face {
-  font-family: Farro;
-  font-weight: 700;
-  font-style: normal;
-  src: local('Farro Bold'), local('Farro-Bold'), url('assets/fonts/Farro/Farro-Bold.ttf');
-}
+@import url('https://fonts.googleapis.com/css?family=Farro:400,700&display=swap');

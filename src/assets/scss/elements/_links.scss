@@ -1,0 +1,12 @@
+a {
+  color: $main-color;
+  @include transition(all, 0.2);
+
+  &:hover {
+    color: $primary-dark-color;
+    text-decoration: none;
+  }
+}
+.e-link--active {
+  color: $main-light-color;
+}

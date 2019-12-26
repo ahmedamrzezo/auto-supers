@@ -1,0 +1,19 @@
+.o-multi-bg {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.6) 51%, $main-color 0%);
+  background-size: 200%;
+  background-position: 100%;
+  @include transition(all, 0.2);
+
+  &:hover {
+    color: $main-light-color;
+    background-position: 0;
+  }
+}
+
+.o-label {
+  font-size: 1.2rem;
+  color: $text-color;
+}
+.o-label--highlight {
+  color: $second-color;
+}

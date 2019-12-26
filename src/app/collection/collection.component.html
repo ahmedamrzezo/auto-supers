@@ -1,0 +1,18 @@
+<section class="o-section-content supers">
+  <div class="container">
+    <div class="row loading" *ngIf="loading; else collection">
+      <app-loading></app-loading>
+    </div>
+    <ng-template #collection>
+      <div class="row">
+        <div 
+        class="col-lg-4" 
+        *ngFor="
+        let super of superCars; 
+        let id = index">
+          <app-supercar [superCar]="super"></app-supercar>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</section>

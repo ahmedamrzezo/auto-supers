@@ -1,0 +1,63 @@
+@import '../../assets/scss/settings/variables';
+
+.search {
+  margin-top: 3rem;
+  display: flex;
+  
+  &__field {
+    position: relative;
+
+    flex: 1;
+    .fas {
+      position: absolute;
+      top: 14px;
+      right: 10px;
+      
+      color: $main-color;
+    }
+  }
+}
+
+.results {
+  position: absolute;
+  width: calc(100% - 30px);
+  border: 2px solid $border-color;
+  border-radius: $border-radius;
+  background-color: #fff;
+  margin-top: 1rem;
+  max-height: 140px;
+  overflow: auto;
+  app-loading::ng-deep {
+    .lds-facebook { 
+      display: block;
+      margin: 0 auto;
+    }
+    .lds-facebook div  { 
+      background: $main-color;
+    }
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    letter-spacing: unset;
+    margin-bottom: 1rem;
+  }
+
+  &__super-item {
+  
+    &--no-results {
+      background-color: $main-light-color;
+      padding: 15px 10px;
+    }
+  }
+
+  &__super-link {
+    display: block;
+    padding: 15px 10px;
+    width: 100%;
+
+    &:nth-child(odd) {
+      background-color: $main-light-color;
+    }
+  }
+}

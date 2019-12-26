@@ -1,0 +1,27 @@
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+} 
+
+h1 {
+  font-size: 5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.e-card-title {
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1rem;
+}
+
+.e-main-title {
+  @extend .e-card-title;
+  font-size: 2.4rem;
+  color: $text-color;
+}
+
+.e-heading--no-spacing {
+  letter-spacing: unset;
+}

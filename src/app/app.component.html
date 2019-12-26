@@ -1,7 +1,15 @@
+
 <app-header></app-header>
 
+<div class="banner-wrapper" [@routeAnimation]="prepareRoute(outlet)">
+  <app-banner></app-banner>
+</div>
+
 <main>
-  <app-home></app-home>
+  <app-breadcrumb></app-breadcrumb>
+  
+  <router-outlet #outlet="outlet"></router-outlet>
+
 </main>
 
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

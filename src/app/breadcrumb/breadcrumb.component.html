@@ -1,0 +1,21 @@
+<ng-container *ngIf="breadcrumbs.length > 0">
+  <div class="wrapper">
+    <div class="container">
+      <ul class="breadcrumbs">
+        
+        <li class="breadcrumbs__item" *ngFor="let breadcrumb of breadcrumbs; let l = last">
+          <a 
+          *ngIf="!l; else noLink"
+          class="breadcrumbs__link" 
+          [routerLink]="breadcrumb.url.path" 
+          [queryParams]="breadcrumb.url.params"
+          >{{breadcrumb.name}}</a>
+          <ng-template #noLink>
+            <a class="breadcrumbs__link">{{breadcrumb.name}}</a>
+          </ng-template>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</ng-container>

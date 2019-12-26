@@ -1,0 +1,34 @@
+<div class="o-card supercar">
+  <a class="supercar__head" [routerLink]="['/supers/' + superCar.carCode]">
+    <img 
+      class="img-fluid"
+      [src]="superCar.carImages[0]" 
+      [alt]="superCar.carName">
+  </a>
+
+  <div class="supercar__content">
+    <a class="o-link" [routerLink]="['/supers/' + superCar.carCode]">
+      <h2 class="e-card-title">
+        {{superCar.carName}}
+      </h2>
+    </a>
+  
+    <div class="supercar__details">
+      <span class="o-label o-label--highlight supercar__brand">
+        Brand: <strong>{{superCar.brandName}}</strong>
+      </span>
+      <span class="o-label o-label--highlight supercar__year">
+        Manufactured: <strong>{{superCar.manufactureYear}}</strong>
+      </span>
+      <p class="supercar__desc e-paragraph e-paragraph-title">
+        {{superCar.description}}
+      </p>
+    </div>
+    <div class="supercar__footer">
+      <span class="supercar__price">{{superCar.price | currency: 'USD': 'symbol': '3.0'}}</span>
+
+      <button class="c-second-btn c-reset-btn supercar__more-btn" 
+      [routerLink]="['/supers/' + superCar.carCode]">More details</button>
+    </div>
+  </div>
+</div>

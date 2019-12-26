@@ -1,0 +1,91 @@
+@import '../../../assets/scss/settings/variables';
+@import '../../../assets/scss/tools/mixins';
+
+.super {
+  padding: 50px 0;
+  &__img {
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__name {
+    color: $second-color;
+  }
+
+  &__spec {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
+  &__actions {
+    margin-top: 50px;
+  }
+
+  &__bookmark {
+    width: 100%;
+    .fa-bookmark {
+      margin-right: 10px;
+    }
+  }
+
+  &__modify {
+    display: flex;
+    margin-top: 50px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  &__modify-item {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    text-align: center;
+    background-color: $second-color;
+    padding: 15px 0;
+    cursor: pointer;
+    @include transition(background-color, 0.3);
+
+    &:not(:last-child) {
+      border-right: 1px solid $border-color;
+    }
+
+    &:hover {
+      background-color: $main-color;
+    }
+
+    .fas {
+      color: #fff;
+      font-size: 1.6rem;
+    }
+
+    &--danger {
+      background-color: #e83737;
+    }
+  }
+}
+:host {
+  app-loading::ng-deep {
+    .lds-facebook { 
+      display: block;
+      margin: 0 auto;
+    }
+    .lds-facebook div  { 
+      background: $main-color;
+    }
+  }
+  ngx-slick-carousel::ng-deep {
+    .slick-prev, .slick-next {
+      z-index: 156;
+    }
+    .slick-prev::before, .slick-next::before {
+      color: $main-color;
+      opacity: 0.5;
+    }
+    .slick-prev:hover::before, .slick-next:hover::before {
+      color: $main-color;
+      opacity: 1;
+    }
+  }
+}

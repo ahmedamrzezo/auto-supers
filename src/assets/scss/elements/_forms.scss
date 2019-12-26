@@ -1,0 +1,17 @@
+.e-form-group {
+  border: none;
+  padding: 0;
+}
+.e-form-control {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border: 2px solid $border-color;
+  border-radius: $border-radius;
+  @include transition(border-color, 0.3);
+
+  &:focus {
+    border-color: $main-color;
+    outline: none;
+  }
+}
