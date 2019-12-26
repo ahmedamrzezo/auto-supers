@@ -5,6 +5,7 @@ import { take } from 'rxjs/operators';
 import { PagesService } from 'src/app/shared/pages.service';
 import { SuperCarService } from '../super-car.service';
 import { SuperCar } from '../super-car';
+import { BookmarksService } from 'src/app/bookmarks/bookmarks.service';
 
 @Component({
   selector: 'app-supercar-details',
@@ -18,7 +19,7 @@ export class SupercarDetailsComponent implements OnInit {
   isBookmarked = false;
   isAdmin = true;
 
-  bookmarkedStorage = this._superCarService.bookmarkedStorage;
+  bookmarkedStorage = this._bookmarksService.bookmarkedStorage;
 
   slidesConfig = {
     dot: true,
@@ -30,6 +31,7 @@ export class SupercarDetailsComponent implements OnInit {
   constructor(
     private _pagesService: PagesService, 
     private _superCarService: SuperCarService,
+    private _bookmarksService: BookmarksService,
     private router: ActivatedRoute
     ) {}
 
