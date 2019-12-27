@@ -61,20 +61,11 @@ export class SupercarDetailsComponent implements OnInit {
    */
   addBookmark(car: SuperCar) {
     if (this.isBookmarked) {
-      for (let i = 0; i < this.bookmarkedStorage.length; i++) {
-        const bookmarkItem = this.bookmarkedStorage[i];
-        if (bookmarkItem === car.carCode) {
-          this.bookmarkedStorage.splice(i, 1);
-        }
-      }
+      this._bookmarksService.removeBookmarkItem(car.carCode);
     } else {
-      this.bookmarkedStorage.push(car.carCode);
+      this._bookmarksService.setBookmarkItem(car.carCode);
     }
-    localStorage
-    .setItem(
-      'super_bookmarks', 
-      JSON.stringify(this.bookmarkedStorage)
-    );
+    this._bookmarksService.addItemLocalStorage();
     this.isBookmarked = !this.isBookmarked;
   }
   

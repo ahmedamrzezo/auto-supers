@@ -29,4 +29,25 @@ export class BookmarksService {
     }
     return this.bookmarkedSupers;
   }
+
+  setBookmarkItem(code: string) {
+    this.bookmarkedStorage.push(code);
+  }
+
+  removeBookmarkItem(code: string) {
+    for (let i = 0; i < this.bookmarkedStorage.length; i++) {
+      const bookmarkItem = this.bookmarkedStorage[i];
+      if (bookmarkItem === code) {
+        this.bookmarkedStorage.splice(i, 1);
+      }
+    }
+  }
+
+  addItemLocalStorage() {
+    localStorage
+    .setItem(
+      'super_bookmarks', 
+      JSON.stringify(this.bookmarkedStorage)
+    );
+  }
 }
