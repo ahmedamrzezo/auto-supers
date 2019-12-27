@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SuperCarService } from '../collection/super-car.service';
 import { SuperCar } from '../collection/super-car';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +52,7 @@ export class BookmarksService {
     }
   }
 
-  addItemLocalStorage() {
+  updateLocalStorage() {
     localStorage
     .setItem(
       'super_bookmarks', 

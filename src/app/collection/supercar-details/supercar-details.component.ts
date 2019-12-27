@@ -65,7 +65,7 @@ export class SupercarDetailsComponent implements OnInit {
     } else {
       this._bookmarksService.setBookmarkItem(car.carCode);
     }
-    this._bookmarksService.addItemLocalStorage();
+    this._bookmarksService.updateLocalStorage();
     this.isBookmarked = !this.isBookmarked;
   }
   
