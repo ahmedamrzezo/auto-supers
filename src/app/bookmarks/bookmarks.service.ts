@@ -15,6 +15,8 @@ export class BookmarksService {
 
   bookmarkedSupers: SuperCar[] = [];
 
+  noBookmarksSubject = new BehaviorSubject<boolean>(false);
+
   constructor(
     private _superCarService: SuperCarService,
   ) {}
@@ -26,6 +28,12 @@ export class BookmarksService {
     for (const superCode of this.bookmarkedStorage) {
       let superCar = this._superCarService.getSuperByCode(superCode);
       this.bookmarkedSupers.push(superCar);
+    }
+
+    if (this.bookmarkedStorage.length == 0 ) {
+      this.noBookmarksSubject.next(true);
+    } else {
+      this.noBookmarksSubject.next(false);
     }
     return this.bookmarkedSupers;
   }
