@@ -26,6 +26,7 @@ import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { CompareComponent } from './compare/compare.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { DragListItemDirective } from './shared/drag-list-item.directive';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { RegisterComponent } from './auth/register/register.component';
     BookmarksComponent,
     CompareComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DragListItemDirective
   ],
   imports: [
     BrowserModule,
