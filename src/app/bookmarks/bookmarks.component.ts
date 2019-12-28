@@ -30,8 +30,8 @@ export class BookmarksComponent implements OnInit, OnDestroy {
     .subscribe(val => (this.noBookmarks = val));
   }
 
-  deleteBookmark(code: string) {
-    this._bookmarksService.removeBookmarkItem(code);
+  deleteBookmark(id: number) {
+    this._bookmarksService.removeBookmarkById(id);
     this._bookmarksService.updateLocalStorage();
 
     this.bookmarkedSupers = this._bookmarksService.getBookmarkedSuper();

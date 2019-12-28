@@ -52,6 +52,10 @@ export class BookmarksService {
     }
   }
 
+  removeBookmarkById(id: number) {
+    this.bookmarkedStorage.splice(id, 1);
+  }
+
   updateLocalStorage() {
     localStorage
     .setItem(

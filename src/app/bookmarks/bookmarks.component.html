@@ -10,7 +10,7 @@
       <ul class="bookmarks" *ngIf="!noBookmarks; else noBookmarksExist">
         <li 
         class="bookmarks__item" 
-        *ngFor="let superCar of bookmarkedSupers"
+        *ngFor="let superCar of bookmarkedSupers; let id = index"
         @deleteFade>
 
           <span class="bookmarks__drag">
@@ -26,8 +26,8 @@
           </span>
 
           <span 
-          class="bookmarks__delete" 
-          (click)="deleteBookmark(superCar.carCode)">
+          class="bookmarks__delete"
+          (click)="deleteBookmark(id)">
             <i class="fas fa-trash-alt"></i>
           </span>
 
