@@ -1,7 +1,13 @@
 <div class="container">
-  <div class="row">
+  <div class="row o-section-content">
     <div class="col-12">
-      <ul class="o-section-content bookmarks" *ngIf="!noBookmarks; else noBookmarksExist">
+      <button 
+      class="bookmarks-delete c-second-btn" 
+      (click)="deleteAllBookmarks()">Delete all</button>
+    </div>
+    
+    <div class="col-12">
+      <ul class="bookmarks" *ngIf="!noBookmarks; else noBookmarksExist">
         <li 
         class="bookmarks__item" 
         *ngFor="let superCar of bookmarkedSupers"
@@ -29,7 +35,7 @@
       </ul>
 
       <ng-template #noBookmarksExist>
-        <div class="o-section-content bookmarks__item">
+        <div class="bookmarks__item">
           No Bookmarks found. <a routerLink="/supers">&nbsp; Browse supers&nbsp;</a> and add some.
         </div>
       </ng-template>

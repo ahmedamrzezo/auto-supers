@@ -59,4 +59,8 @@ export class BookmarksService {
       JSON.stringify(this.bookmarkedStorage)
     );
   }
+
+  clearStorage() {
+    this.bookmarkedStorage = [];
+  }
 }
