@@ -27,6 +27,7 @@ import { CompareComponent } from './compare/compare.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { DragListItemDirective } from './shared/drag-list-item.directive';
+import { DoubleClickDirective } from './shared/double-click.directive';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DragListItemDirective } from './shared/drag-list-item.directive';
     CompareComponent,
     LoginComponent,
     RegisterComponent,
-    DragListItemDirective
+    DragListItemDirective,
+    DoubleClickDirective
   ],
   imports: [
     BrowserModule,
