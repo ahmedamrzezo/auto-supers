@@ -1,10 +1,14 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, OnInit } from '@angular/core';
+import { fromEvent } from 'rxjs';
 
 @Directive({
   selector: '[appDragListItem]'
 })
-export class DragListItemDirective {
+export class DragListItemDirective implements OnInit{
 
-  constructor() { }
+  constructor(private elemRef: ElementRef) { }
 
+  ngOnInit() {
+    fromEvent(this.elemRef.nativeElement, 'click').subscribe(() => {console.log('object');})
+  }
 }
