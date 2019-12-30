@@ -62,6 +62,7 @@ export class BookmarksService {
       'super_bookmarks', 
       JSON.stringify(this.bookmarkedStorage)
     );
+    this.getBookmarkedSuper();
   }
 
   clearStorage() {

@@ -28,7 +28,8 @@
           <span 
           class="bookmarks__delete"
           [id]="id"
-          appDoubleClick>
+          appDoubleClick
+          (doubleClickAction)="deleteBookmark(id)">
             <small>2x clicks to delete &nbsp;</small>
             <i class="fas fa-trash-alt"></i>
           </span>

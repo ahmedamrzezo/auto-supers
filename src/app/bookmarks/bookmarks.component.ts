@@ -33,16 +33,12 @@ export class BookmarksComponent implements OnInit, OnDestroy {
   deleteBookmark(id: number) {
     this._bookmarksService.removeBookmarkById(id);
     this._bookmarksService.updateLocalStorage();
-
-    this.bookmarkedSupers = this._bookmarksService.getBookmarkedSuper();
   }
 
   deleteAllBookmarks() {
     if (confirm('Do you really want to remove all bookmarks?')){
       this._bookmarksService.clearStorage();
       this._bookmarksService.updateLocalStorage();
-  
-      this.bookmarkedSupers = this._bookmarksService.getBookmarkedSuper();
     };
 
   }

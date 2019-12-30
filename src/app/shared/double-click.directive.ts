@@ -1,5 +1,5 @@
-import { Directive, OnInit, ElementRef } from '@angular/core';
-import { fromEvent, asyncScheduler } from 'rxjs';
+import { Directive, OnInit, ElementRef, Input, Output } from '@angular/core';
+import { fromEvent, asyncScheduler, Subject } from 'rxjs';
 import { pluck, throttleTime } from 'rxjs/operators';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
 
@@ -7,6 +7,8 @@ import { BookmarksService } from '../bookmarks/bookmarks.service';
   selector: '[appDoubleClick]'
 })
 export class DoubleClickDirective  implements OnInit{
+
+  @Output('doubleClickAction') actionSub = new Subject();
 
   constructor(
     private elemRef: ElementRef, 
@@ -19,8 +21,7 @@ export class DoubleClickDirective  implements OnInit{
       throttleTime(300, asyncScheduler, {trailing: true, leading: false})
     )
     .subscribe(id => {
-      this._bookmarksService.removeBookmarkById(+id);
-      this._bookmarksService.updateLocalStorage();
+      this.actionSub.next(id);
     });
   }
 
