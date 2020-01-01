@@ -36,7 +36,7 @@ export class BookmarksService {
     } else {
       this.noBookmarksSubject.next(false);
     }
-    return this.bookmarkedSupers;
+    return this.bookmarkedSupers.reverse();
   }
 
   setBookmarkItem(code: string) {
