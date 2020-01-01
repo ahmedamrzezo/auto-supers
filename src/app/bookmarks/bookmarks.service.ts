@@ -36,7 +36,7 @@ export class BookmarksService {
     } else {
       this.noBookmarksSubject.next(false);
     }
-    return this.bookmarkedSupers.reverse();
+    return this.bookmarkedSupers;
   }
 
   setBookmarkItem(code: string) {
@@ -60,7 +60,7 @@ export class BookmarksService {
     localStorage
     .setItem(
       'super_bookmarks', 
-      JSON.stringify(this.bookmarkedStorage)
+      JSON.stringify(this.bookmarkedStorage.reverse())
     );
     this.getBookmarkedSuper();
   }
