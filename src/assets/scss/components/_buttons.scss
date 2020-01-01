@@ -34,7 +34,7 @@
   font-weight: 600;
   @include transition(all, 0.3);
 
-  &:hover, &:focus, &--active {
+  &:hover, &--active {
     background-color: $main-color;
     color: #fff;
   }
