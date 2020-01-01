@@ -1,4 +1,5 @@
 @import '../../assets/scss/settings/variables';
+@import '../../assets/scss/tools/mixins';
 
 .bookmarks-delete {
   margin-bottom: 20px;
@@ -19,6 +20,7 @@
     background-color: $main-light-color;
     overflow: hidden;
     border-radius: 6px;
+    @include transition(transform, 0.2);
 
     &:not(:last-child) {
       margin-bottom: 15px;
