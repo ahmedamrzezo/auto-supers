@@ -25,8 +25,12 @@
 
   &__bookmark {
     width: 100%;
+    position: relative;
     .fa-bookmark {
-      margin-right: 10px;
+      position: absolute;
+      top: 4px;
+      left: 10px;
+      font-size: 30px;
     }
   }
 
