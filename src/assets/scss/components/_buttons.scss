@@ -39,3 +39,13 @@
     color: #fff;
   }
 }
+.c-normal-btn {
+  @extend .c-second-btn;
+  background-color: $border-color;
+  border: none;
+  color: $primary-dark-color;
+
+  &:hover {
+    background-color: $text-color;
+  }
+}

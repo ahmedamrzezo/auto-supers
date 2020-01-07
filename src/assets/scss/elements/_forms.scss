@@ -10,8 +10,56 @@
   border-radius: $border-radius;
   @include transition(border-color, 0.3);
 
+  &--hidden {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
   &:focus {
     border-color: $main-color;
     outline: none;
   }
+
+  // remove numbers arrows
+  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+  &[type="number"] {
+    -moz-appearance:textfield;
+  }
+}
+
+.e-label {
+  font-size: 1.2rem;
+  color: $text-color;
+  margin-bottom: 5px;
+  @include transition(position, 0.3);
+}
+
+.e-label--floated {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 1.2rem;
+  height: fit-content;
+  cursor: text;
+}
+.e-label--top-floated {
+  @extend .e-label--floated;
+  bottom: unset;
+  top: 15px;
+  margin: unset;
+  background-color: #fff;
+}
+
+.e-text-area {
+  resize: vertical;
+  min-height: 60px;
+  max-height: 300px;
+  height: 100px;
 }
