@@ -6,6 +6,16 @@
 
   &__field {
     position: relative;
+    .e-label {
+      padding: 0 1px;
+      background-color: #fff;
+    }
+    .e-label--floated.e-label--focused {
+      top: -38px;
+    }
+    .e-label--top-floated.e-label--focused {
+      top: -5px;
+    }
   }
 
   &__unit {

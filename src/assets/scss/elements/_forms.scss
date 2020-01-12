@@ -35,7 +35,7 @@
   font-size: 1.2rem;
   color: $text-color;
   margin-bottom: 5px;
-  @include transition(position, 0.3);
+  @include transition(all, 0.3);
 }
 
 .e-label--floated {
