@@ -59,7 +59,7 @@
             <fieldset class="e-form-group form__field">
                 <label for="manufactureYear" 
                 class="e-label e-label--floated"
-              appLabelOverflowInput>
+                appLabelOverflowInput>
                 Manufacture year
               </label>
               <input 
@@ -67,6 +67,7 @@
               class="e-form-control" 
               id="manufactureYear"
               formControlName="manufactureYear">
+              <span class="form__unit">1980-{{currentYear}}</span>
             </fieldset>
           </div>
           <!-- year /end -->
@@ -112,7 +113,8 @@
                 <option value="v8">V8</option>
                 <option value="v10">V10</option>
                 <option value="v12">V12</option>
-                <!-- <option value="">W16</option> -->
+                <option value="w12">W12</option>
+                <option value="w14">W16</option>
               </select>
             </fieldset>
           </div>
@@ -128,8 +130,9 @@
               type="number" 
               class="e-form-control" 
               id="engineCC"
+              step=".1"
               formControlName="engineCC">
-              <span class="form__unit">Cubic cms</span>
+              <span class="form__unit">Litre</span>
             </fieldset>
           </div>
           <div class="col-md-3">
