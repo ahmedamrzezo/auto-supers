@@ -10,7 +10,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./supercar-edit.component.scss']
 })
 export class SupercarEditComponent implements OnInit {
-
+  
+  currentYear = new Date().getFullYear();
   superForm: FormGroup;
 
   constructor(
@@ -27,19 +28,24 @@ export class SupercarEditComponent implements OnInit {
       carName: new FormControl(
         '', 
         [
-          Validators.required
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(50)
         ]
       ),
       brandName: new FormControl(
         '', 
         [
-          Validators.required
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(15)
         ]
       ),
       manufactureYear: new FormControl(
         '', 
         [
-          Validators.required
+          Validators.required,
+          Validators.pattern(`^(198[0-9]|199[2-9]|200[0-9]|201[0-9]|${this.currentYear})$`)
         ]
       ),
       description: new FormControl(
@@ -57,25 +63,29 @@ export class SupercarEditComponent implements OnInit {
       engineCC: new FormControl(
         '', 
         [
-          Validators.required
+          Validators.required,
+          // Validators.pattern('/[0-8]{3}/')
         ]
       ),
       horsePower: new FormControl(
         '', 
         [
-          Validators.required
+          Validators.required,
+          Validators.pattern('/[4-9]{4}/')
         ]
       ),
       torque: new FormControl(
         '', 
         [
-          Validators.required
+          Validators.required,
+          Validators.pattern('/[0-9]{4}/')
         ]
       ),
       maxSpeed: new FormControl(
         '', 
         [
-          Validators.required
+          Validators.required,
+          Validators.pattern('/[0-9]{4}/')
         ]
       ),
       zeroToSixty: new FormControl(
@@ -103,11 +113,23 @@ export class SupercarEditComponent implements OnInit {
     const currentRouterURL = this.router.url;
 
     if (currentRouterURL.match('create')) {
-      
+      // this.addSuper();
     } 
     else if (currentRouterURL.match('edit')) {
-      return;
+      // this.editSuper()
     }
+  }
+
+  addSuper() {
+
+  }
+
+  editSuper() {
+
+  }
+
+  submitForm() {
+    console.log(this.superForm);
   }
 
   /** TODO:
