@@ -25,7 +25,9 @@
   }
 
   &__row {
-    margin-bottom: 15px;
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
   }
 
   &__img-upload {
@@ -34,6 +36,7 @@
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     @include transition(all, 0.3);
 
