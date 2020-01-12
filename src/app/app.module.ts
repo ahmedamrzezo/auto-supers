@@ -28,6 +28,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { DragListItemDirective } from './shared/drag-list-item.directive';
 import { DoubleClickDirective } from './shared/double-click.directive';
+import { LabelOverflowInputDirective } from './label-overflow-input.directive';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { DoubleClickDirective } from './shared/double-click.directive';
     LoginComponent,
     RegisterComponent,
     DragListItemDirective,
-    DoubleClickDirective
+    DoubleClickDirective,
+    LabelOverflowInputDirective
   ],
   imports: [
     BrowserModule,
