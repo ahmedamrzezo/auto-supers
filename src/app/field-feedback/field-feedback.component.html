@@ -1,1 +1,9 @@
-<p>field-feedback works!</p>
+<div class="valid-feedback" *ngIf="valid; else invalid">
+  Looks good!
+</div>
+
+<ng-template #invalid>
+  <div class="invalid-feedback">
+    Please choose a username.
+  </div>
+</ng-template>
