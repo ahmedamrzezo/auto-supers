@@ -153,6 +153,10 @@ export class SupercarEditComponent implements OnInit {
         return;
       }
     )
+
+  }
+  cancelModification() {
+    this.router.navigate(['/supers']);
   }
 
   /** TODO:
