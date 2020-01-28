@@ -29,6 +29,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { DragListItemDirective } from './shared/drag-list-item.directive';
 import { DoubleClickDirective } from './shared/double-click.directive';
 import { LabelOverflowInputDirective } from './shared/label-overflow-input.directive';
+import { FieldFeedbackComponent } from './field-feedback/field-feedback.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { LabelOverflowInputDirective } from './shared/label-overflow-input.direc
     RegisterComponent,
     DragListItemDirective,
     DoubleClickDirective,
-    LabelOverflowInputDirective
+    LabelOverflowInputDirective,
+    FieldFeedbackComponent
   ],
   imports: [
     BrowserModule,
