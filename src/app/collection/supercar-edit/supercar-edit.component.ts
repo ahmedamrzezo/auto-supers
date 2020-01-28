@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { PagesService } from 'src/app/shared/pages.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { take, debounceTime, map, throttleTime, auditTime } from 'rxjs/operators';
+import { asyncScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-supercar-edit',
@@ -64,28 +66,28 @@ export class SupercarEditComponent implements OnInit {
         '', 
         [
           Validators.required,
-          // Validators.pattern('/[0-8]{3}/')
+          Validators.pattern('[2-8]{1}\.[1-8]{1}|[1-8]{1}/g')
         ]
       ),
       horsePower: new FormControl(
         '', 
         [
           Validators.required,
-          Validators.pattern('/[4-9]{4}/')
+          Validators.pattern('[4-9]{4}')
         ]
       ),
       torque: new FormControl(
         '', 
         [
           Validators.required,
-          Validators.pattern('/[0-9]{4}/')
+          Validators.pattern('[0-9]{4}')
         ]
       ),
       maxSpeed: new FormControl(
         '', 
         [
           Validators.required,
-          Validators.pattern('/[0-9]{4}/')
+          Validators.pattern('[0-9]{4}')
         ]
       ),
       zeroToSixty: new FormControl(
@@ -107,6 +109,8 @@ export class SupercarEditComponent implements OnInit {
         ]
       ),
     });
+
+    this.insertDotAfterFirstNumber();
   }
 
   private checkRoute() {
@@ -130,6 +134,25 @@ export class SupercarEditComponent implements OnInit {
 
   submitForm() {
     console.log(this.superForm);
+  }
+
+  private insertDotAfterFirstNumber() {
+    this.superForm.controls.engineCC.valueChanges
+    .pipe(
+      throttleTime(1000, asyncScheduler, {leading: false, trailing: true}),
+      map(val => val !== null? val : '')
+    )
+    .subscribe(
+      engineCCVal => {
+        let engineCCValStr = engineCCVal.toString();
+        if (engineCCValStr !== '.') 
+        {
+          engineCCVal = engineCCValStr.substr(0, 1) + '.' + engineCCValStr[1];
+          this.superForm.controls.engineCC.setValue(+engineCCVal);
+        }
+        return;
+      }
+    )
   }
 
   /** TODO:
