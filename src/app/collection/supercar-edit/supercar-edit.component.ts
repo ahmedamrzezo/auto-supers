@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { PagesService } from 'src/app/shared/pages.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { take, debounceTime, map, throttleTime, auditTime } from 'rxjs/operators';
-import { asyncScheduler } from 'rxjs';
+import { asyncScheduler, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-supercar-edit',
@@ -15,6 +15,7 @@ export class SupercarEditComponent implements OnInit {
   
   currentYear = new Date().getFullYear();
   superForm: FormGroup;
+  errorMessageSubj = new BehaviorSubject<string>('Invalid entry');
 
   constructor(
     private _pagesService: PagesService,
@@ -154,6 +155,18 @@ export class SupercarEditComponent implements OnInit {
       }
     )
 
+  }
+  get nameErrors() {
+    // return this.superForm.get('carName');
+    if (this.superForm.get('carName').errors) {
+      if (this.superForm.get('carName').errors.required) {
+        return 'Car name is required'
+      } else {
+        return 'Car name length must be 8-50 characters'
+      }
+    }else {
+      return
+    }
   }
   cancelModification() {
     this.router.navigate(['/supers']);
