@@ -8,11 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FieldFeedbackComponent implements OnInit {
 
   @Input() valid: boolean;
+  @Input() errorMessage: string;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.valid);
   }
 
 }
