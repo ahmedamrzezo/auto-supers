@@ -32,7 +32,16 @@
               type="text" 
               class="e-form-control"
               formControlName="carName">
-              <app-field-feedback [valid]="false"></app-field-feedback>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.carName.valid? 
+              true : false
+              "
+              [errorMessage]="nameErrors"
+              *ngIf="
+              superForm.controls.carName.dirty"
+              ></app-field-feedback>
             </fieldset>
           </div>
           <!-- name /end -->
