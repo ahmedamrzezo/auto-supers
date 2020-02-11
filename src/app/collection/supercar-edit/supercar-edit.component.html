@@ -60,6 +60,16 @@
             type="text" 
             class="e-form-control"
             formControlName="brandName">
+
+            <app-field-feedback 
+            [valid]="
+            superForm.controls.brandName.valid? 
+            true : false
+            "
+            [errorMessage]="brandErrors"
+            *ngIf="
+            superForm.controls.brandName.dirty"
+            ></app-field-feedback>
           </fieldset>
           </div>
           <!-- brand /end -->
@@ -78,6 +88,16 @@
               id="manufactureYear"
               formControlName="manufactureYear">
               <span class="form__unit">1980-{{currentYear}}</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.manufactureYear.valid? 
+              true : false
+              "
+              [errorMessage]="yearErrors"
+              *ngIf="
+              superForm.controls.manufactureYear.dirty"
+              ></app-field-feedback>
             </fieldset>
           </div>
           <!-- year /end -->
@@ -99,6 +119,16 @@
               class="e-form-control e-text-area" 
               id="description"
               formControlName="description"></textarea>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.description.valid? 
+              true : false
+              "
+              [errorMessage]="descErrors"
+              *ngIf="
+              superForm.controls.description.dirty"
+              ></app-field-feedback>
             </fieldset>
     
           </div>
@@ -126,6 +156,16 @@
                 <option value="w12">W12</option>
                 <option value="w14">W16</option>
               </select>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.engineType.valid? 
+              true : false
+              "
+              [errorMessage]="engineTypeErrors"
+              *ngIf="
+              superForm.controls.engineType.dirty"
+              ></app-field-feedback>
             </fieldset>
           </div>
           <div class="col-md-3">
@@ -142,6 +182,16 @@
               id="engineCC"
               formControlName="engineCC">
               <span class="form__unit">Litre</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.engineCC.valid? 
+              true : false
+              "
+              [errorMessage]="engineCCErrors"
+              *ngIf="
+              superForm.controls.engineCC.dirty"
+              ></app-field-feedback>
             </fieldset>
           </div>
           <div class="col-md-3">
@@ -158,6 +208,16 @@
               id="horsePower"
               formControlName="horsePower">
               <span class="form__unit">BHP/WHP</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.horsePower.valid? 
+              true : false
+              "
+              [errorMessage]="horsePowerErrors"
+              *ngIf="
+              superForm.controls.horsePower.dirty"
+              ></app-field-feedback>
             </fieldset>
           </div>
           <div class="col-md-3">
@@ -174,6 +234,16 @@
               id="torque"
               formControlName="torque">
               <span class="form__unit">N.m</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.torque.valid? 
+              true : false
+              "
+              [errorMessage]="engineTorqueErrors"
+              *ngIf="
+              superForm.controls.torque.dirty"
+              ></app-field-feedback>
             </fieldset>
           </div>
         </div>
@@ -195,6 +265,16 @@
               id="maxSpeed"
               formControlName="maxSpeed">
               <span class="form__unit">KMH</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.maxSpeed.valid? 
+              true : false
+              "
+              [errorMessage]="maxSpdErrors"
+              *ngIf="
+              superForm.controls.maxSpeed.dirty"
+              ></app-field-feedback>
             </fieldset>
           </div>
           <div class="col-md-4">
@@ -211,6 +291,16 @@
               id="zeroToSixty"
               formControlName="zeroToSixty">
               <span class="form__unit">KMH</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.zeroToSixty.valid? 
+              true : false
+              "
+              [errorMessage]="zeroHundredErrors"
+              *ngIf="
+              superForm.controls.zeroToSixty.dirty"
+              ></app-field-feedback>
             </fieldset>
           </div>
           <div class="col-md-4">
@@ -229,6 +319,16 @@
               <span class="form__unit">
                 <i class="fas fa-dollar-sign"></i>
               </span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.price.valid? 
+              true : false
+              "
+              [errorMessage]="priceErrors"
+              *ngIf="
+              superForm.controls.price.dirty"
+              ></app-field-feedback>
             </fieldset>
           </div>
         </div>
