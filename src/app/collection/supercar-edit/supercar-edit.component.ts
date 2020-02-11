@@ -74,7 +74,8 @@ export class SupercarEditComponent implements OnInit {
         '', 
         [
           Validators.required,
-          Validators.pattern('[4-9]{4}')
+          Validators.pattern('[0-9]{3}')
+          // TODO: add accurate pattern
         ]
       ),
       torque: new FormControl(
@@ -82,25 +83,29 @@ export class SupercarEditComponent implements OnInit {
         [
           Validators.required,
           Validators.pattern('[0-9]{4}')
+          // TODO: add accurate pattern
         ]
       ),
       maxSpeed: new FormControl(
         '', 
         [
           Validators.required,
-          Validators.pattern('[0-9]{4}')
+          Validators.pattern('[1-9]{3}')
+          // TODO: add accurate pattern
         ]
       ),
       zeroToSixty: new FormControl(
         '', 
         [
           Validators.required
+          // TODO: add accurate pattern
         ]
       ),
       price: new FormControl(
         '', 
         [
           Validators.required
+          // TODO: add accurate pattern
         ]
       ),
       carImages: new FormControl(
@@ -157,12 +162,126 @@ export class SupercarEditComponent implements OnInit {
 
   }
   get nameErrors() {
-    // return this.superForm.get('carName');
     if (this.superForm.get('carName').errors) {
       if (this.superForm.get('carName').errors.required) {
         return 'Car name is required'
       } else {
         return 'Car name length must be 8-50 characters'
+      }
+    }else {
+      return
+    }
+  }
+  get brandErrors() {
+    if (this.superForm.get('brandName').errors) {
+      if (this.superForm.get('brandName').errors.required) {
+        return 'Brand Name is required'
+      } else {
+        return 'Brand Name length must be 2-15 characters'
+      }
+    }else {
+      return
+    }
+  }
+  get yearErrors() {
+    if (this.superForm.get('manufactureYear').errors) {
+      if (this.superForm.get('manufactureYear').errors.required) {
+        return 'Manufacture year is required'
+      } else {
+        return 'Manufacture year must be 1980-2020'
+      }
+    }else {
+      return
+    }
+  }
+  get descErrors() {
+    if (this.superForm.get('description').errors) {
+      if (this.superForm.get('description').errors.required) {
+        return 'Description is required'
+      }
+    }else {
+      return
+    }
+  }
+  get engineTypeErrors() {
+    if (this.superForm.get('engineType').errors) {
+      if (this.superForm.get('engineType').errors.required) {
+        return 'Engine type is required'
+      }
+    }else {
+      return
+    }
+  }
+  get engineCCErrors() {
+    if (this.superForm.get('engineCC').errors) {
+      if (this.superForm.get('engineCC').errors.required) {
+        return 'Engine capacity is required'
+      } else {
+        return 'Engine capacity must be 2.0 - 8.0 Litres'
+      }
+    }else {
+      return
+    }
+  }
+  get horsePowerErrors() {
+    if (this.superForm.get('horsePower').errors) {
+      if (this.superForm.get('horsePower').errors.required) {
+        return 'Engine power is required'
+      } else {
+        return 'Engine power must not exceed 4 digits starts from 400 to 1500'
+      }
+    }else {
+      return
+    }
+  }
+  get engineTorqueErrors() {
+    if (this.superForm.get('torque').errors) {
+      if (this.superForm.get('torque').errors.required) {
+        return 'Engine torque is required'
+      } else {
+        return 'Engine torque must not exceed 4 digits starts from 400 to 1500'
+      }
+    }else {
+      return
+    }
+  }
+  get maxSpdErrors() {
+    if (this.superForm.get('maxSpeed').errors) {
+      if (this.superForm.get('maxSpeed').errors.required) {
+        return 'Maximum speed is required'
+      } else {
+        return 'Maximum speed must be 300 - 450 KMH'
+      }
+    }else {
+      return
+    }
+  }
+  get zeroHundredErrors() {
+    if (this.superForm.get('zeroToSixty').errors) {
+      if (this.superForm.get('zeroToSixty').errors.required) {
+        return 'Zero to hundred KMH is required'
+      } else {
+        return 'Zero to hundred KMH '
+      }
+    }else {
+      return
+    }
+  }
+  get priceErrors() {
+    if (this.superForm.get('price').errors) {
+      if (this.superForm.get('price').errors.required) {
+        return 'Price is required'
+      } else {
+        return 'Price length must be 8-50 characters'
+      }
+    }else {
+      return
+    }
+  }
+  get imagesErrors() {
+    if (this.superForm.get('carImages').errors) {
+      if (this.superForm.get('carImages').errors.required) {
+        return 'Car Images is required'
       }
     }else {
       return

@@ -9,9 +9,21 @@
       <div class="col-md-3">
         <label for="carImages" class="e-label e-form-control form__img-upload">
           Click / Drag to upload images
-          <input id="carImages" class="e-form-control--hidden" type="file" accept="image/*" multiple>
+          <input id="carImages" class="e-form-control--hidden" type="file" accept="image/*" 
+          formControlName="carImages"
+          multiple>
           <i class="far fa-images"></i>
         </label>
+
+        <app-field-feedback 
+        [valid]="
+        superForm.controls.carImages.valid? 
+        true : false
+        "
+        [errorMessage]="imagesErrors"
+        *ngIf="
+        superForm.controls.carImages.dirty"
+        ></app-field-feedback>
       </div>
 
       <div class="col-md-9">
