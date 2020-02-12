@@ -16,6 +16,7 @@ export class SupercarEditComponent implements OnInit {
   currentYear = new Date().getFullYear();
   superForm: FormGroup;
   errorMessageSubj = new BehaviorSubject<string>('Invalid entry');
+  formSubmitted = false;
 
   constructor(
     private _pagesService: PagesService,
@@ -140,6 +141,10 @@ export class SupercarEditComponent implements OnInit {
 
   submitForm() {
     console.log(this.superForm);
+    this.formSubmitted = true;
+    if (this.superForm.invalid) {
+      this.checkErrors();
+    }
   }
 
   private insertDotAfterFirstNumber() {
@@ -160,6 +165,20 @@ export class SupercarEditComponent implements OnInit {
       }
     )
 
+  }
+  checkErrors() {
+    this.nameErrors;
+    this.brandErrors;
+    this.yearErrors;
+    this.descErrors;
+    this.engineCCErrors;
+    this.engineTypeErrors;
+    this.horsePowerErrors;
+    this.engineTorqueErrors;
+    this.zeroHundredErrors;
+    this.imagesErrors;
+    this.maxSpdErrors;
+    this.priceErrors;
   }
   get nameErrors() {
     if (this.superForm.get('carName').errors) {
