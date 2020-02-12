@@ -4,6 +4,12 @@
 
 .form {
 
+  &.ng-invalid.submitted {
+    .e-form-control.ng-invalid {
+      border-color: #dc3545 !important;
+    }
+  }
+
   &__field {
     position: relative;
     .e-label {

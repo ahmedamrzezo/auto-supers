@@ -2,12 +2,16 @@
   <form 
   [formGroup]="superForm" 
   (ngSubmit)="submitForm()" 
-  class="o-section-content form">
+  class="o-section-content form"
+  [ngClass]="{'submitted': formSubmitted}">
 
     <!-- images -->
     <div class="row justify-content-center form__row">
       <div class="col-md-3">
-        <label for="carImages" class="e-label e-form-control form__img-upload">
+        <label for="carImages" class="e-label e-form-control form__img-upload" 
+        [ngClass]="
+        superForm.controls.carImages.dirty || 
+        (superForm.invalid && formSubmitted) ? 'ng-invalid': ''">
           Click / Drag to upload images
           <input id="carImages" class="e-form-control--hidden" type="file" accept="image/*" 
           formControlName="carImages"
@@ -22,7 +26,9 @@
         "
         [errorMessage]="imagesErrors"
         *ngIf="
-        superForm.controls.carImages.dirty"
+        superForm.controls.carImages.dirty || 
+        (superForm.invalid && formSubmitted)
+        "
         ></app-field-feedback>
       </div>
 
@@ -52,7 +58,8 @@
               "
               [errorMessage]="nameErrors"
               *ngIf="
-              superForm.controls.carName.dirty"
+              superForm.controls.carName.dirty || 
+              (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
           </div>
@@ -80,7 +87,8 @@
             "
             [errorMessage]="brandErrors"
             *ngIf="
-            superForm.controls.brandName.dirty"
+            superForm.controls.brandName.dirty || 
+            (superForm.invalid && formSubmitted)"
             ></app-field-feedback>
           </fieldset>
           </div>
@@ -108,7 +116,8 @@
               "
               [errorMessage]="yearErrors"
               *ngIf="
-              superForm.controls.manufactureYear.dirty"
+              superForm.controls.manufactureYear.dirty || 
+              (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
           </div>
@@ -139,7 +148,8 @@
               "
               [errorMessage]="descErrors"
               *ngIf="
-              superForm.controls.description.dirty"
+              superForm.controls.description.dirty || 
+              (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
     
@@ -176,7 +186,8 @@
               "
               [errorMessage]="engineTypeErrors"
               *ngIf="
-              superForm.controls.engineType.dirty"
+              superForm.controls.engineType.dirty || 
+              (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
           </div>
@@ -202,7 +213,8 @@
               "
               [errorMessage]="engineCCErrors"
               *ngIf="
-              superForm.controls.engineCC.dirty"
+              superForm.controls.engineCC.dirty || 
+              (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
           </div>
@@ -228,7 +240,8 @@
               "
               [errorMessage]="horsePowerErrors"
               *ngIf="
-              superForm.controls.horsePower.dirty"
+              superForm.controls.horsePower.dirty || 
+              (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
           </div>
@@ -254,7 +267,8 @@
               "
               [errorMessage]="engineTorqueErrors"
               *ngIf="
-              superForm.controls.torque.dirty"
+              superForm.controls.torque.dirty || 
+              (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
           </div>
@@ -285,7 +299,8 @@
               "
               [errorMessage]="maxSpdErrors"
               *ngIf="
-              superForm.controls.maxSpeed.dirty"
+              superForm.controls.maxSpeed.dirty || 
+              (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
           </div>
@@ -311,7 +326,8 @@
               "
               [errorMessage]="zeroHundredErrors"
               *ngIf="
-              superForm.controls.zeroToSixty.dirty"
+              superForm.controls.zeroToSixty.dirty || 
+              (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
           </div>
@@ -339,7 +355,8 @@
               "
               [errorMessage]="priceErrors"
               *ngIf="
-              superForm.controls.price.dirty"
+              superForm.controls.price.dirty || 
+              (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
           </div>
