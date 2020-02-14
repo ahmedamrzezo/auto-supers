@@ -30,7 +30,6 @@ const routes: Routes = [
   {
     path: 'supers/create', 
     component: SupercarEditComponent,
-    resolve: [SupersResolverService],
     data: { animation: 'OtherPage' }
   },
   {

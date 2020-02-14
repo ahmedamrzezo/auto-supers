@@ -1,0 +1,68 @@
+@import '../../../assets/scss/settings/variables';
+@import '../../../assets/scss/tools/mixins';
+@import '../../../assets/scss/generic/shared';
+
+.form {
+
+  &.ng-invalid.submitted {
+    .e-form-control.ng-invalid {
+      border-color: #dc3545 !important;
+    }
+  }
+
+  &__field {
+    position: relative;
+    .e-label {
+      padding: 0 1px;
+      background-color: #fff;
+    }
+    .e-label--floated.e-label--focused {
+      top: -38px;
+    }
+    .e-label--top-floated.e-label--focused {
+      top: -5px;
+    }
+  }
+
+  &__unit {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $main-color;
+    z-index: 3;
+    background-color: #fff;
+
+    @extend .g-text--no-select;
+  }
+
+  &__row {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__img-upload {
+    padding: 40px 0;
+    background-color: $main-light-color;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    @include transition(all, 0.3);
+
+    .far {
+      font-size: 7rem;
+      margin-bottom: 10px;
+    }
+
+    &:hover {
+      color: $main-color;
+    }
+  }
+}
