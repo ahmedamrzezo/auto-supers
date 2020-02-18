@@ -38,6 +38,12 @@
     background-color: $main-color;
     color: #fff;
   }
+  &:disabled {
+    background-color: rgb(158, 99, 113);
+    color: #fff;
+    border-color: transparent;
+    cursor: not-allowed;
+  }
 }
 .c-normal-btn {
   @extend .c-second-btn;
