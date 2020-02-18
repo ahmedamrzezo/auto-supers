@@ -15,13 +15,13 @@ export class SupercarEditComponent implements OnInit {
   
   currentYear = new Date().getFullYear();
   superForm: FormGroup;
-  errorMessageSubj = new BehaviorSubject<string>('Invalid entry');
   formSubmitted = false;
   formLoading: boolean;
 
   constructor(
     private _pagesService: PagesService,
-    private router: Router) { }
+    private router: Router,
+    private _supercarService: SuperCarService) { }
 
   ngOnInit() {
 
@@ -141,17 +141,17 @@ export class SupercarEditComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.superForm);
     this.formSubmitted = true;
-    this.formLoading = true;
     if (this.superForm.invalid) {
       this.checkErrors();
     } else {
+      this.formLoading = true;
       this._supercarService.addSuper(this.superForm.value)
       .subscribe(
-        res => {
+        () => {
           this.formLoading = false;
-          console.log(res);
+          this.superForm.reset();
+          this.formSubmitted = false;
         },
         err => {
           this.formLoading = false;
