@@ -377,6 +377,11 @@
         </button>
         <button class="c-normal-btn" type="button" (click)="cancelModification()">Cancel</button>
       </div>
+      <div class="col-12 mt-3" *ngIf="formResponse" @fadeIn>
+        <div class="alert" [ngClass]="formResponse.code == 200 ? 'alert-success': 'alert-danger'">
+          {{formResponse.msg}}
+        </div>
+      </div>
     </div>
     <!-- form footer /end -->
   </form>

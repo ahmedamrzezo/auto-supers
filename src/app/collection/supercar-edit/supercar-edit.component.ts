@@ -3,13 +3,18 @@ import { Router } from '@angular/router';
 
 import { PagesService } from 'src/app/shared/pages.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { take, debounceTime, map, throttleTime, auditTime } from 'rxjs/operators';
-import { asyncScheduler, BehaviorSubject } from 'rxjs';
+import { SuperCarService } from '../super-car.service';
+import { fadeInAnimation } from '../../animations';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-supercar-edit',
   templateUrl: './supercar-edit.component.html',
-  styleUrls: ['./supercar-edit.component.scss']
+  styleUrls: ['./supercar-edit.component.scss'],
+  animations: [
+    fadeInAnimation
+  ]
 })
 export class SupercarEditComponent implements OnInit {
   
@@ -17,6 +22,7 @@ export class SupercarEditComponent implements OnInit {
   superForm: FormGroup;
   formSubmitted = false;
   formLoading: boolean;
+  formResponse: {code: number, msg: string};
 
   constructor(
     private _pagesService: PagesService,
@@ -152,10 +158,12 @@ export class SupercarEditComponent implements OnInit {
           this.formLoading = false;
           this.superForm.reset();
           this.formSubmitted = false;
+          this.formResponse = {code: 200, msg: 'Super added successfully!'};
+          of(this.formResponse).pipe(delay(3000)).subscribe(() => (this.formResponse = null));
         },
         err => {
           this.formLoading = false;
-          console.error(err);
+          this.formResponse = {code: err.code, msg: err.message};
         }
       );
     }
