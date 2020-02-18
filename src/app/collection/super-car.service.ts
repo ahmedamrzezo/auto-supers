@@ -45,4 +45,8 @@ export class SuperCarService {
     }
     return;
   }
+
+  addSuper(superCar: SuperCar) {
+    return this.http.post(this.firebaseURL, superCar);
+  }
 }
