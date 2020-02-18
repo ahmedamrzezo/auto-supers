@@ -22,6 +22,12 @@ export class SuperCarService {
   getSuperCars() {
     return this.http.get<SuperCar[]>(this.firebaseURL)
     .pipe(
+      map(
+        supersObject => {
+          const supersArray = Object.values(supersObject);
+          return supersArray;
+        }
+      ),
       tap(
         supers => {
           this.supersChanged.next(supers);
