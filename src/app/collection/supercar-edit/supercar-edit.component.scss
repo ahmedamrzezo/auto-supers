@@ -65,4 +65,9 @@
       color: $main-color;
     }
   }
+  .c-second-btn {
+    .spinner-border {
+      margin-top: -2px;
+    }
+  }
 }

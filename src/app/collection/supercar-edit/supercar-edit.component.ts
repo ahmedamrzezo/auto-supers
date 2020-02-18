@@ -17,6 +17,7 @@ export class SupercarEditComponent implements OnInit {
   superForm: FormGroup;
   errorMessageSubj = new BehaviorSubject<string>('Invalid entry');
   formSubmitted = false;
+  formLoading: boolean;
 
   constructor(
     private _pagesService: PagesService,
@@ -142,8 +143,21 @@ export class SupercarEditComponent implements OnInit {
   submitForm() {
     console.log(this.superForm);
     this.formSubmitted = true;
+    this.formLoading = true;
     if (this.superForm.invalid) {
       this.checkErrors();
+    } else {
+      this._supercarService.addSuper(this.superForm.value)
+      .subscribe(
+        res => {
+          this.formLoading = false;
+          console.log(res);
+        },
+        err => {
+          this.formLoading = false;
+          console.error(err);
+        }
+      );
     }
   }
 

@@ -369,7 +369,12 @@
     <!-- form footer -->
     <div class="row justify-content-end">
       <div class="col-auto mt-5">
-        <button class="c-second-btn mr-3" type="submit">Save</button>
+        <button class="c-second-btn mr-3" type="submit" [disabled]="formLoading">
+          <figure class="spinner-border" role="status" *ngIf="formLoading">
+            <span class="sr-only">Loading...</span>
+          </figure>
+          {{ formLoading? '': 'Save' }}
+        </button>
         <button class="c-normal-btn" type="button" (click)="cancelModification()">Cancel</button>
       </div>
     </div>
