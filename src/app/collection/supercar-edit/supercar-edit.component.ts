@@ -5,8 +5,8 @@ import { PagesService } from 'src/app/shared/pages.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SuperCarService } from '../super-car.service';
 import { fadeInAnimation } from '../../animations';
-import { of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { of, asyncScheduler } from 'rxjs';
+import { delay, throttleTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-supercar-edit',
