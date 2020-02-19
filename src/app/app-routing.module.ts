@@ -8,6 +8,7 @@ import { SupercarEditComponent } from './collection/supercar-edit/supercar-edit.
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SupersResolverService } from './collection/supers-resolver.service';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { modifyFormGuard } from './collection/modify-form/modify-form.guard';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   {
     path: 'supers/create', 
     component: SupercarEditComponent,
+    canDeactivate: [modifyFormGuard],
     data: { animation: 'OtherPage' }
   },
   {
@@ -42,6 +44,7 @@ const routes: Routes = [
     path: 'supers/:code/edit', 
     component: SupercarEditComponent, 
     resolve: [SupersResolverService],
+    canDeactivate: [modifyFormGuard],
     data: { animation: 'OtherPage' },
    
   },
