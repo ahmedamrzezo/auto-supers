@@ -14,7 +14,7 @@ export class modifyFormGuard implements CanDeactivate<SupercarEditComponent> {
   ): Observable<boolean> | Promise<boolean> | boolean {
     console.log(component);
     if (component.superForm.touched && component.superForm.dirty) {
-      return confirm('Do you really want to cancel the modifications?') ? true: false;
+      return confirm('Do you really want to discard the modifications?') ? true: false;
     } else {
       return true;
     }
