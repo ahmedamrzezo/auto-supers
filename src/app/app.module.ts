@@ -30,6 +30,7 @@ import { DragListItemDirective } from './shared/drag-list-item.directive';
 import { DoubleClickDirective } from './shared/double-click.directive';
 import { LabelOverflowInputDirective } from './shared/label-overflow-input.directive';
 import { FieldFeedbackComponent } from './field-feedback/field-feedback.component';
+import { ModifyFormGuard } from './collection/modify-form/modify-form.guard';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,9 @@ import { FieldFeedbackComponent } from './field-feedback/field-feedback.componen
     FirebaseModule,
     SlickCarouselModule
   ],
-  providers: [],
+  providers: [
+    ModifyFormGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

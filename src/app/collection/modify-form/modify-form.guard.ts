@@ -3,10 +3,7 @@ import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@ang
 import { Observable } from 'rxjs';
 import { SupercarEditComponent } from '../supercar-edit/supercar-edit.component';
 
-@Injectable(
-  {providedIn: 'root'}
-)
-export class modifyFormGuard implements CanDeactivate<SupercarEditComponent> {
+export class ModifyFormGuard implements CanDeactivate<SupercarEditComponent> {
   canDeactivate(
     component: SupercarEditComponent,
     route: ActivatedRouteSnapshot,

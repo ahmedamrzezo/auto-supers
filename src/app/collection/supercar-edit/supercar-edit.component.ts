@@ -7,6 +7,7 @@ import { SuperCarService } from '../super-car.service';
 import { fadeInAnimation } from '../../animations';
 import { of, asyncScheduler } from 'rxjs';
 import { delay, throttleTime, map } from 'rxjs/operators';
+import { ModifyFormGuard } from '../modify-form/modify-form.guard';
 
 @Component({
   selector: 'app-supercar-edit',
@@ -14,7 +15,8 @@ import { delay, throttleTime, map } from 'rxjs/operators';
   styleUrls: ['./supercar-edit.component.scss'],
   animations: [
     fadeInAnimation
-  ]
+  ],
+  providers: [ModifyFormGuard]
 })
 export class SupercarEditComponent implements OnInit {
   
