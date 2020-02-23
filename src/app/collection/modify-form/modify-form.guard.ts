@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SupercarEditComponent } from '../supercar-edit/supercar-edit.component';
