@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PagesService } from 'src/app/shared/pages.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SuperCarService } from '../super-car.service';
 import { fadeInAnimation } from '../../animations';
-import { of, asyncScheduler } from 'rxjs';
+import { of, asyncScheduler, Observable } from 'rxjs';
 import { delay, throttleTime, map } from 'rxjs/operators';
 import { ModifyFormGuard } from '../modify-form/modify-form.guard';
+import { ImgUploadService } from './img-upload.service';
 
 @Component({
   selector: 'app-supercar-edit',
@@ -26,10 +27,15 @@ export class SupercarEditComponent implements OnInit {
   formLoading: boolean;
   formResponse: {code: number, msg: string};
 
+  imgPercentage: Observable<number>;
+  imgURL: Observable<string>;
+  isDropping: boolean;
+
   constructor(
     private _pagesService: PagesService,
     private router: Router,
-    private _supercarService: SuperCarService) { }
+    private _supercarService: SuperCarService,
+    private _imageUpload: ImgUploadService) { }
 
   ngOnInit() {
 
@@ -332,6 +338,18 @@ export class SupercarEditComponent implements OnInit {
   }
   cancelModification() {
     this.router.navigate(['/supers']);
+  }
+
+  toggleHover(ev) {
+    console.log(ev);
+    this._imageUpload.toggleHover(ev);
+  }
+
+  startUpload(ev) {
+    this._imageUpload.startUpload(ev);
+    this.imgPercentage = this._imageUpload.percentage;
+    this.imgURL = this._imageUpload.image;
+    this.isDropping = this._imageUpload.isHovering;
   }
 
   /** TODO:
