@@ -11,11 +11,17 @@
         <label for="carImages" class="e-label e-form-control form__img-upload" 
         [ngClass]="
         superForm.controls.carImages.dirty || 
-        (superForm.invalid && formSubmitted) ? 'ng-invalid': ''">
+        (superForm.invalid && formSubmitted) ? 'ng-invalid': ''"
+        appDropZone
+        (hovered)="toggleHover($event)"
+        (droppedFiles)="startUpload($event)"
+        [ngClass]="{'form__img-upload--dropping': isDropping}"
+        >
           Click / Drag to upload images
           <input id="carImages" class="e-form-control--hidden" type="file" accept="image/*" 
           formControlName="carImages"
-          multiple>
+          multiple
+          (change)="startUpload($event.target.files)">
           <i class="far fa-images"></i>
         </label>
 
@@ -30,6 +36,19 @@
         (superForm.invalid && formSubmitted)
         "
         ></app-field-feedback>
+
+        <ng-container *ngIf="imgPercentage | async as pct">
+          <progress class="progress-bar" id="file" value="{{pct}}" max="100"> {{pct}} </progress>
+        </ng-container>
+
+        <ng-container *ngIf="imgURL | async as urls">
+          <ul class="uploading-imgs">
+            <li >
+              <img [src]="urls"> 
+            </li>
+          </ul>
+        </ng-container>
+        
       </div>
 
       <div class="col-md-9">
