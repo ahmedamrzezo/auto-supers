@@ -18,7 +18,6 @@ export class ImgUploadService {
   // download URL
   downloadURL: Observable<string>;
 
-  isHovering: boolean;
 
   // final image 
   image = new BehaviorSubject<string>('');
@@ -28,7 +27,7 @@ export class ImgUploadService {
   ) { }
 
   toggleHover(event: boolean) {
-    this.isHovering = event;
+    return event;
   }
 
   startUpload(event: FileList) {
