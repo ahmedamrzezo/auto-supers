@@ -340,16 +340,14 @@ export class SupercarEditComponent implements OnInit {
     this.router.navigate(['/supers']);
   }
 
-  toggleHover(ev) {
-    console.log(ev);
-    this._imageUpload.toggleHover(ev);
+  toggleHover(ev: boolean) {
+    this.isDropping = this._imageUpload.toggleHover(ev);
   }
 
-  startUpload(ev) {
-    this._imageUpload.startUpload(ev);
+  startUpload(listOfImages: FileList) {
+    this._imageUpload.startUpload(listOfImages);
     this.imgPercentage = this._imageUpload.percentage;
     this.imgURL = this._imageUpload.image;
-    this.isDropping = this._imageUpload.isHovering;
   }
 
   /** TODO:
