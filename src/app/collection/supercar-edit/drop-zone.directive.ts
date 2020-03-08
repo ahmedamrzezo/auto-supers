@@ -22,5 +22,21 @@ export class DropZoneDirective {
     ev.preventDefault();
     this.hovered.next(true);
   }
+  @HostListener('window:dragover', ['$event'])
+  onWindowDrag(ev) {
+    ev.preventDefault();
+    this.hovered.next(true);
+  }
+  @HostListener('window:drop', ['$event'])
+  onWindowDrop(ev) {
+    ev.preventDefault();
+    this.hovered.next(false);
+  }
+  @HostListener('dragend', ['$event'])
+  onDragEnd(ev) {
+    this.hovered.next(false);
+    console.log('stopped');
+    console.log(ev);
+  }
 
 }
