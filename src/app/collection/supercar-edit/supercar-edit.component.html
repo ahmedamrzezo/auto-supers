@@ -9,15 +9,16 @@
     <div class="row justify-content-center form__row">
       <div class="col-md-3">
         <label for="carImages" class="e-label e-form-control form__img-upload" 
-        [ngClass]="
+        [ngClass]="[
         superForm.controls.carImages.dirty || 
-        (superForm.invalid && formSubmitted) ? 'ng-invalid': ''"
+        (superForm.invalid && formSubmitted) ? 'ng-invalid': '',
+        isDropping? 'form__img-upload--dropping': ''
+        ]"
         appDropZone
         (hovered)="toggleHover($event)"
         (droppedFiles)="startUpload($event)"
-        [ngClass]="{'form__img-upload--dropping': isDropping}"
         >
-          Click / Drag to upload images
+          {{isDropping? 'Drop your images here': 'Click / Drag to upload images'}}
           <input id="carImages" class="e-form-control--hidden" type="file" accept="image/*" 
           formControlName="carImages"
           multiple
@@ -42,9 +43,9 @@
         </ng-container>
 
         <ng-container *ngIf="imgURL | async as urls">
-          <ul class="uploading-imgs">
-            <li >
-              <img [src]="urls"> 
+          <ul class="uploaded-imgs">
+            <li class="uploaded-imgs__img-item">
+              <img [src]="urls" class="img-responsive"> 
             </li>
           </ul>
         </ng-container>

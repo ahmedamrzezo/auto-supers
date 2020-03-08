@@ -59,10 +59,32 @@
     .far {
       font-size: 7rem;
       margin-bottom: 10px;
+      @include transition(transform, 0.3);
     }
 
     &:hover {
       color: $main-color;
+    }
+
+    &--dropping {
+      border-style: dashed;
+      border-color: $main-color;
+      .far {
+        color: $main-color;
+        transform: scale(1.2);
+      }
+    }
+
+    .uploaded-img {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      &__img-item {
+        flex-basis: 48%;
+        width: 48%;
+      }
     }
   }
   .c-second-btn {
