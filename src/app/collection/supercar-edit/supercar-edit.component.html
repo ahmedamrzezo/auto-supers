@@ -22,7 +22,9 @@
           <input id="carImages" class="e-form-control--hidden" type="file" accept="image/*" 
           formControlName="carImages"
           multiple
-          (change)="startUpload($event.target.files)">
+          (change)="startUpload($event.target.files)"
+          requiredFile
+          >
           <i class="far fa-images"></i>
         </label>
 
