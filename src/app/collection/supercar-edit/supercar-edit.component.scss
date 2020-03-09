@@ -75,16 +75,20 @@
       }
     }
 
-    .uploaded-img {
-      position: absolute;
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      &__img-item {
-        flex-basis: 48%;
-        width: 48%;
-      }
+  }
+  .uploaded-imgs {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &__img-item {
+      flex-basis: 48%;
+      width: 48%;
+    }
+    .img-responsive {
+      max-width: 100%;
+      height: auto;
     }
   }
   .c-second-btn {

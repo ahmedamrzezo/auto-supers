@@ -360,6 +360,7 @@ export class SupercarEditComponent implements OnInit {
 
   /** TODO:
    * edit super detail
+   * bug: multi img duplicates
    */
 
 }
