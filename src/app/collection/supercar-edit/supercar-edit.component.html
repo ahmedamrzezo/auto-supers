@@ -44,10 +44,10 @@
           <progress class="progress-bar" id="file" value="{{pct}}" max="100"> {{pct}} </progress>
         </ng-container>
 
-        <ng-container *ngIf="imgURL | async as urls">
+        <ng-container *ngIf="imgURLs">
           <ul class="uploaded-imgs">
-            <li class="uploaded-imgs__img-item">
-              <img [src]="urls" class="img-responsive"> 
+            <li class="uploaded-imgs__img-item" *ngFor="let url of imgURLs">
+              <img [src]="url" class="img-responsive"> 
             </li>
           </ul>
         </ng-container>
