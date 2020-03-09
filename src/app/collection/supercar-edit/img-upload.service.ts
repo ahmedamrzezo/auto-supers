@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class ImgUploadService {
 
 
   // final image 
-  image = new BehaviorSubject<string>('');
+  image = new Subject<string>();
 
   constructor(
     private fireStorage: AngularFireStorage
