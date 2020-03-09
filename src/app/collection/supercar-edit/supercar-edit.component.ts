@@ -9,6 +9,7 @@ import { of, asyncScheduler, Observable } from 'rxjs';
 import { delay, throttleTime, map } from 'rxjs/operators';
 import { ModifyFormGuard } from '../modify-form/modify-form.guard';
 import { ImgUploadService } from './img-upload.service';
+import { RequiredFileDirective } from 'src/app/shared/required-file.directive';
 
 @Component({
   selector: 'app-supercar-edit',
@@ -28,7 +29,7 @@ export class SupercarEditComponent implements OnInit {
   formResponse: {code: number, msg: string};
 
   imgPercentage: Observable<number>;
-  imgURL: Observable<string>;
+  imgURLs: string[] = [];
   isDropping: boolean;
 
   constructor(
@@ -127,7 +128,7 @@ export class SupercarEditComponent implements OnInit {
       carImages: new FormControl(
         '', 
         [
-          Validators.required
+          RequiredFileDirective.validate
         ]
       ),
     });
@@ -156,6 +157,8 @@ export class SupercarEditComponent implements OnInit {
 
   submitForm() {
     this.formSubmitted = true;
+
+    console.log(this.superForm.controls.carImages);
     if (this.superForm.invalid) {
       this.checkErrors();
     } else {
@@ -347,14 +350,16 @@ export class SupercarEditComponent implements OnInit {
   startUpload(listOfImages: FileList) {
     this._imageUpload.startUpload(listOfImages);
     this.imgPercentage = this._imageUpload.percentage;
-    this.imgURL = this._imageUpload.image;
+    this._imageUpload.image.subscribe(url => {
+      console.log(url);
+      this.imgURLs.push(url);
+
+      this.superForm.controls.carImages.setValue(this.imgURLs);
+    });
   }
 
   /** TODO:
    * edit super detail
-   * save data
-   * cancel edit
-   * can deactivate route to ask permission to leave page
    */
 
 }
