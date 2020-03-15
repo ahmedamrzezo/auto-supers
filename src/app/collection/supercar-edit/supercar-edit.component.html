@@ -1,0 +1,410 @@
+<section class="container">
+  <form 
+  [formGroup]="superForm" 
+  (ngSubmit)="submitForm()" 
+  class="o-section-content form"
+  [ngClass]="{'submitted': formSubmitted}">
+
+    <!-- images -->
+    <div class="row justify-content-center form__row">
+      <div class="col-md-3 position-relative">
+        <label for="carImages" class="e-label e-form-control form__img-upload" 
+        [ngClass]="[
+        superForm.controls.carImages.dirty || 
+        (superForm.invalid && formSubmitted) ? 'ng-invalid': '',
+        isDropping? 'form__img-upload--dropping': ''
+        ]"
+        appDropZone
+        (hovered)="toggleHover($event)"
+        (droppedFiles)="startUpload($event)"
+        >
+          {{isDropping? 'Drop your images here': 'Click / Drag to upload images'}}
+          <input id="carImages" class="e-form-control--hidden" type="file" accept="image/*" 
+          formControlName="carImages"
+          multiple
+          (change)="startUpload($event.target.files)"
+          requiredFile
+          >
+          <i class="far fa-images"></i>
+        </label>
+
+        <app-field-feedback 
+        [valid]="
+        superForm.controls.carImages.valid? 
+        true : false
+        "
+        [errorMessage]="imagesErrors"
+        *ngIf="
+        superForm.controls.carImages.dirty || 
+        (superForm.invalid && formSubmitted)
+        "
+        ></app-field-feedback>
+
+        <ng-container *ngIf="imgPercentage | async as pct">
+          <progress class="progress-bar" id="file" value="{{pct}}" max="100"> {{pct}} </progress>
+        </ng-container>
+
+        <ng-container *ngIf="imgURLs">
+          <ul class="uploaded-imgs">
+            <li class="uploaded-imgs__img-item" *ngFor="let url of imgURLs">
+              <img [src]="url" class="img-responsive"> 
+            </li>
+          </ul>
+        </ng-container>
+        
+      </div>
+
+      <div class="col-md-9">
+        <!-- name - brand - year -->
+        <div class="row form__row">
+          <!-- name -->
+          <div class="col-md-5">
+            <fieldset class="e-form-group form__field">
+              <label 
+              for="carName" 
+              class="e-label e-label--floated"
+              appLabelOverflowInput
+              >
+                Supercar name
+              </label>
+              <input 
+              id="carName" 
+              type="text" 
+              class="e-form-control"
+              formControlName="carName">
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.carName.valid? 
+              true : false
+              "
+              [errorMessage]="nameErrors"
+              *ngIf="
+              superForm.controls.carName.dirty || 
+              (superForm.invalid && formSubmitted)"
+              ></app-field-feedback>
+            </fieldset>
+          </div>
+          <!-- name /end -->
+    
+          <!-- brand -->
+          <div class="col-md-4">
+            <fieldset class="e-form-group form__field">
+              <label 
+              for="brandName" 
+              class="e-label e-label--floated"
+              appLabelOverflowInput>
+              Supercar brand
+            </label>
+            <input 
+            id="brandName" 
+            type="text" 
+            class="e-form-control"
+            formControlName="brandName">
+
+            <app-field-feedback 
+            [valid]="
+            superForm.controls.brandName.valid? 
+            true : false
+            "
+            [errorMessage]="brandErrors"
+            *ngIf="
+            superForm.controls.brandName.dirty || 
+            (superForm.invalid && formSubmitted)"
+            ></app-field-feedback>
+          </fieldset>
+          </div>
+          <!-- brand /end -->
+        
+          <!-- year -->
+          <div class="col-md-3">
+            <fieldset class="e-form-group form__field">
+                <label for="manufactureYear" 
+                class="e-label e-label--floated"
+                appLabelOverflowInput>
+                Manufacture year
+              </label>
+              <input 
+              type="number" 
+              class="e-form-control" 
+              id="manufactureYear"
+              formControlName="manufactureYear">
+              <span class="form__unit">1980-{{currentYear}}</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.manufactureYear.valid? 
+              true : false
+              "
+              [errorMessage]="yearErrors"
+              *ngIf="
+              superForm.controls.manufactureYear.dirty || 
+              (superForm.invalid && formSubmitted)"
+              ></app-field-feedback>
+            </fieldset>
+          </div>
+          <!-- year /end -->
+          
+        </div>
+        <!-- name - brand - year /end -->
+    
+        <!-- description -->
+        <div class="row form__row">
+          <div class="col-md-12">
+    
+            <fieldset class="e-form-group form__field">
+              <label for="description" 
+              class="e-label e-label--top-floated"
+              appLabelOverflowInput>
+                Description
+              </label>
+              <textarea
+              class="e-form-control e-text-area" 
+              id="description"
+              formControlName="description"></textarea>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.description.valid? 
+              true : false
+              "
+              [errorMessage]="descErrors"
+              *ngIf="
+              superForm.controls.description.dirty || 
+              (superForm.invalid && formSubmitted)"
+              ></app-field-feedback>
+            </fieldset>
+    
+          </div>
+        </div>
+        <!-- description /end -->
+        
+        <!-- engine details -->
+        <div class="row form__row">
+          <div class="col-md-3">
+            <fieldset class="e-form-group form__field">
+              <label for="engineType" class="e-label e-label--floated"
+              appLabelOverflowInput>
+                Engine type
+              </label>
+              <select 
+              class="e-form-control" 
+              id="engineType"
+              formControlName="engineType">
+                <option value="" disabled hidden></option>
+                <!-- <option value="">Flat 6</option> -->
+                <option value="v6">V6</option>
+                <option value="v8">V8</option>
+                <option value="v10">V10</option>
+                <option value="v12">V12</option>
+                <option value="w12">W12</option>
+                <option value="w14">W16</option>
+              </select>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.engineType.valid? 
+              true : false
+              "
+              [errorMessage]="engineTypeErrors"
+              *ngIf="
+              superForm.controls.engineType.dirty || 
+              (superForm.invalid && formSubmitted)"
+              ></app-field-feedback>
+            </fieldset>
+          </div>
+          <div class="col-md-3">
+            <fieldset class="e-form-group form__field">
+              <label 
+              for="engineCC" 
+              class="e-label e-label--floated"
+              appLabelOverflowInput>
+                Engine capacity
+              </label>
+              <input 
+              type="number" 
+              class="e-form-control" 
+              id="engineCC"
+              formControlName="engineCC">
+              <span class="form__unit">Litre</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.engineCC.valid? 
+              true : false
+              "
+              [errorMessage]="engineCCErrors"
+              *ngIf="
+              superForm.controls.engineCC.dirty || 
+              (superForm.invalid && formSubmitted)"
+              ></app-field-feedback>
+            </fieldset>
+          </div>
+          <div class="col-md-3">
+            <fieldset class="e-form-group form__field">
+              <label 
+              for="horsePower" 
+              class="e-label e-label--floated"
+              appLabelOverflowInput>
+                Horse power
+              </label>
+              <input 
+              type="number" 
+              class="e-form-control" 
+              id="horsePower"
+              formControlName="horsePower">
+              <span class="form__unit">BHP/WHP</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.horsePower.valid? 
+              true : false
+              "
+              [errorMessage]="horsePowerErrors"
+              *ngIf="
+              superForm.controls.horsePower.dirty || 
+              (superForm.invalid && formSubmitted)"
+              ></app-field-feedback>
+            </fieldset>
+          </div>
+          <div class="col-md-3">
+            <fieldset class="e-form-group form__field">
+              <label 
+              for="torque" 
+              class="e-label e-label--floated"
+              appLabelOverflowInput>
+                Torque
+              </label>
+              <input 
+              type="number" 
+              class="e-form-control" 
+              id="torque"
+              formControlName="torque">
+              <span class="form__unit">N.m</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.torque.valid? 
+              true : false
+              "
+              [errorMessage]="engineTorqueErrors"
+              *ngIf="
+              superForm.controls.torque.dirty || 
+              (superForm.invalid && formSubmitted)"
+              ></app-field-feedback>
+            </fieldset>
+          </div>
+        </div>
+        <!-- engine details/ end -->
+    
+        <!-- speed and price -->
+        <div class="row form__row">
+          <div class="col-md-4">
+            <fieldset class="e-form-group form__field">
+              <label 
+              for="maxSpeed" 
+              class="e-label e-label--floated"
+              appLabelOverflowInput>
+                Maximum speed
+              </label>
+              <input 
+              type="number" 
+              class="e-form-control" 
+              id="maxSpeed"
+              formControlName="maxSpeed">
+              <span class="form__unit">KMH</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.maxSpeed.valid? 
+              true : false
+              "
+              [errorMessage]="maxSpdErrors"
+              *ngIf="
+              superForm.controls.maxSpeed.dirty || 
+              (superForm.invalid && formSubmitted)"
+              ></app-field-feedback>
+            </fieldset>
+          </div>
+          <div class="col-md-4">
+            <fieldset class="e-form-group form__field">
+              <label 
+              for="zeroToSixty" 
+              class="e-label e-label--floated"
+              appLabelOverflowInput>
+                0 - 100
+              </label>
+              <input 
+              type="number" 
+              class="e-form-control" 
+              id="zeroToSixty"
+              formControlName="zeroToSixty">
+              <span class="form__unit">KMH</span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.zeroToSixty.valid? 
+              true : false
+              "
+              [errorMessage]="zeroHundredErrors"
+              *ngIf="
+              superForm.controls.zeroToSixty.dirty || 
+              (superForm.invalid && formSubmitted)"
+              ></app-field-feedback>
+            </fieldset>
+          </div>
+          <div class="col-md-4">
+            <fieldset class="e-form-group form__field">
+              <label 
+              for="price" 
+              class="e-label e-label--floated"
+              appLabelOverflowInput>
+                Price
+              </label>
+              <input 
+              type="number" 
+              class="e-form-control" 
+              id="price"
+              formControlName="price">
+              <span class="form__unit">
+                <i class="fas fa-dollar-sign"></i>
+              </span>
+
+              <app-field-feedback 
+              [valid]="
+              superForm.controls.price.valid? 
+              true : false
+              "
+              [errorMessage]="priceErrors"
+              *ngIf="
+              superForm.controls.price.dirty || 
+              (superForm.invalid && formSubmitted)"
+              ></app-field-feedback>
+            </fieldset>
+          </div>
+        </div>
+        <!-- speed and price /end -->
+      </div>
+    </div>
+    <!-- images /end -->
+
+    <!-- form footer -->
+    <div class="row justify-content-end">
+      <div class="col-auto mt-5">
+        <button class="c-second-btn mr-3" type="submit" [disabled]="formLoading">
+          <figure class="spinner-border" role="status" *ngIf="formLoading">
+            <span class="sr-only">Loading...</span>
+          </figure>
+          {{ formLoading? '': 'Save' }}
+        </button>
+        <button class="c-normal-btn" type="button" (click)="cancelModification()">Cancel</button>
+      </div>
+      <div class="col-12 mt-3" *ngIf="formResponse" @fadeIn>
+        <div class="alert" [ngClass]="formResponse.code == 200 ? 'alert-success': 'alert-danger'">
+          {{formResponse.msg}}
+        </div>
+      </div>
+    </div>
+    <!-- form footer /end -->
+  </form>
+</section>

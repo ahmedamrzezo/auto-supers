@@ -34,8 +34,24 @@
   font-weight: 600;
   @include transition(all, 0.3);
 
-  &:hover, &:focus, &--active {
+  &:hover, &--active {
     background-color: $main-color;
     color: #fff;
+  }
+  &:disabled {
+    background-color: rgb(158, 99, 113);
+    color: #fff;
+    border-color: transparent;
+    cursor: not-allowed;
+  }
+}
+.c-normal-btn {
+  @extend .c-second-btn;
+  background-color: $border-color;
+  border: none;
+  color: $primary-dark-color;
+
+  &:hover {
+    background-color: $text-color;
   }
 }

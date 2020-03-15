@@ -17,16 +17,17 @@ export class SuperCarService {
 
   firebaseURL = `${environment.firebaseapp.databaseURL}/supers.json`;
 
-  public bookmarkedStorage = 
-  localStorage.getItem('super_bookmarks')? 
-  JSON.parse(localStorage.getItem('super_bookmarks')):
-  [];
-
   constructor(private http: HttpClient, private router: Router) { }
 
   getSuperCars() {
     return this.http.get<SuperCar[]>(this.firebaseURL)
     .pipe(
+      map(
+        supersObject => {
+          const supersArray = Object.values(supersObject);
+          return supersArray;
+        }
+      ),
       tap(
         supers => {
           this.supersChanged.next(supers);
@@ -49,5 +50,9 @@ export class SuperCarService {
       this.router.navigate(['/not-found']);
     }
     return;
+  }
+
+  addSuper(superCar: SuperCar) {
+    return this.http.post(this.firebaseURL, superCar);
   }
 }

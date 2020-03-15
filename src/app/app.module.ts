@@ -16,7 +16,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { BannerComponent } from './banner/banner.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClickOutsideDirective } from './shared/click-outside/click-outside.directive';
 import { LoadingComponent } from './loading/loading.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,6 +26,14 @@ import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { CompareComponent } from './compare/compare.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { DragListItemDirective } from './shared/drag-list-item.directive';
+import { DoubleClickDirective } from './shared/double-click.directive';
+import { LabelOverflowInputDirective } from './shared/label-overflow-input.directive';
+import { FieldFeedbackComponent } from './field-feedback/field-feedback.component';
+import { ModifyFormGuard } from './collection/modify-form/modify-form.guard';
+import { DropZoneDirective } from './collection/supercar-edit/drop-zone.directive';
+import { FileValueAccessorDirective } from './shared/file-value-accessor.directive';
+import { RequiredFileDirective } from './shared/required-file.directive';
 
 @NgModule({
   declarations: [
@@ -47,19 +55,29 @@ import { RegisterComponent } from './auth/register/register.component';
     BookmarksComponent,
     CompareComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DragListItemDirective,
+    DoubleClickDirective,
+    LabelOverflowInputDirective,
+    FieldFeedbackComponent,
+    DropZoneDirective,
+    FileValueAccessorDirective,
+    RequiredFileDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
 
     FirebaseModule,
     SlickCarouselModule
   ],
-  providers: [],
+  providers: [
+    ModifyFormGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

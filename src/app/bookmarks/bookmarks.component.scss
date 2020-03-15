@@ -1,0 +1,48 @@
+@import '../../assets/scss/settings/variables';
+@import '../../assets/scss/tools/mixins';
+
+.bookmarks-delete {
+  margin-bottom: 20px;
+  width: 100px;
+}
+
+.bookmarks {
+  position: relative;
+  overflow: hidden;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 60px;
+    font-size: 1.6rem;
+    color: $text-color;
+    background-color: $main-light-color;
+    overflow: hidden;
+    border-radius: 6px;
+    @include transition(transform, 0.2);
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__drag {
+    border-right: 1px solid $border-color;
+    margin-right: 20px;
+    height: 100%;
+    padding-right: 10px;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+  }
+  &__delete {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 10px;
+    cursor: pointer;
+    &:hover .fas {
+      color: $main-color;
+    }
+  }
+}

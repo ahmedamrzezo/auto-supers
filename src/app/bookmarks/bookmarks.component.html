@@ -1,1 +1,48 @@
-<p>bookmarks works!</p>
+<div class="container">
+  <div class="row o-section-content">
+    <div class="col-12">
+      <button 
+      class="bookmarks-delete c-second-btn" 
+      (click)="deleteAllBookmarks()">Delete all</button>
+    </div>
+    
+    <div class="col-12">
+      <ul class="bookmarks" *ngIf="!noBookmarks; else noBookmarksExist">
+        <li 
+        class="bookmarks__item" 
+        *ngFor="let superCar of bookmarkedSupers; let id = index"
+        @deleteFade>
+
+          <!-- <span class="bookmarks__drag" appDragListItem>
+            <i class="fas fa-ellipsis-v"></i>
+          </span> -->
+
+          <span class="bookmarks__info">
+            <h4 class="e-heading--no-spacing">
+              <a [routerLink]="['/supers/' + superCar.carCode]">
+                {{superCar.carName}}
+              </a>
+            </h4>
+          </span>
+
+          <span 
+          class="bookmarks__delete"
+          [id]="id"
+          appDoubleClick
+          (doubleClickAction)="deleteBookmark(id)">
+            <small>2x clicks to delete &nbsp;</small>
+            <i class="fas fa-trash-alt"></i>
+          </span>
+
+        </li>
+      </ul>
+
+      <ng-template #noBookmarksExist>
+        <div class="bookmarks__item">
+          No Bookmarks found. <a routerLink="/supers">&nbsp; Browse supers&nbsp;</a> and add some.
+        </div>
+      </ng-template>
+      
+    </div>
+  </div>
+</div>

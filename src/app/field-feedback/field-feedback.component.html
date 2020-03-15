@@ -1,0 +1,9 @@
+<div class="valid-feedback" *ngIf="valid; else invalid">
+  Looks good!
+</div>
+
+<ng-template #invalid>
+  <div class="invalid-feedback">
+    {{errorMessage}}
+  </div>
+</ng-template>
