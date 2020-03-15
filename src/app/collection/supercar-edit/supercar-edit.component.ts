@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PagesService } from 'src/app/shared/pages.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SuperCarService } from '../super-car.service';
 import { fadeInAnimation } from '../../animations';
-import { of, asyncScheduler } from 'rxjs';
+import { of, asyncScheduler, Observable } from 'rxjs';
 import { delay, throttleTime, map } from 'rxjs/operators';
 import { ModifyFormGuard } from '../modify-form/modify-form.guard';
+import { ImgUploadService } from './img-upload.service';
+import { RequiredFileDirective } from 'src/app/shared/required-file.directive';
 
 @Component({
   selector: 'app-supercar-edit',
@@ -26,10 +28,15 @@ export class SupercarEditComponent implements OnInit {
   formLoading: boolean;
   formResponse: {code: number, msg: string};
 
+  imgPercentage: Observable<number>;
+  imgURLs: string[] = [];
+  isDropping: boolean;
+
   constructor(
     private _pagesService: PagesService,
     private router: Router,
-    private _supercarService: SuperCarService) { }
+    private _supercarService: SuperCarService,
+    private _imageUpload: ImgUploadService) { }
 
   ngOnInit() {
 
@@ -121,7 +128,7 @@ export class SupercarEditComponent implements OnInit {
       carImages: new FormControl(
         '', 
         [
-          Validators.required
+          RequiredFileDirective.validate
         ]
       ),
     });
@@ -150,6 +157,8 @@ export class SupercarEditComponent implements OnInit {
 
   submitForm() {
     this.formSubmitted = true;
+
+    console.log(this.superForm.controls.carImages);
     if (this.superForm.invalid) {
       this.checkErrors();
     } else {
@@ -334,11 +343,24 @@ export class SupercarEditComponent implements OnInit {
     this.router.navigate(['/supers']);
   }
 
+  toggleHover(ev: boolean) {
+    this.isDropping = this._imageUpload.toggleHover(ev);
+  }
+
+  startUpload(listOfImages: FileList) {
+    this._imageUpload.startUpload(listOfImages);
+    this.imgPercentage = this._imageUpload.percentage;
+    this._imageUpload.image.subscribe(url => {
+      console.log(url);
+      this.imgURLs.push(url);
+
+      this.superForm.controls.carImages.setValue(this.imgURLs);
+    });
+  }
+
   /** TODO:
    * edit super detail
-   * save data
-   * cancel edit
-   * can deactivate route to ask permission to leave page
+   * bug: multi img duplicates
    */
 
 }

@@ -7,15 +7,24 @@
 
     <!-- images -->
     <div class="row justify-content-center form__row">
-      <div class="col-md-3">
+      <div class="col-md-3 position-relative">
         <label for="carImages" class="e-label e-form-control form__img-upload" 
-        [ngClass]="
+        [ngClass]="[
         superForm.controls.carImages.dirty || 
-        (superForm.invalid && formSubmitted) ? 'ng-invalid': ''">
-          Click / Drag to upload images
+        (superForm.invalid && formSubmitted) ? 'ng-invalid': '',
+        isDropping? 'form__img-upload--dropping': ''
+        ]"
+        appDropZone
+        (hovered)="toggleHover($event)"
+        (droppedFiles)="startUpload($event)"
+        >
+          {{isDropping? 'Drop your images here': 'Click / Drag to upload images'}}
           <input id="carImages" class="e-form-control--hidden" type="file" accept="image/*" 
           formControlName="carImages"
-          multiple>
+          multiple
+          (change)="startUpload($event.target.files)"
+          requiredFile
+          >
           <i class="far fa-images"></i>
         </label>
 
@@ -30,6 +39,19 @@
         (superForm.invalid && formSubmitted)
         "
         ></app-field-feedback>
+
+        <ng-container *ngIf="imgPercentage | async as pct">
+          <progress class="progress-bar" id="file" value="{{pct}}" max="100"> {{pct}} </progress>
+        </ng-container>
+
+        <ng-container *ngIf="imgURLs">
+          <ul class="uploaded-imgs">
+            <li class="uploaded-imgs__img-item" *ngFor="let url of imgURLs">
+              <img [src]="url" class="img-responsive"> 
+            </li>
+          </ul>
+        </ng-container>
+        
       </div>
 
       <div class="col-md-9">

@@ -31,6 +31,9 @@ import { DoubleClickDirective } from './shared/double-click.directive';
 import { LabelOverflowInputDirective } from './shared/label-overflow-input.directive';
 import { FieldFeedbackComponent } from './field-feedback/field-feedback.component';
 import { ModifyFormGuard } from './collection/modify-form/modify-form.guard';
+import { DropZoneDirective } from './collection/supercar-edit/drop-zone.directive';
+import { FileValueAccessorDirective } from './shared/file-value-accessor.directive';
+import { RequiredFileDirective } from './shared/required-file.directive';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import { ModifyFormGuard } from './collection/modify-form/modify-form.guard';
     DragListItemDirective,
     DoubleClickDirective,
     LabelOverflowInputDirective,
-    FieldFeedbackComponent
+    FieldFeedbackComponent,
+    DropZoneDirective,
+    FileValueAccessorDirective,
+    RequiredFileDirective
   ],
   imports: [
     BrowserModule,
