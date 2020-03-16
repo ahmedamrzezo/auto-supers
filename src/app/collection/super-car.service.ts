@@ -53,6 +53,8 @@ export class SuperCarService {
   }
 
   addSuper(superCar: SuperCar) {
+    const carCode = superCar.carName.toLocaleLowerCase().replace(' ', '_');
+    superCar.carCode = carCode;
     return this.http.post(this.firebaseURL, superCar);
   }
 }
