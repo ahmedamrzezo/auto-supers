@@ -40,7 +40,7 @@ export class SupercarEditComponent implements OnInit {
 
   ngOnInit() {
 
-    this._pagesService.bannerContent.next({title: 'Test ci cd'});
+    this._pagesService.bannerContent.next({title: 'Create/Edit a Super'});
 
     this.checkRoute();
     
