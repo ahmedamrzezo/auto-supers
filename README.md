@@ -1,4 +1,6 @@
-# SupersAuto
+# SupersAuto 
+
+Checkout the app from this link: https://auto-supers.firebaseapp.com/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
 
