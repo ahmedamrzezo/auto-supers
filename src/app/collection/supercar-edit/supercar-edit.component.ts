@@ -10,6 +10,7 @@ import { delay, throttleTime, map } from 'rxjs/operators';
 import { ModifyFormGuard } from '../modify-form/modify-form.guard';
 import { ImgUploadService } from './img-upload.service';
 import { RequiredFileDirective } from 'src/app/shared/required-file.directive';
+import { FirebaseError } from 'firebase';
 
 @Component({
   selector: 'app-supercar-edit',
@@ -153,11 +154,27 @@ export class SupercarEditComponent implements OnInit {
   }
 
   addSuper() {
-
+    this._supercarService.addSuper(this.superForm.value)
+    .subscribe(
+      () => {
+        this.formSuccess('Super added successfully!');
+      },
+      err => {
+        this.formFailure(err);
+      }
+    );
   }
 
   editSuper() {
-
+    this._supercarService.addSuper(this.superForm.value)
+    .subscribe(
+      () => {
+        this.formSuccess('Super edited successfully!');
+      },
+      err => {
+        this.formFailure(err);
+      }
+    );
   }
 
   submitForm() {
@@ -168,21 +185,23 @@ export class SupercarEditComponent implements OnInit {
       this.checkErrors();
     } else {
       this.formLoading = true;
-      this._supercarService.addSuper(this.superForm.value)
-      .subscribe(
-        () => {
-          this.formLoading = false;
-          this.superForm.reset();
-          this.formSubmitted = false;
-          this.formResponse = {code: 200, msg: 'Super added successfully!'};
-          of(this.formResponse).pipe(delay(3000)).subscribe(() => (this.formResponse = null));
-        },
-        err => {
-          this.formLoading = false;
-          this.formResponse = {code: err.code, msg: err.message};
-        }
-      );
+      this.addSuper();
     }
+  }
+
+  // Form success method
+  private formSuccess(sucMsg: string) {
+    this.formLoading = false;
+    this.superForm.reset();
+    this.formSubmitted = false;
+    this.formResponse = {code: 200, msg: sucMsg};
+    of(this.formResponse).pipe(delay(3000)).subscribe(() => (this.formResponse = null));
+  }
+
+  // Form Failure method 
+  private formFailure(err: FirebaseError) {
+    this.formLoading = false;
+    this.formResponse = {code: +err.code, msg: err.message};
   }
 
   private insertDotAfterFirstNumber() {
