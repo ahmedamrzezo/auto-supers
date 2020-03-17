@@ -180,7 +180,7 @@
         <!-- description /end -->
         
         <!-- engine details -->
-        <div class="row form__row">
+        <div class="row form__row" formGroupName="engineDetails">
           <div class="col-md-3">
             <fieldset class="e-form-group form__field">
               <label for="engineType" class="e-label e-label--floated"
@@ -203,12 +203,12 @@
 
               <app-field-feedback 
               [valid]="
-              superForm.controls.engineType.valid? 
+              superFormEngineDetails.controls.engineType.valid? 
               true : false
               "
               [errorMessage]="engineTypeErrors"
               *ngIf="
-              superForm.controls.engineType.dirty || 
+              superFormEngineDetails.controls.engineType.dirty || 
               (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
@@ -230,12 +230,12 @@
 
               <app-field-feedback 
               [valid]="
-              superForm.controls.engineCC.valid? 
+              superFormEngineDetails.controls.engineCC.valid? 
               true : false
               "
               [errorMessage]="engineCCErrors"
               *ngIf="
-              superForm.controls.engineCC.dirty || 
+              superFormEngineDetails.controls.engineCC.dirty || 
               (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
@@ -257,12 +257,12 @@
 
               <app-field-feedback 
               [valid]="
-              superForm.controls.horsePower.valid? 
+              superFormEngineDetails.controls.horsePower.valid? 
               true : false
               "
               [errorMessage]="horsePowerErrors"
               *ngIf="
-              superForm.controls.horsePower.dirty || 
+              superFormEngineDetails.controls.horsePower.dirty || 
               (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>
@@ -284,12 +284,12 @@
 
               <app-field-feedback 
               [valid]="
-              superForm.controls.torque.valid? 
+              superFormEngineDetails.controls.torque.valid? 
               true : false
               "
               [errorMessage]="engineTorqueErrors"
               *ngIf="
-              superForm.controls.torque.dirty || 
+              superFormEngineDetails.controls.torque.dirty || 
               (superForm.invalid && formSubmitted)"
               ></app-field-feedback>
             </fieldset>

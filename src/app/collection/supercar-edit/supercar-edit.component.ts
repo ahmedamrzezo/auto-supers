@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PagesService } from 'src/app/shared/pages.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { SuperCarService } from '../super-car.service';
 import { fadeInAnimation } from '../../animations';
 import { of, asyncScheduler, Observable } from 'rxjs';
@@ -24,6 +24,7 @@ export class SupercarEditComponent implements OnInit {
   
   currentYear = new Date().getFullYear();
   superForm: FormGroup;
+  superFormEngineDetails: FormGroup;
   formSubmitted = false;
   formLoading: boolean;
   formResponse: {code: number, msg: string};
@@ -43,6 +44,38 @@ export class SupercarEditComponent implements OnInit {
     this._pagesService.bannerContent.next({title: 'Create/Edit a Super'});
 
     this.checkRoute();
+
+    this.superFormEngineDetails = new FormGroup({
+      engineType:  new FormControl(
+        '', 
+        [
+          Validators.required
+        ]
+      ),
+      engineCC: new FormControl(
+        '', 
+        [
+          Validators.required,
+          Validators.pattern('[2-8]{1}\.[1-8]{1}|[1-8]{1}/g')
+        ]
+      ),
+      horsePower: new FormControl(
+        '', 
+        [
+          Validators.required,
+          Validators.pattern('[0-9]{3}')
+          // TODO: add accurate pattern
+        ]
+      ),
+      torque: new FormControl(
+        '', 
+        [
+          Validators.required,
+          Validators.pattern('[0-9]{4}')
+          // TODO: add accurate pattern
+        ]
+      )
+    })
     
     this.superForm = new FormGroup({
       carName: new FormControl(
@@ -74,35 +107,7 @@ export class SupercarEditComponent implements OnInit {
           Validators.required
         ]
       ),
-      engineType:  new FormControl(
-        '', 
-        [
-          Validators.required
-        ]
-      ),
-      engineCC: new FormControl(
-        '', 
-        [
-          Validators.required,
-          Validators.pattern('[2-8]{1}\.[1-8]{1}|[1-8]{1}/g')
-        ]
-      ),
-      horsePower: new FormControl(
-        '', 
-        [
-          Validators.required,
-          Validators.pattern('[0-9]{3}')
-          // TODO: add accurate pattern
-        ]
-      ),
-      torque: new FormControl(
-        '', 
-        [
-          Validators.required,
-          Validators.pattern('[0-9]{4}')
-          // TODO: add accurate pattern
-        ]
-      ),
+      engineDetails: this.superFormEngineDetails,
       maxSpeed: new FormControl(
         '', 
         [
@@ -158,7 +163,7 @@ export class SupercarEditComponent implements OnInit {
   submitForm() {
     this.formSubmitted = true;
 
-    console.log(this.superForm.controls.carImages);
+    console.log(this.superForm.value);
     if (this.superForm.invalid) {
       this.checkErrors();
     } else {
@@ -181,7 +186,7 @@ export class SupercarEditComponent implements OnInit {
   }
 
   private insertDotAfterFirstNumber() {
-    this.superForm.controls.engineCC.valueChanges
+    this.superFormEngineDetails.controls.engineCC.valueChanges
     .pipe(
       throttleTime(1000, asyncScheduler, {leading: false, trailing: true}),
       map(val => val !== null? val : '')
@@ -192,7 +197,7 @@ export class SupercarEditComponent implements OnInit {
         if (engineCCValStr !== '.') 
         {
           engineCCVal = engineCCValStr.substr(0, 1) + '.' + engineCCValStr[1];
-          this.superForm.controls.engineCC.setValue(+engineCCVal);
+          this.superFormEngineDetails.controls.engineCC.setValue(+engineCCVal);
         }
         return;
       }
@@ -256,8 +261,8 @@ export class SupercarEditComponent implements OnInit {
     }
   }
   get engineTypeErrors() {
-    if (this.superForm.get('engineType').errors) {
-      if (this.superForm.get('engineType').errors.required) {
+    if (this.superFormEngineDetails.get('engineType').errors) {
+      if (this.superFormEngineDetails.get('engineType').errors.required) {
         return 'Engine type is required'
       }
     }else {
@@ -265,8 +270,8 @@ export class SupercarEditComponent implements OnInit {
     }
   }
   get engineCCErrors() {
-    if (this.superForm.get('engineCC').errors) {
-      if (this.superForm.get('engineCC').errors.required) {
+    if (this.superFormEngineDetails.get('engineCC').errors) {
+      if (this.superFormEngineDetails.get('engineCC').errors.required) {
         return 'Engine capacity is required'
       } else {
         return 'Engine capacity must be 2.0 - 8.0 Litres'
@@ -276,8 +281,8 @@ export class SupercarEditComponent implements OnInit {
     }
   }
   get horsePowerErrors() {
-    if (this.superForm.get('horsePower').errors) {
-      if (this.superForm.get('horsePower').errors.required) {
+    if (this.superFormEngineDetails.get('horsePower').errors) {
+      if (this.superFormEngineDetails.get('horsePower').errors.required) {
         return 'Engine power is required'
       } else {
         return 'Engine power must not exceed 4 digits starts from 400 to 1500'
@@ -287,8 +292,8 @@ export class SupercarEditComponent implements OnInit {
     }
   }
   get engineTorqueErrors() {
-    if (this.superForm.get('torque').errors) {
-      if (this.superForm.get('torque').errors.required) {
+    if (this.superFormEngineDetails.get('torque').errors) {
+      if (this.superFormEngineDetails.get('torque').errors.required) {
         return 'Engine torque is required'
       } else {
         return 'Engine torque must not exceed 4 digits starts from 400 to 1500'
