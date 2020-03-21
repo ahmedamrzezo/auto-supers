@@ -36,6 +36,13 @@ export class SupercarEditComponent implements OnInit {
 
   currentRouterURL = this.router.url;
 
+  slidesConfig = {
+    dot: true,
+    infinite: true,
+    slidesToShow: 1, 
+    slidesToScroll: 1
+  }
+
   constructor(
     private _pagesService: PagesService,
     private router: Router,
@@ -150,6 +157,8 @@ export class SupercarEditComponent implements OnInit {
       const newSuper = Object.assign({}, superCar);
       
       this.superForm.setValue(newSuper);
+      this.imgURLs = newSuper.carImages;
+
       this.controlsAsTouchedDirty(this.superForm);
       this.controlsAsTouchedDirty(this.superFormEngineDetails);
     }

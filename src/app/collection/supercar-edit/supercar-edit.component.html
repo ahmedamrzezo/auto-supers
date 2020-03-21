@@ -45,11 +45,16 @@
         </ng-container>
 
         <ng-container *ngIf="imgURLs">
-          <ul class="uploaded-imgs">
-            <li class="uploaded-imgs__img-item" *ngFor="let url of imgURLs">
+          <ngx-slick-carousel
+          #slickModal="slick-carousel" 
+          class="uploaded-imgs"
+          [config]="slidesConfig">
+            
+            <div ngxSlickItem class="uploaded-imgs__img-item" *ngFor="let url of imgURLs">
               <img [src]="url" class="img-responsive"> 
-            </li>
-          </ul>
+            </div>
+          
+          </ngx-slick-carousel>
         </ng-container>
         
       </div>
