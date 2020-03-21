@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { PagesService } from 'src/app/shared/pages.service';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SuperCarService } from '../super-car.service';
 import { fadeInAnimation } from '../../animations';
 import { of, asyncScheduler, Observable } from 'rxjs';
@@ -34,9 +34,12 @@ export class SupercarEditComponent implements OnInit {
   imgURLs: string[] = [];
   isDropping: boolean;
 
+  currentRouterURL = this.router.url;
+
   constructor(
     private _pagesService: PagesService,
     private router: Router,
+    private actRoute: ActivatedRoute,
     private _supercarService: SuperCarService,
     private _imageUpload: ImgUploadService) { }
 
@@ -138,15 +141,32 @@ export class SupercarEditComponent implements OnInit {
     });
 
     this.insertDotAfterFirstNumber();
+
+    if (this.currentRouterURL.match('edit')) {
+      // this._supercarService.getSuperByCode('');
+      const carCode = this.actRoute.snapshot.params.code;
+      const superCar = this.getSuperData(carCode);
+      delete superCar.carCode;
+      const newSuper = Object.assign({}, superCar);
+      
+      this.superForm.setValue(newSuper);
+      this.controlsAsTouchedDirty(this.superForm);
+      this.controlsAsTouchedDirty(this.superFormEngineDetails);
+    }
+  }
+
+  private controlsAsTouchedDirty(formGroup: FormGroup) {
+    for (const control of Object.values(formGroup.controls)) {
+      control.markAsTouched();
+      control.markAsDirty();
+    }
   }
 
   private checkEditAddForm() {
-    const currentRouterURL = this.router.url;
-
-    if (currentRouterURL.match('create')) {
+    if (this.currentRouterURL.match('create')) {
       this.addSuper();
     } 
-    else if (currentRouterURL.match('edit')) {
+    else if (this.currentRouterURL.match('edit')) {
       this.editSuper();
     }
   }
@@ -163,16 +183,22 @@ export class SupercarEditComponent implements OnInit {
     );
   }
 
+  getSuperData(code: string) {
+    return this._supercarService.getSuperByCode(code);
+  }
+
   editSuper() {
-    this._supercarService.editSuperApi(this.superForm.value)
-    .subscribe(
-      () => {
-        this.formSuccess('Super edited successfully!');
-      },
-      err => {
-        this.formFailure(err);
-      }
-    );
+    // this._supercarService.editSuperApi(this.superForm.value)
+    // .subscribe(
+    //   () => {
+    //     this.formSuccess('Super edited successfully!');
+    //   },
+    //   err => {
+    //     this.formFailure(err);
+    //   }
+    // );
+    console.log('we are editing');
+    
   }
 
   submitForm() {
