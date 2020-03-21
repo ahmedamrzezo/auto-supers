@@ -52,7 +52,13 @@ export class SuperCarService {
     return;
   }
 
-  addSuper(superCar: SuperCar) {
+  addSuperApi(superCar: SuperCar) {
+    const carCode = superCar.carName.toLocaleLowerCase().replace(' ', '_');
+    superCar.carCode = carCode;
+    return this.http.post(this.firebaseURL, superCar);
+  }
+
+  editSuperApi(superCar: SuperCar) {
     const carCode = superCar.carName.toLocaleLowerCase().replace(' ', '_');
     superCar.carCode = carCode;
     return this.http.post(this.firebaseURL, superCar);

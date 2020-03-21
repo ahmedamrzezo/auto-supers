@@ -44,8 +44,6 @@ export class SupercarEditComponent implements OnInit {
 
     this._pagesService.bannerContent.next({title: 'Create/Edit a Super'});
 
-    this.checkRoute();
-
     this.superFormEngineDetails = new FormGroup({
       engineType:  new FormControl(
         '', 
@@ -142,19 +140,19 @@ export class SupercarEditComponent implements OnInit {
     this.insertDotAfterFirstNumber();
   }
 
-  private checkRoute() {
+  private checkEditAddForm() {
     const currentRouterURL = this.router.url;
 
     if (currentRouterURL.match('create')) {
-      // this.addSuper();
+      this.addSuper();
     } 
     else if (currentRouterURL.match('edit')) {
-      // this.editSuper()
+      this.editSuper();
     }
   }
 
   addSuper() {
-    this._supercarService.addSuper(this.superForm.value)
+    this._supercarService.addSuperApi(this.superForm.value)
     .subscribe(
       () => {
         this.formSuccess('Super added successfully!');
@@ -166,7 +164,7 @@ export class SupercarEditComponent implements OnInit {
   }
 
   editSuper() {
-    this._supercarService.addSuper(this.superForm.value)
+    this._supercarService.editSuperApi(this.superForm.value)
     .subscribe(
       () => {
         this.formSuccess('Super edited successfully!');
@@ -185,7 +183,7 @@ export class SupercarEditComponent implements OnInit {
       this.checkErrors();
     } else {
       this.formLoading = true;
-      this.addSuper();
+      this.checkEditAddForm();
     }
   }
 
