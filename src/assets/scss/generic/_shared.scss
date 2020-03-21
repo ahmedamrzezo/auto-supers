@@ -32,3 +32,18 @@ small {
 .g-text--no-select {
   user-select: none;
 }
+
+
+ngx-slick-carousel::ng-deep {
+  .slick-prev, .slick-next {
+    z-index: 5;
+  }
+  .slick-prev::before, .slick-next::before {
+    color: $main-color;
+    opacity: 0.5;
+  }
+  .slick-prev:hover::before, .slick-next:hover::before {
+    color: $main-color;
+    opacity: 1;
+  }
+}
