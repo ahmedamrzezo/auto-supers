@@ -9,6 +9,7 @@
   border: 2px solid $border-color;
   border-radius: $border-radius;
   @include transition(border-color, 0.3);
+  line-height: 22px;
 
   &--hidden {
     visibility: hidden;

@@ -78,17 +78,26 @@
   }
   .uploaded-imgs {
     position: absolute;
+    margin-top: 15px;
+    padding-right: 30px;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    margin-top: 15px;
     &__img-item {
-      flex-basis: 48%;
-      width: 48%;
+      position: relative;
     }
     .img-responsive {
       max-width: 100%;
       height: auto;
+      &:hover + .c-delete-btn {
+        opacity: 1;
+      }
+    }
+    .c-delete-btn {
+      @include transition(opacity, 0.2);
+      opacity: 0.5;
+      &:hover{
+        opacity: 1;
+      }
     }
   }
   .c-second-btn {

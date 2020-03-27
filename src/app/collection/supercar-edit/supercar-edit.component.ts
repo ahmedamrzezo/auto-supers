@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { PagesService } from 'src/app/shared/pages.service';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SuperCarService } from '../super-car.service';
 import { fadeInAnimation } from '../../animations';
 import { of, asyncScheduler, Observable } from 'rxjs';
@@ -10,6 +10,7 @@ import { delay, throttleTime, map } from 'rxjs/operators';
 import { ModifyFormGuard } from '../modify-form/modify-form.guard';
 import { ImgUploadService } from './img-upload.service';
 import { RequiredFileDirective } from 'src/app/shared/required-file.directive';
+import { FirebaseError } from 'firebase';
 
 @Component({
   selector: 'app-supercar-edit',
@@ -33,17 +34,25 @@ export class SupercarEditComponent implements OnInit {
   imgURLs: string[] = [];
   isDropping: boolean;
 
+  currentRouterURL = this.router.url;
+
+  slidesConfig = {
+    dot: true,
+    infinite: true,
+    slidesToShow: 1, 
+    slidesToScroll: 1
+  }
+
   constructor(
     private _pagesService: PagesService,
     private router: Router,
+    private actRoute: ActivatedRoute,
     private _supercarService: SuperCarService,
     private _imageUpload: ImgUploadService) { }
 
   ngOnInit() {
 
     this._pagesService.bannerContent.next({title: 'Create/Edit a Super'});
-
-    this.checkRoute();
 
     this.superFormEngineDetails = new FormGroup({
       engineType:  new FormControl(
@@ -139,50 +148,94 @@ export class SupercarEditComponent implements OnInit {
     });
 
     this.insertDotAfterFirstNumber();
+
+    if (this.currentRouterURL.match('edit')) {
+      // this._supercarService.getSuperByCode('');
+      const carCode = this.actRoute.snapshot.params.code;
+      const superCar = this.getSuperData(carCode);
+      delete superCar.carCode;
+      const newSuper = Object.assign({}, superCar);
+      
+      this.superForm.setValue(newSuper);
+      this.imgURLs = newSuper.carImages;
+
+      this.controlsAsTouchedDirty(this.superForm);
+      this.controlsAsTouchedDirty(this.superFormEngineDetails);
+    }
   }
 
-  private checkRoute() {
-    const currentRouterURL = this.router.url;
+  private controlsAsTouchedDirty(formGroup: FormGroup) {
+    for (const control of Object.values(formGroup.controls)) {
+      control.markAsTouched();
+      control.markAsDirty();
+    }
+  }
 
-    if (currentRouterURL.match('create')) {
-      // this.addSuper();
+  private checkEditAddForm() {
+    if (this.currentRouterURL.match('create')) {
+      this.addSuper();
     } 
-    else if (currentRouterURL.match('edit')) {
-      // this.editSuper()
+    else if (this.currentRouterURL.match('edit')) {
+      this.editSuper();
     }
   }
 
   addSuper() {
+    this._supercarService.addSuperApi(this.superForm.value)
+    .subscribe(
+      () => {
+        this.formSuccess('Super added successfully!');
+      },
+      err => {
+        this.formFailure(err);
+      }
+    );
+  }
 
+  getSuperData(code: string) {
+    return this._supercarService.getSuperByCode(code);
   }
 
   editSuper() {
-
+    this._supercarService.editSuperApi(this.superForm.value)
+    .subscribe(
+      () => {
+        this.formLoading = false;
+        this.formSuccess('Super edited successfully!');
+      },
+      err => {
+        this.formLoading = false;
+        this.formFailure(err);
+      }
+    );
+    
   }
 
   submitForm() {
     this.formSubmitted = true;
 
-    console.log(this.superForm.value);
     if (this.superForm.invalid) {
       this.checkErrors();
     } else {
       this.formLoading = true;
-      this._supercarService.addSuper(this.superForm.value)
-      .subscribe(
-        () => {
-          this.formLoading = false;
-          this.superForm.reset();
-          this.formSubmitted = false;
-          this.formResponse = {code: 200, msg: 'Super added successfully!'};
-          of(this.formResponse).pipe(delay(3000)).subscribe(() => (this.formResponse = null));
-        },
-        err => {
-          this.formLoading = false;
-          this.formResponse = {code: err.code, msg: err.message};
-        }
-      );
+      this.checkEditAddForm();
     }
+  }
+
+  // Form success method
+  private formSuccess(sucMsg: string) {
+    this.formLoading = false;
+    this.superForm.reset();
+    this.formSubmitted = false;
+    this.formResponse = {code: 200, msg: sucMsg};
+    this.imgURLs = [];
+    of(this.formResponse).pipe(delay(3000)).subscribe(() => (this.formResponse = null));
+  }
+
+  // Form Failure method 
+  private formFailure(err: FirebaseError) {
+    this.formLoading = false;
+    this.formResponse = {code: +err.code, msg: err.message};
   }
 
   private insertDotAfterFirstNumber() {
@@ -361,6 +414,10 @@ export class SupercarEditComponent implements OnInit {
 
       this.superForm.controls.carImages.setValue(this.imgURLs);
     });
+  }
+
+  deleteImage(id: number){
+    this.imgURLs.splice(id, 1);
   }
 
   /** TODO:

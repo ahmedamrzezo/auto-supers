@@ -55,3 +55,38 @@
     background-color: $text-color;
   }
 }
+
+.c-button--noFocus {
+  &:active, &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+.c-delete-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba($color: #000, $alpha: 0.25);
+  border: none;
+  border-radius: 6px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  width: 65px;
+  .fa-trash-alt {
+    color: #fff;
+    background-color: $main-color;
+    padding: 5px;
+    border-radius: 6px;
+  }
+
+  &__info {
+    color: $border-color;
+    padding-left: 5px;
+    font-size: 1.2rem;
+  }
+}
