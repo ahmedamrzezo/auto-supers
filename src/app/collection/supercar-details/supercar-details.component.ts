@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { PagesService } from 'src/app/shared/pages.service';
@@ -32,11 +32,12 @@ export class SupercarDetailsComponent implements OnInit {
     private _pagesService: PagesService, 
     private _superCarService: SuperCarService,
     private _bookmarksService: BookmarksService,
-    private router: ActivatedRoute
+    private actRouter: ActivatedRoute,
+    private router: Router
     ) {}
 
   ngOnInit() {
-    this.router.params.pipe(take(1)).subscribe((param) => {
+    this.actRouter.params.pipe(take(1)).subscribe((param) => {
       this.activeSuper = this._superCarService.getSuperByCode(param.code);
       if (this.activeSuper) {
         this._pagesService.bannerContent.next({title: this.activeSuper.carName});
@@ -67,6 +68,23 @@ export class SupercarDetailsComponent implements OnInit {
     }
     this._bookmarksService.updateLocalStorage();
     this.isBookmarked = !this.isBookmarked;
+  }
+
+  deleteSuper() {
+    const confirmDelete = confirm('Are you sure to delete this super car?')
+    if (confirmDelete) {
+      this._superCarService.deleteSuper(this.activeSuper)
+      .subscribe(
+        () => {
+          this.router.navigate(['/supers']);
+        },
+        err => {
+          console.error(err);
+        }
+      );
+    } else {
+      return;
+    }
   }
   
 }
