@@ -197,23 +197,23 @@ export class SupercarEditComponent implements OnInit {
   }
 
   editSuper() {
-    // this._supercarService.editSuperApi(this.superForm.value)
-    // .subscribe(
-    //   () => {
-    //     this.formSuccess('Super edited successfully!');
-    //   },
-    //   err => {
-    //     this.formFailure(err);
-    //   }
-    // );
-    console.log('we are editing');
+    this._supercarService.editSuperApi(this.superForm.value)
+    .subscribe(
+      () => {
+        this.formLoading = false;
+        this.formSuccess('Super edited successfully!');
+      },
+      err => {
+        this.formLoading = false;
+        this.formFailure(err);
+      }
+    );
     
   }
 
   submitForm() {
     this.formSubmitted = true;
 
-    console.log(this.superForm.value);
     if (this.superForm.invalid) {
       this.checkErrors();
     } else {
@@ -228,6 +228,7 @@ export class SupercarEditComponent implements OnInit {
     this.superForm.reset();
     this.formSubmitted = false;
     this.formResponse = {code: 200, msg: sucMsg};
+    this.imgURLs = [];
     of(this.formResponse).pipe(delay(3000)).subscribe(() => (this.formResponse = null));
   }
 
@@ -413,6 +414,10 @@ export class SupercarEditComponent implements OnInit {
 
       this.superForm.controls.carImages.setValue(this.imgURLs);
     });
+  }
+
+  deleteImage(id: number){
+    this.imgURLs.splice(id, 1);
   }
 
   /** TODO:
