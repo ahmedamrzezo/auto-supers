@@ -28,7 +28,7 @@
           <strong>Max Speed: </strong> 
           <mark>
             {{activeSuper?.maxSpeed}}
-            KP/H
+            KM/H
           </mark>
         </div>
         <div class="super__spec">
@@ -69,7 +69,8 @@
             class="
             super__modify-item 
             super__modify-item--danger" 
-            title="Delete">
+            title="Delete"
+            (click)="deleteSuper()">
               <i class="fas fa-trash-alt"></i>
             </li>
           </ul>

@@ -44,12 +44,32 @@
           <progress class="progress-bar" id="file" value="{{pct}}" max="100"> {{pct}} </progress>
         </ng-container>
 
-        <ng-container *ngIf="imgURLs">
-          <ul class="uploaded-imgs">
-            <li class="uploaded-imgs__img-item" *ngFor="let url of imgURLs">
+        <ng-container *ngIf="imgURLs.length">
+          <ngx-slick-carousel
+          #slickModal="slick-carousel" 
+          class="uploaded-imgs"
+          [config]="slidesConfig">
+            
+            <div 
+            ngxSlickItem 
+            class="uploaded-imgs__img-item" 
+            *ngFor="let url of imgURLs; let id = index">
               <img [src]="url" class="img-responsive"> 
-            </li>
-          </ul>
+              <button 
+              type="button" 
+              class="c-delete-btn c-button--noFocus" 
+              title="2x clicks to delete"
+              appDoubleClick
+              (doubleClickAction)="deleteImage(id)">
+                <span class="c-delete-btn__info">
+                  2x
+                  <i class="fas fa-mouse"></i>
+                </span>
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          
+          </ngx-slick-carousel>
         </ng-container>
         
       </div>
@@ -332,14 +352,14 @@
               for="zeroToSixty" 
               class="e-label e-label--floated"
               appLabelOverflowInput>
-                0 - 100
+                0 - 100 KMH
               </label>
               <input 
               type="number" 
               class="e-form-control" 
               id="zeroToSixty"
               formControlName="zeroToSixty">
-              <span class="form__unit">KMH</span>
+              <span class="form__unit">Secs</span>
 
               <app-field-feedback 
               [valid]="

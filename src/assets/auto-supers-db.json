@@ -2,9 +2,7 @@
   "supers" : [ {
     "brandName" : "Ford",
     "carCode" : "ford-mustang-gt",
-    "carImages" :[
-      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/mustang-gt%2Fphoto-1555160329-6a0ccf5c91f2.jpg?alt=media&token=50940ccb-6661-48a3-8d97-dc1d1d0e0bb2"
-    ],
+    "carImages" : [ "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/mustang-gt%2Fphoto-1555160329-6a0ccf5c91f2.jpg?alt=media&token=50940ccb-6661-48a3-8d97-dc1d1d0e0bb2" ],
     "carName" : "Ford Mustang GT",
     "description" : "Ford Mustang GT has a V8 5.6 Litre engine produces 568 horse power",
     "engineDetails" : {
@@ -13,16 +11,14 @@
       "horsePower" : 568,
       "torque" : 550
     },
-    "maxSpeed": 200,
-    "zeroToSixty": 3,
     "manufactureYear" : 2018,
-    "price" : 80000
+    "maxSpeed" : 200,
+    "price" : 80000,
+    "zeroToSixty" : 3
   }, {
     "brandName" : "Nissan",
     "carCode" : "nissan_gtr",
-    "carImages" : [
-      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/nissang_GTR%2Fphoto-1542228261-89eed3d81d98.jpg?alt=media&token=7fd1fb94-9eb3-48fa-9e43-c62af4ec391c"
-    ],
+    "carImages" : [ "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/nissang_GTR%2Fphoto-1542228261-89eed3d81d98.jpg?alt=media&token=7fd1fb94-9eb3-48fa-9e43-c62af4ec391c" ],
     "carName" : "Nissan GTR",
     "description" : "Nissan GTR has a V8 5.6 Litre engine produces 568 horse power ",
     "engineDetails" : {
@@ -31,16 +27,14 @@
       "horsePower" : 705,
       "torque" : 665
     },
-    "maxSpeed": 200,
-    "zeroToSixty": 3,
     "manufactureYear" : 2016,
-    "price" : 50000
+    "maxSpeed" : 200,
+    "price" : 50000,
+    "zeroToSixty" : 3
   }, {
     "brandName" : "Lamborghini",
     "carCode" : "lamborghini_huracan",
-    "carImages" : [
-      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/lambo_huracan%2Fpexels-photo-2127733.jpeg?alt=media&token=ca963f9a-b920-4747-8604-f6b64add95a5"
-    ],
+    "carImages" : [ "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/lambo_huracan%2Fpexels-photo-2127733.jpeg?alt=media&token=ca963f9a-b920-4747-8604-f6b64add95a5" ],
     "carName" : "Lamborghini Huracan",
     "description" : "Lamborghini Huracan has a V12 7 Litre engine produces 780 horse power ",
     "engineDetails" : {
@@ -49,24 +43,14 @@
       "horsePower" : 750,
       "torque" : 765
     },
-    "maxSpeed": 200,
-    "zeroToSixty": 3,
     "manufactureYear" : 2017,
-    "price" : 600000
+    "maxSpeed" : 200,
+    "price" : 600000,
+    "zeroToSixty" : 3
   }, {
     "brandName" : "porche",
     "carCode" : "porche_911_gt3_rs",
-    "carImages" : [
-      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-normal.webp?alt=media&token=47041e14-2fd3-4bed-b601-2e3338e84c8d",
-
-      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-back.webp?alt=media&token=036f4abf-32bc-4519-9f1f-029816fe31f4",
-
-      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-interior.webp?alt=media&token=54119005-71a6-45c6-9490-1b3caee805c9",
-
-      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-wallpaper.webp?alt=media&token=bf463456-5e6f-4e94-ae9a-aca68ed12f91",
-
-      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-zoom2.webp?alt=media&token=5e74a1e9-3639-4cfa-abb9-d1c41f091736"
-    ],
+    "carImages" : [ "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-normal.webp?alt=media&token=47041e14-2fd3-4bed-b601-2e3338e84c8d", "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-back.webp?alt=media&token=036f4abf-32bc-4519-9f1f-029816fe31f4", "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-interior.webp?alt=media&token=54119005-71a6-45c6-9490-1b3caee805c9", "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-wallpaper.webp?alt=media&token=bf463456-5e6f-4e94-ae9a-aca68ed12f91", "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_911_gt3_rs%2Fporsche-zoom2.webp?alt=media&token=5e74a1e9-3639-4cfa-abb9-d1c41f091736" ],
     "carName" : "Porche Carerra 911 GT3 RS",
     "description" : "Porche Carerra 911 GT3 RS has a Flat 6 4 Litre engine produces 520 horse power at 9000 rpm",
     "engineDetails" : {
@@ -75,16 +59,14 @@
       "horsePower" : 520,
       "torque" : 520
     },
-    "maxSpeed": 310,
-    "zeroToSixty": 3,
     "manufactureYear" : 2019,
-    "price" : 188550
+    "maxSpeed" : 310,
+    "price" : 188550,
+    "zeroToSixty" : 3
   }, {
     "brandName" : "porche",
-    "carCode" : "Porsche_918_Spyder ",
-    "carImages" : [
-      "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_918%2Fporsche-918-spyder-with-weissach-package.jpg?alt=media&token=8b77aa9d-8085-4b8a-b0e1-738459357e8b"
-    ],
+    "carCode" : "Porsche_918_Spyder",
+    "carImages" : [ "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/porsche_918%2Fporsche-918-spyder-with-weissach-package.jpg?alt=media&token=8b77aa9d-8085-4b8a-b0e1-738459357e8b" ],
     "carName" : "Porsche 918 Spyder",
     "description" : "The Porsche 918 Spyder is a mid-engine plug-in hybrid sports car manufactured by German automobile manufacturer Porsche. The 918 Spyder is powered by a naturally aspirated 4.6 L V8 engine, developing 599 hp at 8,700 rpm, with two electric motors delivering an additional 282 hp for a combined output of 875 hp and 1,280 N⋅m of torque.",
     "engineDetails" : {
@@ -93,9 +75,55 @@
       "horsePower" : 875,
       "torque" : 1280
     },
-    "maxSpeed": 200,
-    "zeroToSixty": 3,
     "manufactureYear" : 2013,
-    "price" : 80000
+    "maxSpeed" : 200,
+    "price" : 80000,
+    "zeroToSixty" : 3
+  }, {
+    "brandName" : "Ferrari",
+    "carCode" : "ferrari_458 italia",
+    "carImages" : [ "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/images%2F1584814110615_photo-1509042009371-65fa830819f1.jfif?alt=media&token=a30fa218-e377-45b1-a68f-94078a92fd18", "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/images%2F1584814096326_photo-1583121274602-3e2820c69888.jfif?alt=media&token=53b581e7-9d0e-4831-b015-75758a8c6ac7", "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/images%2F1584814119209_photo-1542038428-25a73671ca6e.jfif?alt=media&token=c001fb19-44d4-419d-a0f9-562b4a71c2ea" ],
+    "carName" : "Ferrari 458 Italia",
+    "description" : "The Ferrari 458 Italia (Type F142) is a mid-engine sports car produced by the Italian automobile manufacturer Ferrari. The 458 replaced the F430, and was first officially unveiled at the 2009 Frankfurt Motor Show. It was succeeded by the 488, which was unveiled at the 2015 Geneva Motor Show.",
+    "engineDetails" : {
+      "engineCC" : 4.5,
+      "engineType" : "v8",
+      "horsePower" : 562,
+      "torque" : 5555
+    },
+    "manufactureYear" : 2009,
+    "maxSpeed" : 339,
+    "price" : 740000,
+    "zeroToSixty" : 3.4
+  }, {
+    "brandName" : "ascasc",
+    "carImages" : [ "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/images%2F1584825881469_DSC_0449.jpg?alt=media&token=604b5e8e-3c4a-4e6a-a244-771144b69438" ],
+    "carName" : "Ahmedascasc",
+    "description" : "ascascas",
+    "engineDetails" : {
+      "engineCC" : 5.5,
+      "engineType" : "v8",
+      "horsePower" : 555,
+      "torque" : 5555
+    },
+    "manufactureYear" : 2000,
+    "maxSpeed" : 555,
+    "price" : 555,
+    "zeroToSixty" : 555
+  }, {
+    "brandName" : "casca",
+    "carImages" : [ "https://firebasestorage.googleapis.com/v0/b/auto-supers.appspot.com/o/images%2F1584825983752_fprofile2.jpg?alt=media&token=4060f6e2-0863-4767-a532-a4fd91415bbf" ],
+    "carName" : "acsasc as ascas",
+    "description" : "acsacsc",
+    "engineDetails" : {
+      "engineCC" : 5.5,
+      "engineType" : "v6",
+      "horsePower" : 555,
+      "torque" : 5555
+    },
+    "manufactureYear" : 2000,
+    "maxSpeed" : 555,
+    "price" : 5555,
+    "zeroToSixty" : 5555
   } ]
 }

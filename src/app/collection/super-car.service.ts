@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { SuperCar } from './super-car';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,17 @@ export class SuperCarService {
 
   firebaseURL = `${environment.firebaseapp.databaseURL}/supers.json`;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'http://localhost:4444'
+    })
+  }
+
+  constructor(
+    private http: HttpClient, 
+    private router: Router, 
+    private actRoute: ActivatedRoute) { }
 
   getSuperCars() {
     return this.http.get<SuperCar[]>(this.firebaseURL)
@@ -52,9 +62,39 @@ export class SuperCarService {
     return;
   }
 
-  addSuper(superCar: SuperCar) {
-    const carCode = superCar.carName.toLocaleLowerCase().replace(' ', '_');
+  addSuperApi(superCar: SuperCar) {
+    const carCode = superCar.carName.toLocaleLowerCase().split(' ').join('_');
     superCar.carCode = carCode;
-    return this.http.post(this.firebaseURL, superCar);
+    return this.http.post(this.firebaseURL, superCar, this.httpOptions);
+  }
+
+  editSuperApi(superCar: SuperCar) {
+    const oldCarCode = this.actRoute.snapshot.params.carCode;
+    const carCode = superCar.carName.toLocaleLowerCase().split(' ').join('_');
+    superCar.carCode = carCode;
+    let newCars = [];
+    this.superCars.forEach((val, id) => {
+      if (oldCarCode === val.carCode) {
+        this.superCars.splice(id, 1);
+        newCars = this.superCars;
+      }
+    });
+    newCars.push(superCar);
+    return this.http.put(this.firebaseURL, newCars, this.httpOptions);
+  }
+
+  deleteSuper(superCar: SuperCar) {
+    let carId = '';
+    let newCars = [];
+
+    this.superCars.forEach((val, id) => {
+      if (superCar.carCode === val.carCode) {
+        carId = id.toString();
+        this.superCars.splice(id, 1);
+        newCars = this.superCars;
+      }
+    });
+    
+    return this.http.put(this.firebaseURL, newCars, this.httpOptions);
   }
 }
