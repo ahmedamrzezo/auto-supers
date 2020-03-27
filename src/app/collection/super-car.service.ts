@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { tap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class SuperCarService {
 
   firebaseURL = `${environment.firebaseapp.databaseURL}/supers.json`;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private actRoute: ActivatedRoute) { }
 
   getSuperCars() {
     return this.http.get<SuperCar[]>(this.firebaseURL)
@@ -59,8 +59,17 @@ export class SuperCarService {
   }
 
   editSuperApi(superCar: SuperCar) {
+    const oldCarCode = this.actRoute.snapshot.params.carCode;
     const carCode = superCar.carName.toLocaleLowerCase().split(' ').join('_');
     superCar.carCode = carCode;
-    return this.http.post(this.firebaseURL, superCar);
+    let newCars = [];
+    this.superCars.forEach((val, id) => {
+      if (oldCarCode === val.carCode) {
+        this.superCars.splice(id, 1);
+        newCars = this.superCars;
+      }
+    });
+    newCars.push(superCar);
+    return this.http.put(this.firebaseURL, newCars);
   }
 }
