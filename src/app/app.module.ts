@@ -24,8 +24,6 @@ import { FirebaseModule } from './firebase/firebase.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { CompareComponent } from './compare/compare.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { DragListItemDirective } from './shared/drag-list-item.directive';
 import { DoubleClickDirective } from './shared/double-click.directive';
 import { LabelOverflowInputDirective } from './shared/label-overflow-input.directive';
@@ -34,6 +32,7 @@ import { ModifyFormGuard } from './collection/modify-form/modify-form.guard';
 import { DropZoneDirective } from './collection/supercar-edit/drop-zone.directive';
 import { FileValueAccessorDirective } from './shared/file-value-accessor.directive';
 import { RequiredFileDirective } from './shared/required-file.directive';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -54,8 +53,6 @@ import { RequiredFileDirective } from './shared/required-file.directive';
     LoadingComponent,
     BookmarksComponent,
     CompareComponent,
-    LoginComponent,
-    RegisterComponent,
     DragListItemDirective,
     DoubleClickDirective,
     LabelOverflowInputDirective,
@@ -66,14 +63,15 @@ import { RequiredFileDirective } from './shared/required-file.directive';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AuthModule,
+    AppRoutingModule,
 
     FirebaseModule,
-    SlickCarouselModule
+    SlickCarouselModule,
   ],
   providers: [
     ModifyFormGuard
