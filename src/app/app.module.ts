@@ -17,22 +17,17 @@ import { BannerComponent } from './banner/banner.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ClickOutsideDirective } from './shared/click-outside/click-outside.directive';
-import { LoadingComponent } from './loading/loading.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FirebaseModule } from './firebase/firebase.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { CompareComponent } from './compare/compare.component';
-import { DragListItemDirective } from './shared/drag-list-item.directive';
-import { DoubleClickDirective } from './shared/double-click.directive';
-import { LabelOverflowInputDirective } from './shared/label-overflow-input.directive';
-import { FieldFeedbackComponent } from './field-feedback/field-feedback.component';
 import { ModifyFormGuard } from './collection/modify-form/modify-form.guard';
 import { DropZoneDirective } from './collection/supercar-edit/drop-zone.directive';
 import { FileValueAccessorDirective } from './shared/file-value-accessor.directive';
 import { RequiredFileDirective } from './shared/required-file.directive';
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -49,14 +44,8 @@ import { AuthModule } from './auth/auth.module';
     BannerComponent,
     NotFoundComponent,
     SearchComponent,
-    ClickOutsideDirective,
-    LoadingComponent,
     BookmarksComponent,
     CompareComponent,
-    DragListItemDirective,
-    DoubleClickDirective,
-    LabelOverflowInputDirective,
-    FieldFeedbackComponent,
     DropZoneDirective,
     FileValueAccessorDirective,
     RequiredFileDirective
@@ -72,6 +61,7 @@ import { AuthModule } from './auth/auth.module';
 
     FirebaseModule,
     SlickCarouselModule,
+    SharedModule
   ],
   providers: [
     ModifyFormGuard
