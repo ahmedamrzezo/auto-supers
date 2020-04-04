@@ -53,15 +53,13 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
+    
     AuthModule,
-    AppRoutingModule,
-
     FirebaseModule,
     SlickCarouselModule,
-    SharedModule
+    SharedModule,
+
+    AppRoutingModule,
   ],
   providers: [
     ModifyFormGuard

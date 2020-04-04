@@ -5,6 +5,8 @@ import { DoubleClickDirective } from './double-click.directive';
 import { LabelOverflowInputDirective } from './label-overflow-input.directive';
 import { LoadingComponent } from '../loading/loading.component';
 import { FieldFeedbackComponent } from '../field-feedback/field-feedback.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -17,7 +19,10 @@ import { FieldFeedbackComponent } from '../field-feedback/field-feedback.compone
     FieldFeedbackComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     ClickOutsideDirective,
@@ -25,6 +30,9 @@ import { FieldFeedbackComponent } from '../field-feedback/field-feedback.compone
     LabelOverflowInputDirective,
     LoadingComponent,
     FieldFeedbackComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class SharedModule { }
