@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FirebaseApp } from '@angular/fire';
+import { BehaviorSubject } from 'rxjs';
+import { Admin } from './admin.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  user = new BehaviorSubject<Admin>(null);
 
-  constructor(private _http: HttpClient, private fireAuth: FirebaseApp) { }
+  constructor(private fireAuth: FirebaseApp) { }
 
   registerUser(email: string, password: string) {
     return this.fireAuth.auth().createUserWithEmailAndPassword(email, password);
