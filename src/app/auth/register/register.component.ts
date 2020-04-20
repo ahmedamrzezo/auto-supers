@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PagesService } from 'src/app/shared/pages.service';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { User } from '../user.model';
+import { Admin } from '../admin.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   responseError: string;
 
-  user: User;
+  user: Admin;
 
   constructor(
     private _pagesService: PagesService,
@@ -41,14 +41,15 @@ export class RegisterComponent implements OnInit {
         .then(user => {
           const expDate = Date.parse(user['expirationTime']);
 
-          this.user = new User(
+          this.user = new Admin(
                               data['user']['email'], 
                               data['user']['uid'], 
                               user['token'], 
                               expDate);
+          this._authService.user.next(this.user);
           console.log(this.user);
-          this.router.navigate['/supers'];
         });
+        this.router.navigate(['/supers/create']);
       })
       .catch((err: Error) => {
         this.responseError = err.message;
