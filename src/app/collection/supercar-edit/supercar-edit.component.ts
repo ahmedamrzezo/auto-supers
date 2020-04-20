@@ -408,8 +408,7 @@ export class SupercarEditComponent implements OnInit {
   startUpload(listOfImages: FileList) {
     this._imageUpload.startUpload(listOfImages);
     this.imgPercentage = this._imageUpload.percentage;
-    this._imageUpload.image.subscribe(url => {
-      console.log(url);
+    this._imageUpload.image.pipe(take(1)).subscribe(url => {
       this.imgURLs.push(url);
 
       this.superForm.controls.carImages.setValue(this.imgURLs);
@@ -421,8 +420,7 @@ export class SupercarEditComponent implements OnInit {
   }
 
   /** TODO:
-   * edit super detail
-   * bug: multi img duplicates
+   
    */
 
 }
