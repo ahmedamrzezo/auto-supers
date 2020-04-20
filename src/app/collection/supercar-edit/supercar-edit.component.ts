@@ -425,8 +425,7 @@ export class SupercarEditComponent implements OnInit {
   }
 
   logout() {
-    this._authService.user.next(null);
-    this.router.navigate(['/']);
+    this._authService.logoutAdmin();
   }
 
 }
