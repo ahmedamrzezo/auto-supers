@@ -6,11 +6,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SuperCarService } from '../super-car.service';
 import { fadeInAnimation } from '../../animations';
 import { of, asyncScheduler, Observable } from 'rxjs';
-import { delay, throttleTime, map } from 'rxjs/operators';
+import { delay, throttleTime, map, take } from 'rxjs/operators';
 import { ModifyFormGuard } from '../modify-form/modify-form.guard';
 import { ImgUploadService } from './img-upload.service';
 import { RequiredFileDirective } from 'src/app/shared/required-file.directive';
 import { FirebaseError } from 'firebase';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Admin } from 'src/app/auth/admin.model';
 
 @Component({
   selector: 'app-supercar-edit',
@@ -43,12 +45,15 @@ export class SupercarEditComponent implements OnInit {
     slidesToScroll: 1
   }
 
+  admin: Admin;
+
   constructor(
     private _pagesService: PagesService,
     private router: Router,
     private actRoute: ActivatedRoute,
     private _supercarService: SuperCarService,
-    private _imageUpload: ImgUploadService) { }
+    private _imageUpload: ImgUploadService,
+    private _authService: AuthService) { }
 
   ngOnInit() {
 
@@ -419,8 +424,9 @@ export class SupercarEditComponent implements OnInit {
     this.imgURLs.splice(id, 1);
   }
 
-  /** TODO:
-   
-   */
+  logout() {
+    this._authService.user.next(null);
+    this.router.navigate(['/']);
+  }
 
 }
