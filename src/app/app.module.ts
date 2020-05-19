@@ -16,8 +16,6 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { BannerComponent } from './banner/banner.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { FirebaseModule } from './firebase/firebase.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
@@ -26,7 +24,6 @@ import { ModifyFormGuard } from './collection/modify-form/modify-form.guard';
 import { DropZoneDirective } from './collection/supercar-edit/drop-zone.directive';
 import { FileValueAccessorDirective } from './shared/file-value-accessor.directive';
 import { RequiredFileDirective } from './shared/required-file.directive';
-import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -54,7 +51,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     BrowserAnimationsModule,
     
-    AuthModule,
     FirebaseModule,
     SlickCarouselModule,
     SharedModule,
