@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
                             user['token'], 
                             expDate);
         this._authService.user.next(this.user);
-        console.log(this.user);
+        sessionStorage.setItem('admin-data', JSON.stringify(this.user));
       });
       this.router.navigate(['/supers/create']);
     })
