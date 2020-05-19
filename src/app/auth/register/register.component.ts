@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
                               user['token'], 
                               expDate);
           this._authService.user.next(this.user);
-          console.log(this.user);
+          this.router.navigateByUrl('/admin/login');
         });
         this.router.navigate(['/supers/create']);
       })
