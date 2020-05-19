@@ -18,7 +18,9 @@ export class SuperCarService {
 
   firebaseURL = `${environment.firebaseapp.databaseURL}/supers.json`;
 
-  admin: Admin = JSON.parse(sessionStorage.getItem('admin-data'));
+  get admin(): Admin {
+    return JSON.parse(sessionStorage.getItem('admin-data'));
+  }
 
   httpOptions = {
     headers: new HttpHeaders({
