@@ -64,6 +64,10 @@ const routes: Routes = [
     data: { animation: 'OtherPage' }
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./auth/auth.module').then(m => (m.AuthModule))
+  },
+  {
     path: '**', 
     redirectTo: '/not-found'
   },
