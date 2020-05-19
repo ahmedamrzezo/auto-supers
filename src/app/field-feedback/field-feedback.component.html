@@ -1,9 +1,11 @@
 <div class="valid-feedback" *ngIf="valid; else invalid">
   Looks good!
+
 </div>
 
 <ng-template #invalid>
   <div class="invalid-feedback">
     {{errorMessage}}
+    <ng-content signIn></ng-content>
   </div>
 </ng-template>

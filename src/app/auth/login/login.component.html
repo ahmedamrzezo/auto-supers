@@ -1,1 +1,74 @@
-<p>login works!</p>
+<section class="container">
+  
+  <form class="o-section-content auth-form" #loginForm="ngForm" (ngSubmit)="submitForm()">
+    <div class="row">
+      <div class="col-12">
+        <fieldset class="e-form-group">
+          <label 
+          for="email" 
+          class="e-label e-label--floated"
+          appLabelOverflowInput>
+            Email
+          </label>
+          <input 
+          type="email" 
+          name="email" 
+          [(ngModel)]="email"
+          class="e-form-control" 
+          autocomplete="email"
+          id="email"
+          required>
+
+          <app-field-feedback 
+          [valid]="
+          (loginForm.controls.email.valid && !responseError)? 
+          true : false
+          "
+          [errorMessage]="responseError || emailErrors"
+          *ngIf="
+          loginForm.controls.email?.dirty || 
+          (loginForm.invalid && formSubmitted)"
+          >
+        </app-field-feedback>
+        </fieldset>
+      </div>
+      <div class="col-12">
+        <fieldset class="e-form-group">
+          <label 
+          for="password" 
+          class="e-label e-label--floated"
+          appLabelOverflowInput>
+            Password
+          </label>
+          <input 
+          type="password" 
+          name="password" 
+          [(ngModel)]="password"
+          class="e-form-control" 
+          autocomplete="password"
+          id="password"
+          required>
+
+          <app-field-feedback 
+          [valid]="
+          loginForm.controls.password.valid? 
+          true : false
+          "
+          [errorMessage]="passwordErrors"
+          *ngIf="
+          loginForm.controls.password?.dirty || 
+          (loginForm.invalid && formSubmitted)"
+          ></app-field-feedback>
+        </fieldset>
+      </div>
+
+      <div class="col-auto">
+        <button type="submit" class="c-reset-btn c-main-btn">Login</button>
+      </div>
+      <div class="col-6 align-self-center">
+        Not registered yet? <a class="d-inline" routerLink="/admin/register">Register here</a>
+      </div>
+    </div>
+  </form>
+
+</section>
