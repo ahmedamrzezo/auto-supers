@@ -25,7 +25,7 @@ export class SuperCarService {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:4444'
     }),
-    params: {auth: this.admin._token}
+    params: {auth: this.admin? this.admin._token: null}
   }
 
   constructor(
