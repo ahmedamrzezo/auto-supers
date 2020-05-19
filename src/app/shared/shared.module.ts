@@ -7,6 +7,7 @@ import { LoadingComponent } from '../loading/loading.component';
 import { FieldFeedbackComponent } from '../field-feedback/field-feedback.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DragListItemDirective } from './drag-list-item.directive';
 
 
 
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     ClickOutsideDirective,
     DoubleClickDirective,
     LabelOverflowInputDirective,
+    DragListItemDirective,
     LoadingComponent,
     FieldFeedbackComponent,
   ],
@@ -28,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     ClickOutsideDirective,
     DoubleClickDirective,
     LabelOverflowInputDirective,
+    DragListItemDirective,
     LoadingComponent,
     FieldFeedbackComponent,
     FormsModule,

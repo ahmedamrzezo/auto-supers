@@ -26,7 +26,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm i firebase-tools
-    - run: firebase deploy
+    - run: npm i -g firebase-tools
+    - run: firebase deploy --token 1//033A5MwlnoE6wCgYIARAAGAMSNwF-L9Ir2CkE2SyCpZao27B8G4yZ7dfe2SO0Iit-M4SUJ3F5ekjJI9XpxZLc8TvJ5U1cggY-IFo
       env:
         CI: true
