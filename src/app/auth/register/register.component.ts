@@ -36,20 +36,8 @@ export class RegisterComponent implements OnInit {
     
     if (this.registerForm.valid) {
       this._authService.registerUser(this.email, this.password)
-      .then(data => {
-        this._authService.getCurrentUserToken()
-        .then(user => {
-          const expDate = Date.parse(user['expirationTime']);
-
-          this.user = new Admin(
-                              data['user']['email'], 
-                              data['user']['uid'], 
-                              user['token'], 
-                              expDate);
-          this._authService.user.next(this.user);
-          this.router.navigateByUrl('/admin/login');
-        });
-        this.router.navigate(['/supers/create']);
+      .then(() => {
+        this.router.navigateByUrl('/admin/login');
       })
       .catch((err: Error) => {
         this.responseError = err.message;
