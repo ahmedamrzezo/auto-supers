@@ -5,6 +5,7 @@ import { tap, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Admin } from '../auth/admin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,14 @@ export class SuperCarService {
 
   firebaseURL = `${environment.firebaseapp.databaseURL}/supers.json`;
 
+  admin: Admin = JSON.parse(sessionStorage.getItem('admin-data'));
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:4444'
-    })
+    }),
+    params: {auth: this.admin._token}
   }
 
   constructor(
