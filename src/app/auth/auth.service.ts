@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  user = new BehaviorSubject<Admin>(null);
+  user = new BehaviorSubject<Admin>(JSON.parse(sessionStorage.getItem('admin-data')));
 
   constructor(private fireAuth: FirebaseApp, private router: Router) { }
 
@@ -27,6 +27,6 @@ export class AuthService {
   logoutAdmin() {
     this.user.next(null);
     this.router.navigate(['/']);
-    localStorage.removeItem('admin-token');
+    sessionStorage.removeItem('admin-token');
   }
 }
