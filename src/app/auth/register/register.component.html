@@ -29,7 +29,7 @@
           registerForm.controls.email?.dirty || 
           (registerForm.invalid && formSubmitted)"
           >
-          <a routerLink="/login" *ngIf="responseError"><strong>Want to login?</strong></a>
+          <a routerLink="/admin/login" *ngIf="responseError"><strong>Want to login?</strong></a>
         </app-field-feedback>
         </fieldset>
       </div>
@@ -68,7 +68,7 @@
         <button type="submit" class="c-reset-btn c-main-btn">Register</button>
       </div>
       <div class="col-6 align-self-center">
-        Already an admin? <a class="d-inline" routerLink="/login">Login here</a>
+        Already an admin? <a class="d-inline" routerLink="/admin/login">Login here</a>
       </div>
     </div>
   </form>
