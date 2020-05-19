@@ -9,6 +9,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SupersResolverService } from './collection/supers-resolver.service';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { ModifyFormGuard } from './collection/modify-form/modify-form.guard';
+import { AdminGuard } from './auth/admin.guard';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   {
     path: 'supers/create', 
     component: SupercarEditComponent,
+    canActivate: [AdminGuard],
     canDeactivate: [ModifyFormGuard],
     data: { animation: 'OtherPage' }
   },
@@ -43,6 +45,7 @@ const routes: Routes = [
   {
     path: 'supers/:code/edit', 
     component: SupercarEditComponent, 
+    canActivate: [AdminGuard],
     resolve: [SupersResolverService],
     canDeactivate: [ModifyFormGuard],
     data: { animation: 'OtherPage' },
@@ -59,6 +62,10 @@ const routes: Routes = [
     path: 'about', 
     component: AboutComponent, 
     data: { animation: 'OtherPage' }
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./auth/auth.module').then(m => (m.AuthModule))
   },
   {
     path: '**', 
