@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Admin } from '../auth/admin.model';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,22 +19,19 @@ export class SuperCarService {
 
   firebaseURL = `${environment.firebaseapp.databaseURL}/supers.json`;
 
-  get admin(): Admin {
-    return JSON.parse(sessionStorage.getItem('admin-data'));
-  }
-
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:4444'
     }),
-    params: {auth: this.admin? this.admin._token: null}
+    params: {auth: this._authService.admin? this._authService.admin._token: null}
   }
 
   constructor(
     private http: HttpClient, 
     private router: Router, 
-    private actRoute: ActivatedRoute) { }
+    private actRoute: ActivatedRoute,
+    private _authService: AuthService) { }
 
   getSuperCars() {
     return this.http.get<SuperCar[]>(this.firebaseURL)
