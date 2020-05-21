@@ -12,6 +12,10 @@ export class AuthService {
 
   constructor(private fireAuth: FirebaseApp, private router: Router) { }
 
+  get admin(): Admin {
+    return JSON.parse(sessionStorage.getItem('admin-data'));
+  }
+
   registerUser(email: string, password: string) {
     return this.fireAuth.auth().createUserWithEmailAndPassword(email, password);
   }
