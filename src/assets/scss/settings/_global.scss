@@ -1,0 +1,19 @@
+// declare Farro font locally
+
+@font-face {
+  font-family: 'Farro';
+  src: 
+    url('assets/fonts/Farro/Farro-Regular.woff') format('woff'),
+    url('./assets/fonts/Farro/Farro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Farro';
+  src: 
+    url('assets/fonts/Farro/Farro-Bold.woff') format('woff'),
+    url('./assets/fonts/Farro/Farro-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
