@@ -1,4 +1,4 @@
-# SupersAuto 
+# SupersAuto ![Node.js CI](https://github.com/ahmedamrzezo/auto-supers/workflows/Node.js%20CI/badge.svg)
 
 Checkout the app from this link: https://auto-supers.firebaseapp.com/
 
