@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  user = new BehaviorSubject<Admin>(JSON.parse(sessionStorage.getItem('admin-data')));
+  user = new BehaviorSubject<Admin>(this.admin);
 
   constructor(private fireAuth: FirebaseApp, private router: Router) { }
 
