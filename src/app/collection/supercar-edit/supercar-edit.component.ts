@@ -78,7 +78,7 @@ export class SupercarEditComponent implements OnInit {
         '', 
         [
           Validators.required,
-          Validators.pattern('[0-9]{3}|[0-9]{4}')
+          Validators.pattern('[4-9]{1}[0-9]{2}|1[0-4]{1}[0-9]{2}|1500')
         ]
       ),
       torque: new FormControl(
