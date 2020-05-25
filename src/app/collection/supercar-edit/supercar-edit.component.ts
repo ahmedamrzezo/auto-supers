@@ -70,23 +70,22 @@ export class SupercarEditComponent implements OnInit {
         '', 
         [
           Validators.required,
-          Validators.pattern('[2-8]{1}\.[1-8]{1}|[1-8]{1}/g')
+          Validators.max(12000),
+          Validators.pattern(new RegExp('[2-9]{1}[0-9]{3}|1[0-2]{1}[0-9]{3}', 'g'))
         ]
       ),
       horsePower: new FormControl(
         '', 
         [
           Validators.required,
-          Validators.pattern('[0-9]{3}')
-          // TODO: add accurate pattern
+          Validators.pattern('[0-9]{3}|[0-9]{4}')
         ]
       ),
       torque: new FormControl(
         '', 
         [
           Validators.required,
-          Validators.pattern('[0-9]{4}')
-          // TODO: add accurate pattern
+          Validators.pattern('[0-9]{3}|[0-9]{4}')
         ]
       )
     })
@@ -151,8 +150,6 @@ export class SupercarEditComponent implements OnInit {
         ]
       ),
     });
-
-    this.insertDotAfterFirstNumber();
 
     if (this.currentRouterURL.match('edit')) {
       // this._supercarService.getSuperByCode('');
@@ -243,25 +240,6 @@ export class SupercarEditComponent implements OnInit {
     this.formResponse = {code: +err.code, msg: err.message};
   }
 
-  private insertDotAfterFirstNumber() {
-    this.superFormEngineDetails.controls.engineCC.valueChanges
-    .pipe(
-      throttleTime(1000, asyncScheduler, {leading: false, trailing: true}),
-      map(val => val !== null? val : '')
-    )
-    .subscribe(
-      engineCCVal => {
-        let engineCCValStr = engineCCVal.toString();
-        if (engineCCValStr !== '.') 
-        {
-          engineCCVal = engineCCValStr.substr(0, 1) + '.' + engineCCValStr[1];
-          this.superFormEngineDetails.controls.engineCC.setValue(+engineCCVal);
-        }
-        return;
-      }
-    )
-
-  }
   checkErrors() {
     this.nameErrors;
     this.brandErrors;
@@ -328,11 +306,14 @@ export class SupercarEditComponent implements OnInit {
     }
   }
   get engineCCErrors() {
+    console.log(this.superFormEngineDetails.get('engineCC').errors);
     if (this.superFormEngineDetails.get('engineCC').errors) {
       if (this.superFormEngineDetails.get('engineCC').errors.required) {
         return 'Engine capacity is required'
+      } else if (this.superFormEngineDetails.get('engineCC').errors.max) {
+        return 'Engine capacity must not exceed 5 digits'
       } else {
-        return 'Engine capacity must be 2.0 - 8.0 Litres'
+        return 'Engine capacity must be 2000 - 12000 CC'
       }
     }else {
       return
