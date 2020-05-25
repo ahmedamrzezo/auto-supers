@@ -125,8 +125,7 @@ export class SupercarEditComponent implements OnInit {
         '', 
         [
           Validators.required,
-          Validators.pattern('[1-9]{3}')
-          // TODO: add accurate pattern
+          Validators.pattern('2[5-9]{1}[0-9]{1}|3[0-9]{2}|4[0-9]{2}|500')
         ]
       ),
       zeroToSixty: new FormControl(
