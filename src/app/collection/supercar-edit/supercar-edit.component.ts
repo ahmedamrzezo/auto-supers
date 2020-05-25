@@ -305,7 +305,6 @@ export class SupercarEditComponent implements OnInit {
     }
   }
   get engineCCErrors() {
-    console.log(this.superFormEngineDetails.get('engineCC').errors);
     if (this.superFormEngineDetails.get('engineCC').errors) {
       if (this.superFormEngineDetails.get('engineCC').errors.required) {
         return 'Engine capacity is required'
