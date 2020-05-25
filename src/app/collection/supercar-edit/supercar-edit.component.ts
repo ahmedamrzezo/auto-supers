@@ -344,7 +344,7 @@ export class SupercarEditComponent implements OnInit {
       if (this.superForm.get('maxSpeed').errors.required) {
         return 'Maximum speed is required'
       } else {
-        return 'Maximum speed must be 300 - 450 KMH'
+        return 'Maximum speed must be 250 - 500 KMH'
       }
     }else {
       return
