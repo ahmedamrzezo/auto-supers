@@ -70,23 +70,22 @@ export class SupercarEditComponent implements OnInit {
         '', 
         [
           Validators.required,
-          Validators.pattern('[2-8]{1}\.[1-8]{1}|[1-8]{1}/g')
+          Validators.max(12000),
+          Validators.pattern(new RegExp('[2-9]{1}[0-9]{3}|1[0-2]{1}[0-9]{3}', 'g'))
         ]
       ),
       horsePower: new FormControl(
         '', 
         [
           Validators.required,
-          Validators.pattern('[0-9]{3}')
-          // TODO: add accurate pattern
+          Validators.pattern('[4-9]{1}[0-9]{2}|1[0-4]{1}[0-9]{2}|1500')
         ]
       ),
       torque: new FormControl(
         '', 
         [
           Validators.required,
-          Validators.pattern('[0-9]{4}')
-          // TODO: add accurate pattern
+          Validators.pattern('[4-9]{1}[0-9]{2}|1[0-4]{1}[0-9]{2}|1500')
         ]
       )
     })
@@ -126,8 +125,7 @@ export class SupercarEditComponent implements OnInit {
         '', 
         [
           Validators.required,
-          Validators.pattern('[1-9]{3}')
-          // TODO: add accurate pattern
+          Validators.pattern('2[5-9]{1}[0-9]{1}|3[0-9]{2}|4[0-9]{2}|500')
         ]
       ),
       zeroToSixty: new FormControl(
@@ -151,8 +149,6 @@ export class SupercarEditComponent implements OnInit {
         ]
       ),
     });
-
-    this.insertDotAfterFirstNumber();
 
     if (this.currentRouterURL.match('edit')) {
       // this._supercarService.getSuperByCode('');
@@ -243,25 +239,6 @@ export class SupercarEditComponent implements OnInit {
     this.formResponse = {code: +err.code, msg: err.message};
   }
 
-  private insertDotAfterFirstNumber() {
-    this.superFormEngineDetails.controls.engineCC.valueChanges
-    .pipe(
-      throttleTime(1000, asyncScheduler, {leading: false, trailing: true}),
-      map(val => val !== null? val : '')
-    )
-    .subscribe(
-      engineCCVal => {
-        let engineCCValStr = engineCCVal.toString();
-        if (engineCCValStr !== '.') 
-        {
-          engineCCVal = engineCCValStr.substr(0, 1) + '.' + engineCCValStr[1];
-          this.superFormEngineDetails.controls.engineCC.setValue(+engineCCVal);
-        }
-        return;
-      }
-    )
-
-  }
   checkErrors() {
     this.nameErrors;
     this.brandErrors;
@@ -331,8 +308,10 @@ export class SupercarEditComponent implements OnInit {
     if (this.superFormEngineDetails.get('engineCC').errors) {
       if (this.superFormEngineDetails.get('engineCC').errors.required) {
         return 'Engine capacity is required'
+      } else if (this.superFormEngineDetails.get('engineCC').errors.max) {
+        return 'Engine capacity must not exceed 5 digits'
       } else {
-        return 'Engine capacity must be 2.0 - 8.0 Litres'
+        return 'Engine capacity must be 2000 - 12000 CC'
       }
     }else {
       return
@@ -365,7 +344,7 @@ export class SupercarEditComponent implements OnInit {
       if (this.superForm.get('maxSpeed').errors.required) {
         return 'Maximum speed is required'
       } else {
-        return 'Maximum speed must be 300 - 450 KMH'
+        return 'Maximum speed must be 250 - 500 KMH'
       }
     }else {
       return
