@@ -31,6 +31,6 @@ export class AuthService {
   logoutAdmin() {
     this.user.next(null);
     this.router.navigate(['/']);
-    sessionStorage.removeItem('admin-token');
+    sessionStorage.removeItem('admin-data');
   }
 }
